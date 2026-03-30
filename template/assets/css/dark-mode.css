@@ -1,0 +1,106 @@
+/* ===================================================
+   LEXCOUNSEL - Dark Mode Overrides
+   =================================================== */
+
+[data-theme="dark"] {
+  --clr-surface: #0D1117;
+  --clr-surface-alt: #161B22;
+  --clr-white: #1C2128;
+  --clr-text: #E6EDF3;
+  --clr-text-light: #8B949E;
+  --clr-text-muted: #6E7681;
+  --clr-border: #30363D;
+  --clr-primary-dark: #040B12;
+}
+
+[data-theme="dark"] body { background: #0D1117; }
+
+/* Navbar */
+[data-theme="dark"] #navbar {
+  background: #161B22;
+  box-shadow: 0 1px 0 #30363D;
+}
+[data-theme="dark"] #navbar.scrolled { box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+[data-theme="dark"] .nav-logo { color: #E6EDF3; }
+[data-theme="dark"] .nav-link { color: #C9D1D9; }
+[data-theme="dark"] .nav-link:hover { color: #C9A84C; background: rgba(201,168,76,.08); }
+[data-theme="dark"] .nav-dropdown { background: #1C2128; border-color: #30363D; }
+[data-theme="dark"] .nav-dropdown a { color: #C9D1D9; }
+[data-theme="dark"] .nav-toggle-btn { background: #21262D; border-color: #30363D; color: #8B949E; }
+[data-theme="dark"] .hamburger { background: #21262D; border-color: #30363D; }
+[data-theme="dark"] .hamburger span { background: #C9D1D9; }
+[data-theme="dark"] .mobile-drawer { background: #161B22; border-color: #30363D; }
+[data-theme="dark"] .mobile-nav-link { color: #C9D1D9; border-color: #30363D; }
+[data-theme="dark"] .mobile-sub-item { color: #8B949E; }
+[data-theme="dark"] .mobile-toggles { border-color: #30363D; }
+
+/* Cards */
+[data-theme="dark"] .card { background: #1C2128; border-color: #30363D; }
+[data-theme="dark"] .testimonial-card { background: #1C2128; border-color: #30363D; }
+[data-theme="dark"] .blog-card { background: #1C2128; border-color: #30363D; }
+
+/* Headings */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 { color: #E6EDF3; }
+[data-theme="dark"] p { color: #8B949E; }
+
+/* Forms */
+[data-theme="dark"] .form-control {
+  background: #21262D;
+  border-color: #30363D;
+  color: #E6EDF3;
+}
+[data-theme="dark"] .form-control:focus { border-color: #C9A84C; }
+[data-theme="dark"] .form-label { color: #C9D1D9; }
+[data-theme="dark"] .form-control::placeholder { color: #6E7681; }
+
+/* Accordion */
+[data-theme="dark"] .accordion-item { border-color: #30363D; }
+[data-theme="dark"] .accordion-trigger { background: #1C2128; color: #E6EDF3; }
+[data-theme="dark"] .accordion-trigger:hover { background: #21262D; }
+[data-theme="dark"] .accordion-body { background: #1C2128; color: #8B949E; }
+
+/* Section Alts */
+[data-theme="dark"] .section-alt { background: #161B22; }
+[data-theme="dark"] .page-hero { background: linear-gradient(135deg, #040B12 0%, #0A2647 100%); }
+
+/* Tabs */
+[data-theme="dark"] .tabs { border-color: #30363D; }
+[data-theme="dark"] .tab-btn { color: #6E7681; }
+[data-theme="dark"] .tab-btn:hover { color: #C9A84C; }
+[data-theme="dark"] .tab-btn.active { color: #C9A84C; border-color: #C9A84C; }
+
+/* Divider */
+[data-theme="dark"] .divider { background: #30363D; }
+
+/* Tags */
+[data-theme="dark"] .tag { background: #21262D; border-color: #30363D; color: #8B949E; }
+
+/* Dashboard specific */
+[data-theme="dark"] .dash-sidebar { background: #161B22; border-color: #30363D; }
+[data-theme="dark"] .dash-content { background: #0D1117; }
+[data-theme="dark"] .dash-card { background: #1C2128; border-color: #30363D; }
+[data-theme="dark"] .dash-nav-link { color: #8B949E; }
+[data-theme="dark"] .dash-nav-link:hover,
+[data-theme="dark"] .dash-nav-link.active { background: rgba(201,168,76,.1); color: #C9A84C; }
+[data-theme="dark"] .dash-table th { background: #21262D; color: #8B949E; border-color: #30363D; }
+[data-theme="dark"] .dash-table td { border-color: #30363D; color: #C9D1D9; }
+[data-theme="dark"] .dash-table tr:hover td { background: #21262D; }
+[data-theme="dark"] .stat-widget { background: #1C2128; border-color: #30363D; }
+
+/* Modals */
+[data-theme="dark"] .modal-box { background: #1C2128; }
+[data-theme="dark"] .modal-header { border-color: #30363D; }
+[data-theme="dark"] .modal-footer { border-color: #30363D; }
+
+/* Auth pages */
+[data-theme="dark"] .auth-panel { background: #161B22; }
+[data-theme="dark"] .auth-card { background: #1C2128; border-color: #30363D; }
+
+/* Blog */
+[data-theme="dark"] .blog-meta { color: #6E7681; }
+[data-theme="dark"] .blog-card h4 { color: #E6EDF3; }

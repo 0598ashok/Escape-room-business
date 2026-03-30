@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Create your LexCounsel client account to access case management, documents, and direct attorney communication."/>
+  <title>Register | LexCounsel</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body class="flex flex-col min-h-screen">
+  <div class="auth-page">
+    <!-- Brand panel (Golden variant for Register) -->
+    <div class="auth-brand reveal-left" style="background:linear-gradient(135deg,var(--clr-accent-dark) 0%,var(--clr-accent) 50%,var(--clr-accent-light) 100%)">
+      <div class="auth-brand-content max-w-500 mx-auto">
+        <a href="index.html" class="nav-logo mb-6 justify-center text-primary">
+          <div class="logo-icon primary"><svg viewBox="0 0 24 24" class="w-26 h-26"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z" fill="var(--clr-accent)"/></svg></div>
+          <span class="fs-xl text-primary">Lex<em class="no-italic fw-900">Counsel</em></span>
+        </a>
+        <h2 class="text-primary fs-2xl mb-3">Join LexCounsel.<br/>Protect Your Future.</h2>
+        <p class="text-primary-muted opacity-75 mb-8">Create a free account today and get immediate access to our secure client portal.</p>
+        
+        <div class="grid-2 gap-3 max-w-340 mx-auto">
+          <div class="card p-3 text-center bg-white-transparent border-0">
+            <div class="fs-xl mb-1">📁</div>
+            <div class="fs-xs fw-600 text-primary">Case Tracking</div>
+          </div>
+          <div class="card p-3 text-center bg-white-transparent border-0">
+            <div class="fs-xl mb-1">📄</div>
+            <div class="fs-xs fw-600 text-primary">Document Hub</div>
+          </div>
+          <div class="card p-3 text-center bg-white-transparent border-0">
+            <div class="fs-xl mb-1">💬</div>
+            <div class="fs-xs fw-600 text-primary">Direct Chat</div>
+          </div>
+          <div class="card p-3 text-center bg-white-transparent border-0">
+            <div class="fs-xl mb-1">💳</div>
+            <div class="fs-xs fw-600 text-primary">Easy Billing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form panel -->
+    <div class="auth-form reveal-right">
+      <div class="auth-card">
+        <div class="text-center mb-6">
+          <h1 class="fs-xl mb-1">Create Your Account</h1>
+          <p class="fs-sm text-muted">Join LexCounsel's secure client portal.</p>
+        </div>
+
+        <form data-validate-form data-success-msg="Account created! Redirecting..." id="register-form">
+          <div class="grid-2 mb-3">
+            <div class="form-group mb-0">
+              <label class="form-label">First Name *</label>
+              <div class="input-wrap">
+                <span class="input-icon">👤</span>
+                <input id="reg-fname" type="text" class="form-control" data-validate="required" placeholder="First Name"/>
+              </div>
+              <div class="form-error"></div>
+            </div>
+            <div class="form-group mb-0">
+              <label class="form-label">Last Name *</label>
+              <div class="input-wrap">
+                <span class="input-icon">👤</span>
+                <input id="reg-lname" type="text" class="form-control" data-validate="required" placeholder="Last Name"/>
+              </div>
+              <div class="form-error"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉️</span>
+              <input id="reg-email" type="email" class="form-control" data-validate="required,email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            <div class="input-wrap">
+              <span class="input-icon">📞</span>
+              <input id="reg-phone" type="tel" class="form-control" data-validate="required,phone" placeholder="(555) 000-0000"/>
+            </div>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Primary Legal Need</label>
+            <select class="form-control">
+              <option value="">Select a practice area (optional)</option>
+              <option>Divorce &amp; Separation</option>
+              <option>Child Custody</option>
+              <option>Adoption</option>
+              <option>Wills &amp; Trusts</option>
+              <option>Estate Planning</option>
+              <option>Probate</option>
+              <option>Not Sure Yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password *</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input id="reg-pass" type="password" class="form-control" data-validate="required,password" placeholder="Min. 8 characters"/>
+              <button type="button" class="password-toggle" data-password-toggle>👁️</button>
+            </div>
+            <div class="form-error"></div>
+          </div>
+
+          <!-- Password strength -->
+          <div class="strength-meter">
+            <div class="strength-bars" id="strength-bars">
+              <div class="strength-bar" id="sb1"></div>
+              <div class="strength-bar" id="sb2"></div>
+              <div class="strength-bar" id="sb3"></div>
+              <div class="strength-bar" id="sb4"></div>
+            </div>
+            <div class="strength-label" id="strength-label">Password strength</div>
+          </div>
+
+          <div class="flex align-start gap-2 mb-4">
+            <input type="checkbox" id="reg-terms" required class="mt-1 flex-shrink-0 cursor-pointer accent-primary"/>
+            <label for="reg-terms" class="fs-xs text-muted cursor-pointer lh-14">I agree to the <a href="#" class="text-accent">Terms</a> and <a href="#" class="text-accent">Privacy Policy</a>. Submitting this form does not establish an attorney-client relationship.</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg w-100 mb-6">Create Account →</button>
+        </form>
+
+        <div class="text-center">
+          <span class="fs-sm text-muted">Already have an account? </span>
+          <a href="login.html" class="fs-sm fw-600 text-accent">Sign In</a>
+        </div>
+
+        <div class="flex gap-2 justify-center flex-wrap pt-6 mt-6 border-top">
+          <button class="nav-toggle-btn fs-xs p-2 h-auto w-auto" data-theme-toggle>🌙 Toggle Theme</button>
+          <button class="nav-toggle-btn fs-xs p-2 h-auto w-auto" data-rtl-toggle>RTL →</button>
+        </div>
+
+        <p class="text-center mt-6 fs-xs"><a href="index.html" class="text-muted">← Back to LexCounsel.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Password strength meter logic
+    const passInput = document.getElementById('reg-pass');
+    const bars = [document.getElementById('sb1'), document.getElementById('sb2'), document.getElementById('sb3'), document.getElementById('sb4')];
+    const label = document.getElementById('strength-label');
+    
+    if (passInput) {
+      passInput.addEventListener('input', () => {
+        const v = passInput.value;
+        let score = 0;
+        if (v.length >= 8) score++;
+        if (/[A-Z]/.test(v)) score++;
+        if (/[0-9]/.test(v)) score++;
+        if (/[^A-Za-z0-9]/.test(v)) score++;
+        
+        const colors = ['#dc2626', '#d97706', '#C9A84C', '#16a34a'];
+        const labels = ['Weak', 'Fair', 'Good', 'Strong'];
+        
+        bars.forEach((b, i) => {
+          b.style.background = i < score ? colors[score - 1] : 'var(--clr-border)';
+        });
+        
+        if (v.length) {
+          label.textContent = labels[score - 1] || 'Weak';
+          label.style.color = colors[score - 1];
+        } else {
+          label.textContent = 'Password strength';
+          label.style.color = '';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

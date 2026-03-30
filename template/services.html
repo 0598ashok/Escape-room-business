@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="LexCounsel offers expert Family Law and Estate Law services — Divorce, Child Custody, Adoption, Wills & Trusts, Estate Planning, and Probate."/>
+  <title>Legal Services | LexCounsel</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg></div>
+        <span>Lex<em>Counsel</em></span>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <span class="nav-link" tabindex="0">Home <span class="chevron">▾</span></span>
+          <div class="nav-dropdown">
+            <a href="index.html">🏠 Home 1 — Editorial</a>
+            <a href="home2.html">✨ Home 2 — Cinematic</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li>
+        <li class="nav-item"><a href="blogs.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <span class="nav-link" tabindex="0">Dashboard <span class="chevron">▾</span></span>
+          <div class="nav-dropdown">
+            <a href="admin-dashboard.html">⚙️ Admin Dashboard</a>
+            <a href="user-dashboard.html">👤 User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle theme">🌙</button>
+        <button class="nav-toggle-btn rtl-btn" data-rtl-toggle aria-label="Toggle RTL">RTL →</button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="register.html" class="btn btn-accent btn-sm">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-nav">
+      <div class="mobile-nav-link" data-mobile-toggle="ms-home-sub">Home <span>▾</span></div>
+      <div id="ms-home-sub" class="mobile-sub">
+        <a href="index.html" class="mobile-sub-item">🏠 Home 1 — Editorial</a>
+        <a href="home2.html" class="mobile-sub-item">✨ Home 2 — Cinematic</a>
+      </div>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="services.html" class="mobile-nav-link active">Services</a>
+      <a href="blogs.html" class="mobile-nav-link">Blog</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+      <div class="mobile-nav-link" data-mobile-toggle="ms-dash-sub">Dashboard <span>▾</span></div>
+      <div id="ms-dash-sub" class="mobile-sub">
+        <a href="admin-dashboard.html" class="mobile-sub-item">⚙️ Admin Dashboard</a>
+        <a href="user-dashboard.html" class="mobile-sub-item">👤 User Dashboard</a>
+      </div>
+    </div>
+    <div class="mobile-actions">
+      <a href="login.html" class="btn btn-outline btn-sm w-100">Login</a>
+      <a href="register.html" class="btn btn-accent btn-sm w-100">Get Started</a>
+    </div>
+    <div class="mobile-toggles">
+      <button class="nav-toggle-btn" data-theme-toggle>🌙</button>
+      <button class="nav-toggle-btn rtl-btn" data-rtl-toggle>RTL →</button>
+    </div>
+  </div>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="container relative">
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Services</span></div>
+      <h1>Our Practice Areas</h1>
+      <p class="hero-subtitle">Comprehensive Family Law and Estate Law services tailored to protect what matters most.</p>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <section class="section-sm section-alt border-bottom">
+    <div class="container flex align-center gap-2 flex-wrap">
+      <span class="fs-sm fw-600 text-muted mr-2">Filter:</span>
+      <button class="service-filter-btn active" data-svc-filter="all">All Services</button>
+      <button class="service-filter-btn" data-svc-filter="family">Family Law</button>
+      <button class="service-filter-btn" data-svc-filter="estate">Estate Law</button>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-3" id="services-grid">
+        <!-- Divorce -->
+        <a href="service-details.html?service=divorce-separation" class="svc-card card reveal" data-svc-cat="family">
+          <div class="svc-visual-box">⚖️</div>
+          <div class="svc-card-inner">
+            <div class="svc-tag">Family Law</div>
+            <h3>Divorce &amp; Separation</h3>
+            <p class="fs-sm mb-3">Strategic representation through asset division, spousal support, and dissolution proceedings. We protect your financial future and emotional wellbeing.</p>
+            <div class="flex flex-wrap gap-1 mb-4">
+              <span class="tag">Asset Division</span><span class="tag">Spousal Support</span><span class="tag">Mediation</span>
+            </div>
+          </div>
+          <div class="svc-arrow">→</div>
+        </a>
+        <!-- Custody -->
+        <a href="service-details.html?service=child-custody" class="svc-card card reveal delay-1" data-svc-cat="family">
+          <div class="svc-visual-box" style="background:linear-gradient(135deg,var(--clr-primary-light),var(--clr-primary))">👨‍👧</div>
+          <div class="svc-card-inner">
+            <div class="svc-tag">Family Law</div>
+            <h3>Child Custody</h3>
+            <p class="fs-sm mb-3">Child-centered custody arrangements, parenting plans, modification proceedings, and emergency custody orders that place your children first.</p>
+            <div class="flex flex-wrap gap-1 mb-4">
+              <span class="tag">Parenting Plans</span><span class="tag">Relocation</span><span class="tag">Modifications</span>
+            </div>
+          </div>
+          <div class="svc-arrow">→</div>
+        </a>
+        <!-- Adoption -->
+        <a href="service-details.html?service=adoption" class="svc-card card reveal delay-2" data-svc-cat="family">
+          <div class="svc-visual-box" style="background:linear-gradient(135deg,var(--clr-primary-dark),var(--clr-primary))">🏠</div>
+          <div class="svc-card-inner">
+            <div class="svc-tag">Family Law</div>
+            <h3>Adoption</h3>
+            <p class="fs-sm mb-3">Expert guidance through domestic, stepparent, and foster-to-adopt processes. We handle every legal step so you can focus on your new family.</p>
+            <div class="flex flex-wrap gap-1 mb-4">
+              <span class="tag">Domestic</span><span class="tag">Stepparent</span><span class="tag">Foster Care</span>
+            </div>
+          </div>
+          <div class="svc-arrow">→</div>
+        </a>
+        <!-- Wills -->
+        <a href="service-details.html?service=wills-trusts" class="svc-card card reveal delay-3" data-svc-cat="estate">
+          <div class="svc-visual-box" style="background:linear-gradient(135deg,var(--clr-primary),#1a3a5c)">📜</div>
+          <div class="svc-card-inner">
+            <div class="svc-tag">Estate Law</div>
+            <h3>Wills &amp; Trusts</h3>
+            <p class="fs-sm mb-3">Legally sound wills and trust structures tailored to your estate goals — from simple testamentary documents to complex irrevocable trust arrangements.</p>
+            <div class="flex flex-wrap gap-1 mb-4">
+              <span class="tag">Revocable Trusts</span><span class="tag">Living Wills</span><span class="tag">Pour-Over Wills</span>
+            </div>
+          </div>
+          <div class="svc-arrow">→</div>
+        </a>
+        <!-- Estate Planning -->
+        <a href="service-details.html?service=estate-planning" class="svc-card card reveal delay-4" data-svc-cat="estate">
+          <div class="svc-visual-box" style="background:linear-gradient(135deg,#0A2647,var(--clr-primary))">🏛️</div>
+          <div class="svc-card-inner">
+            <div class="svc-tag">Estate Law</div>
+            <h3>Estate Planning</h3>
+            <p class="fs-sm mb-3">Comprehensive estate strategies: tax minimization, business succession planning, asset protection, and charitable giving structures.</p>
+            <div class="flex flex-wrap gap-1 mb-4">
+              <span class="tag">Tax Planning</span><span class="tag">Asset Protection</span><span class="tag">Succession</span>
+            </div>
+          </div>
+          <div class="svc-arrow">→</div>
+        </a>
+        <!-- Probate -->
+        <a href="service-details.html?service=probate" class="svc-card card reveal delay-5" data-svc-cat="estate">
+          <div class="svc-visual-box" style="background:linear-gradient(135deg,#061a30,var(--clr-primary))">⚡</div>
+          <div class="svc-card-inner">
+            <div class="svc-tag">Estate Law</div>
+            <h3>Probate Administration</h3>
+            <p class="fs-sm mb-3">Efficient estate administration for executors and beneficiaries — asset inventory, creditor resolution, and streamlined distribution proceedings.</p>
+            <div class="flex flex-wrap gap-1 mb-4">
+              <span class="tag">Executor Advice</span><span class="tag">Will Contests</span><span class="tag">Multi-State</span>
+            </div>
+          </div>
+          <div class="svc-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose LexCounsel -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head center">
+        <div class="section-label">Why LexCounsel?</div>
+        <h2 class="section-title">The LexCounsel Difference</h2>
+      </div>
+      <div class="grid-4">
+        <div class="reveal text-center p-4">
+          <div class="fs-2-5 mb-2">🎯</div>
+          <h4 class="mb-1">Focused Practice</h4>
+          <p class="fs-sm text-muted">We specialize exclusively in family and estate law — deep expertise, not spread thin.</p>
+        </div>
+        <div class="reveal text-center p-4 delay-1">
+          <div class="fs-2-5 mb-2">🤝</div>
+          <h4 class="mb-1">Personal Attention</h4>
+          <p class="fs-sm text-muted">Jonathan personally handles every case. No junior associates, no hand-offs.</p>
+        </div>
+        <div class="reveal text-center p-4 delay-2">
+          <div class="fs-2-5 mb-2">💬</div>
+          <h4 class="mb-1">Transparent Fees</h4>
+          <p class="fs-sm text-muted">Clear billing with no surprises. Your financial wellbeing matters to us.</p>
+        </div>
+        <div class="reveal text-center p-4 delay-3">
+          <div class="fs-2-5 mb-2">⚡</div>
+          <h4 class="mb-1">Rapid Response</h4>
+          <p class="fs-sm text-muted">Emergency consultations available. We respond within 2 hours, always.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-primary section-sm text-center">
+    <div class="container reveal">
+      <h2 class="text-white mb-2">Not Sure Which Service You Need?</h2>
+      <p class="text-light max-w-500 mx-auto mb-5">Schedule a free consultation and Jonathan will assess your situation and recommend the right approach.</p>
+      <a href="contact.html" class="btn btn-accent btn-lg">Book Free Consultation <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg></div>
+            <span>Lex<em>Counsel</em></span>
+          </a>
+          <p>Expert Family & Estate Law. New York & New Jersey.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link">in</a><a href="#" class="footer-social-link">𝕏</a><a href="#" class="footer-social-link">f</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Practice Areas</h5>
+          <nav class="footer-links">
+            <a href="service-details.html?service=divorce-separation">Divorce</a>
+            <a href="service-details.html?service=child-custody">Child Custody</a>
+            <a href="service-details.html?service=adoption">Adoption</a>
+            <a href="service-details.html?service=wills-trusts">Wills & Trusts</a>
+            <a href="service-details.html?service=estate-planning">Estate Planning</a>
+            <a href="service-details.html?service=probate">Probate</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="about.html">About</a>
+            <a href="blogs.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Portal</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item"><span class="icon">📞</span><span>(555) LEX-LAW1</span></div>
+          <div class="footer-contact-item"><span class="icon">✉️</span><span>contact@lexcounsel.com</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="m-0">&copy; 2026 LexCounsel. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Filter logic
+    document.querySelectorAll('[data-svc-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-svc-filter]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-svc-filter');
+        document.querySelectorAll('[data-svc-cat]').forEach(card => {
+          card.style.display = (cat === 'all' || card.getAttribute('data-svc-cat') === cat) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

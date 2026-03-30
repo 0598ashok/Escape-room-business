@@ -1,0 +1,109 @@
+/* ===================================================
+   LEXCOUNSEL - RTL (Right-to-Left) Support
+   Arabic language layout overrides
+   =================================================== */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Navigation */
+[dir="rtl"] .nav-inner { flex-direction: row-reverse; }
+[dir="rtl"] .nav-menu { flex-direction: row-reverse; }
+[dir="rtl"] .nav-actions { flex-direction: row-reverse; }
+[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+[dir="rtl"] .nav-dropdown { left: auto; right: 50%; transform: translateX(50%); }
+[dir="rtl"] .nav-item:hover .nav-dropdown,
+[dir="rtl"] .nav-item.dropdown-open .nav-dropdown {
+  transform: translateX(50%) translateY(0);
+}
+[dir="rtl"] .nav-dropdown a { flex-direction: row-reverse; }
+[dir="rtl"] .nav-dropdown a:hover { padding-left: 14px; padding-right: 18px; }
+
+/* Section Label */
+[dir="rtl"] .section-label { flex-direction: row-reverse; }
+[dir="rtl"] .section-head.center .section-label { justify-content: center; }
+
+/* Footer */
+[dir="rtl"] .footer-grid { direction: rtl; }
+[dir="rtl"] .footer-links a:hover { padding-left: 0; padding-right: 6px; }
+[dir="rtl"] .footer-contact-item { flex-direction: row-reverse; }
+[dir="rtl"] .footer-socials { flex-direction: row-reverse; }
+[dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
+[dir="rtl"] .footer-bottom-links { flex-direction: row-reverse; }
+
+/* Buttons */
+[dir="rtl"] .btn { flex-direction: row-reverse; }
+[dir="rtl"] .btn:hover .arrow { transform: translateX(-4px); }
+
+/* Forms */
+[dir="rtl"] .form-row { direction: rtl; }
+[dir="rtl"] .input-icon { left: auto; right: 14px; }
+[dir="rtl"] .input-wrap .form-control { padding-left: 16px; padding-right: 42px; }
+[dir="rtl"] .password-toggle { left: 14px; right: auto; }
+
+/* Cards */
+[dir="rtl"] .service-card { direction: rtl; }
+[dir="rtl"] .testimonial-author { flex-direction: row-reverse; }
+[dir="rtl"] .blog-meta { flex-direction: row-reverse; }
+
+/* Breadcrumb */
+[dir="rtl"] .breadcrumb { flex-direction: row-reverse; }
+
+/* Accordion */
+[dir="rtl"] .accordion-trigger { flex-direction: row-reverse; }
+
+/* Tabs */
+[dir="rtl"] .tabs { flex-direction: row-reverse; }
+
+/* Grids */
+[dir="rtl"] .grid-2,
+[dir="rtl"] .grid-3,
+[dir="rtl"] .grid-4,
+[dir="rtl"] .grid-auto { direction: rtl; }
+
+/* Mobile Drawer */
+[dir="rtl"] .mobile-nav-link { flex-direction: row-reverse; }
+[dir="rtl"] .mobile-sub { padding-left: 0; padding-right: var(--sp-2); }
+[dir="rtl"] .mobile-actions { flex-direction: row-reverse; }
+[dir="rtl"] .mobile-toggles { flex-direction: row-reverse; }
+
+/* Dashboard */
+[dir="rtl"] .dash-layout { flex-direction: row-reverse; }
+[dir="rtl"] .dash-sidebar { border-right: none; border-left: 1px solid var(--clr-border); }
+[dir="rtl"] .dash-nav-link { flex-direction: row-reverse; }
+[dir="rtl"] .dash-nav-link.active::before { left: auto; right: 0; }
+[dir="rtl"] .dash-header { flex-direction: row-reverse; }
+[dir="rtl"] .stat-widget { direction: rtl; }
+[dir="rtl"] .dash-table { direction: rtl; }
+
+/* Back to top */
+[dir="rtl"] #back-to-top { right: auto; left: 32px; }
+
+/* Auth */
+[dir="rtl"] .auth-container { flex-direction: row-reverse; }
+
+/* Page Hero */
+[dir="rtl"] .page-hero { direction: rtl; }
+[dir="rtl"] .breadcrumb { direction: ltr; } /* keep breadcrumb arrows correct */
+
+/* Process Steps */
+[dir="rtl"] .process-step { flex-direction: row-reverse; }
+[dir="rtl"] .process-connector { transform: scaleX(-1); }
+
+/* Blog Sidebar */
+[dir="rtl"] .blog-layout { flex-direction: row-reverse; }
+
+/* Timeline */
+[dir="rtl"] .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+[dir="rtl"] .timeline-item:nth-child(even) { flex-direction: row; }
+
+/* Hero split */
+[dir="rtl"] .hero-split { flex-direction: row-reverse; }
+
+/* Stat cards in row */
+[dir="rtl"] .stats-row { flex-direction: row-reverse; }
+
+/* Footer */
+[dir="rtl"] .footer-col { text-align: right; }

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="LexCounsel Legal Insights Blog — Family Law and Estate Law articles, guides, and legal updates from Jonathan M. Hargrove, Esq."/>
+  <title>Legal Blog | LexCounsel</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar" role="navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg></div>
+        <span>Lex<em>Counsel</em></span>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <span class="nav-link" tabindex="0">Home <span class="chevron">▾</span></span>
+          <div class="nav-dropdown">
+            <a href="index.html">🏠 Home 1 — Editorial</a>
+            <a href="home2.html">✨ Home 2 — Cinematic</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+        <li class="nav-item"><a href="blogs.html" class="nav-link active">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <span class="nav-link" tabindex="0">Dashboard <span class="chevron">▾</span></span>
+          <div class="nav-dropdown">
+            <a href="admin-dashboard.html">⚙️ Admin Dashboard</a>
+            <a href="user-dashboard.html">👤 User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle theme">🌙</button>
+        <button class="nav-toggle-btn rtl-btn" data-rtl-toggle aria-label="Toggle RTL">RTL →</button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="register.html" class="btn btn-accent btn-sm">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-nav">
+      <div class="mobile-nav-link" data-mobile-toggle="bl-home-sub">Home <span>▾</span></div>
+      <div id="bl-home-sub" class="mobile-sub">
+        <a href="index.html" class="mobile-sub-item">🏠 Home 1 — Editorial</a>
+        <a href="home2.html" class="mobile-sub-item">✨ Home 2 — Cinematic</a>
+      </div>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="services.html" class="mobile-nav-link">Services</a>
+      <a href="blogs.html" class="mobile-nav-link active">Blog</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+      <div class="mobile-nav-link" data-mobile-toggle="bl-dash-sub">Dashboard <span>▾</span></div>
+      <div id="bl-dash-sub" class="mobile-sub">
+        <a href="admin-dashboard.html" class="mobile-sub-item">⚙️ Admin Dashboard</a>
+        <a href="user-dashboard.html" class="mobile-sub-item">👤 User Dashboard</a>
+      </div>
+    </div>
+    <div class="mobile-actions">
+      <a href="login.html" class="btn btn-outline btn-sm w-100">Login</a>
+      <a href="register.html" class="btn btn-accent btn-sm w-100">Get Started</a>
+    </div>
+    <div class="mobile-toggles">
+      <button class="nav-toggle-btn" data-theme-toggle>🌙</button>
+      <button class="nav-toggle-btn rtl-btn" data-rtl-toggle>RTL →</button>
+    </div>
+  </div>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="container relative">
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Blog</span></div>
+      <h1>Legal Insights</h1>
+      <p class="hero-subtitle">Articles, guides, and legal updates from Jonathan M. Hargrove, Esq. Empowering you with knowledge.</p>
+    </div>
+  </div>
+
+  <!-- Filter + Search Bar -->
+  <section class="section-sm section-alt border-bottom">
+    <div class="container flex align-center justify-between flex-wrap gap-3">
+      <div class="flex gap-2 flex-wrap">
+        <button class="tag active cursor-pointer" data-blog-filter="all" style="background:var(--clr-primary);color:white;border-color:var(--clr-primary)">All Posts</button>
+        <button class="tag cursor-pointer" data-blog-filter="Family Law">Family Law</button>
+        <button class="tag cursor-pointer" data-blog-filter="Estate Law">Estate Law</button>
+      </div>
+      <div class="search-wrap">
+        <span class="text-muted">🔍</span>
+        <input type="text" id="blog-search" class="search-input" placeholder="Search articles..."/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Grid + Sidebar -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-sidebar" style="display:grid; grid-template-columns: 1fr 300px; gap: var(--sp-8);" id="blog-layout">
+        <!-- Posts Grid -->
+        <div class="reveal-left">
+          <!-- Featured Post -->
+          <a href="blog-details.html?id=1" class="blog-card card grid-featured" data-blog-cat="Family Law">
+            <div class="blog-img-inner" style="min-height:240px;background:linear-gradient(135deg,#0A2647,#144272)">⚖️</div>
+            <div class="p-5">
+              <div class="blog-meta mb-2">
+                <span class="blog-cat">Family Law</span>
+                <span>FEATURED</span>
+              </div>
+              <h2 class="fs-lg mb-2" style="color:var(--clr-primary)">Understanding Equitable Distribution in Divorce</h2>
+              <p class="fs-sm mb-3">A comprehensive guide to how New York courts divide marital property and which factors influence final asset division proceedings.</p>
+              <div class="blog-meta mt-4">
+                <span>March 15, 2026</span>
+                <span>·</span>
+                <span>7 min read</span>
+              </div>
+              <div class="btn btn-ghost btn-sm mt-3 p-0 text-accent">Read Article <span class="arrow">→</span></div>
+            </div>
+          </a>
+
+          <!-- Grid Posts -->
+          <div class="grid-3" id="blog-grid">
+            <a href="blog-details.html?id=2" class="blog-card card reveal" data-blog-cat="Estate Law">
+              <div class="blog-img">
+                <div class="blog-img-inner" style="height:180px;background:linear-gradient(135deg,#0d3157,#0A2647)">📜</div>
+              </div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="blog-cat">Estate Law</span><span>Mar 8</span></div>
+                <h4 class="mb-1">Creating a Comprehensive Estate Plan in 2026</h4>
+                <p class="fs-xs text-muted">Cornerstone documents every adult should have in place — and why 2026 is the year to act.</p>
+              </div>
+            </a>
+            <a href="blog-details.html?id=3" class="blog-card card reveal delay-1" data-blog-cat="Family Law">
+              <div class="blog-img">
+                <div class="blog-img-inner" style="height:180px;background:linear-gradient(135deg,#144272,#1a5a9a)">👨‍👧</div>
+              </div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="blog-cat">Family Law</span><span>Feb 28</span></div>
+                <h4 class="mb-1">Child Custody: What Courts Really Consider</h4>
+                <p class="fs-xs text-muted">Breaking down the "best interests" standard and how judges evaluate parental arrangements.</p>
+              </div>
+            </a>
+            <a href="blog-details.html?id=4" class="blog-card card reveal delay-2" data-blog-cat="Estate Law">
+              <div class="blog-img">
+                <div class="blog-img-inner" style="height:180px;background:linear-gradient(135deg,#1a3a5c,#2a5080)">🏛️</div>
+              </div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="blog-cat">Estate Law</span><span>Feb 20</span></div>
+                <h4 class="mb-1">Revocable vs. Irrevocable Trusts</h4>
+                <p class="fs-xs text-muted">A side-by-side comparison of trust types to help you make an informed estate decision.</p>
+              </div>
+            </a>
+            <a href="blog-details.html?id=5" class="blog-card card reveal delay-3" data-blog-cat="Family Law">
+              <div class="blog-img">
+                <div class="blog-img-inner" style="height:180px;background:linear-gradient(135deg,#0d3157,#144272)">🏠</div>
+              </div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="blog-cat">Family Law</span><span>Feb 12</span></div>
+                <h4 class="mb-1">The Adoption Journey: Step-by-Step</h4>
+                <p class="fs-xs text-muted">From home study to finalization — a complete legal walkthrough for families in 2026.</p>
+              </div>
+            </a>
+            <a href="blog-details.html?id=6" class="blog-card card reveal delay-4" data-blog-cat="Estate Law">
+              <div class="blog-img">
+                <div class="blog-img-inner" style="height:180px;background:linear-gradient(135deg,#0A2647,#1a3a5c)">📋</div>
+              </div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="blog-cat">Estate Law</span><span>Feb 5</span></div>
+                <h4 class="mb-1">Probate vs. Non-Probate Assets</h4>
+                <p class="fs-xs text-muted">Which assets pass through your will — and which bypass the probate process entirely.</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- No Results -->
+          <div id="no-blog-results" style="display:none;" class="text-center p-10 text-muted">
+            <div class="fs-3 mb-2">🔍</div>
+            <h4>No articles found</h4>
+            <p>Try a different search term or filter.</p>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="reveal-right">
+          <div class="sidebar-sticky">
+            <!-- Author -->
+            <div class="card p-4 text-center mb-4">
+              <div class="fs-3 mb-2">👨‍⚖️</div>
+              <h5 class="mb-1">Jonathan M. Hargrove</h5>
+              <div class="fs-xs text-muted mb-3">Esq. · Founding Attorney</div>
+              <p class="fs-xs mb-4">22+ years of Family & Estate Law. Sharing knowledge to empower clients.</p>
+              <a href="about.html" class="btn btn-outline btn-sm w-100">About Jonathan</a>
+            </div>
+            <!-- Categories Sidebar (Connects to filters via JS) -->
+            <div class="card p-4 mb-4">
+              <h5 class="fs-xs uppercase ls-8 text-muted mb-3">Categories</h5>
+              <div class="flex flex-col gap-1">
+                <div class="sidebar-link cursor-pointer justify-between" data-blog-filter="all">All Articles <span class="badge badge-primary">5</span></div>
+                <div class="sidebar-link cursor-pointer justify-between" data-blog-filter="Family Law">Family Law <span class="badge badge-primary">3</span></div>
+                <div class="sidebar-link cursor-pointer justify-between" data-blog-filter="Estate Law">Estate Law <span class="badge badge-primary">2</span></div>
+              </div>
+            </div>
+            <!-- Consultation CTA -->
+            <div class="card section-primary p-5 text-center">
+              <div class="fs-2 mb-2">⚖️</div>
+              <h5 class="text-white mb-2">Need Legal Help?</h5>
+              <p class="fs-xs text-light mb-4">Book a free, confidential consultation today with Jonathan.</p>
+              <a href="contact.html" class="btn btn-accent btn-sm w-100">Book Now</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section section-alt">
+    <div class="container max-w-640 text-center mx-auto">
+      <div class="reveal">
+        <div class="section-label center">Legal Intelligence</div>
+        <h2 class="mb-2">Get Legal Updates Delivered</h2>
+        <p class="mb-5">Subscribe to receive monthly legal insights, case law updates, and practical guides directly from our experts.</p>
+        <form data-validate-form data-success-msg="Thank you for subscribing!" class="flex gap-2 flex-wrap justify-center">
+          <input type="email" class="form-control" data-validate="required,email" placeholder="your@email.com" style="flex:1; min-width:260px"/>
+          <button type="submit" class="btn btn-primary">Subscribe →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg></div>
+            <span>Lex<em>Counsel</em></span>
+          </a>
+          <p>Expert Family & Estate Law. New York & New Jersey.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link">in</a><a href="#" class="footer-social-link">𝕏</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Practice Areas</h5>
+          <nav class="footer-links">
+            <a href="service-details.html?service=divorce-separation">Divorce</a>
+            <a href="service-details.html?service=child-custody">Child Custody</a>
+            <a href="service-details.html?service=wills-trusts">Wills & Trusts</a>
+            <a href="service-details.html?service=estate-planning">Estate Planning</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="about.html">About</a>
+            <a href="blogs.html">Blog</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item"><span class="icon">📞</span><span>(555) LEX-LAW1</span></div>
+          <div class="footer-contact-item"><span class="icon">✉️</span><span>contact@lexcounsel.com</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="m-0">&copy; 2026 LexCounsel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Blog Filter & Search Logic
+    const searchInput = document.getElementById('blog-search');
+    const blogCards = document.querySelectorAll('.blog-card');
+    const filterButtons = document.querySelectorAll('[data-blog-filter]');
+    const noResults = document.getElementById('no-blog-results');
+
+    function applyFilters() {
+      const query = searchInput.value.toLowerCase();
+      const activeFilter = document.querySelector('[data-blog-filter].active')?.getAttribute('data-blog-filter') || 'all';
+      let visibleCount = 0;
+
+      blogCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const cat = card.getAttribute('data-blog-cat');
+        const matchesSearch = text.includes(query);
+        const matchesFilter = activeFilter === 'all' || cat === activeFilter;
+
+        if (matchesSearch && matchesFilter) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', applyFilters);
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        // Special styling for the toggle buttons in header vs sidebar
+        if (btn.classList.contains('tag')) {
+            filterButtons.forEach(b => { if(b.classList.contains('tag')) b.style.background = ''; if(b.classList.contains('tag')) b.style.color = ''; if(b.classList.contains('tag')) b.style.borderColor = ''; });
+            btn.style.background = 'var(--clr-primary)';
+            btn.style.color = 'white';
+            btn.style.borderColor = 'var(--clr-primary)';
+        }
+        btn.classList.add('active');
+        applyFilters();
+      });
+    });
+  </script>
+</body>
+</html>

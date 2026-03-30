@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Login to the LexCounsel client portal to access your case files, documents, and messages."/>
+  <title>Client Login | LexCounsel</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body class="flex flex-col min-h-screen">
+  <div class="auth-page">
+    <!-- Brand panel (Sidebar on Desktop) -->
+    <div class="auth-brand reveal-left">
+      <div class="auth-brand-content max-w-500 mx-auto">
+        <a href="index.html" class="nav-logo mb-6 justify-center text-white">
+          <div class="logo-icon white"><svg viewBox="0 0 24 24" class="w-26 h-26"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z" fill="var(--clr-primary)"/></svg></div>
+          <span class="fs-xl">Lex<em class="text-accent no-italic">Counsel</em></span>
+        </a>
+        <h2 class="text-white fs-2xl mb-3">Your Legal Journey Statistics Here</h2>
+        <p class="text-light-muted mb-6">Securely access your case files, documents, and direct attorney messaging in one professional portal.</p>
+        
+        <div class="flex flex-col gap-2 text-left max-w-300 mx-auto">
+          <div class="flex align-center gap-2 text-light fs-sm"><span class="text-accent fs-md">✓</span>Secure client portal</div>
+          <div class="flex align-center gap-2 text-light fs-sm"><span class="text-accent fs-md">✓</span>Real-time case updates</div>
+          <div class="flex align-center gap-2 text-light fs-sm"><span class="text-accent fs-md">✓</span>Direct attorney messaging</div>
+        </div>
+
+        <div class="mt-10 pt-6 border-top-light">
+          <div class="text-accent mb-2">★★★★★</div>
+          <p class="italic text-light fs-sm mb-2">"The client portal made managing my case so much easier. Everything in one place."</p>
+          <div class="fs-xs text-light-muted">— David W., Estate Planning Client</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form panel -->
+    <div class="auth-form reveal-right">
+      <div class="auth-card">
+        <div class="text-center mb-6">
+          <!-- Mobile-only logo -->
+          <a href="index.html" class="nav-logo mb-4 justify-center md-hide">
+            <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/></svg></div>
+            <span>Lex<em>Counsel</em></span>
+          </a>
+          <h1 class="fs-xl mb-1">Welcome Back</h1>
+          <p class="fs-sm text-muted">Sign in to your LexCounsel client portal.</p>
+        </div>
+
+        <form data-validate-form data-success-msg="Login successful! Redirecting..." id="login-form">
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email Address</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉️</span>
+              <input id="login-email" type="email" class="form-control" data-validate="required,email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-error"></div>
+          </div>
+          <div class="form-group">
+            <div class="flex justify-between align-center mb-2">
+              <label class="form-label mb-0" for="login-pass">Password</label>
+              <a href="#" class="fs-xs text-accent">Forgot password?</a>
+            </div>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input id="login-pass" type="password" class="form-control" data-validate="required" placeholder="Enter password"/>
+              <button type="button" class="password-toggle" data-password-toggle aria-label="Toggle password visibility">👁️</button>
+            </div>
+            <div class="form-error"></div>
+          </div>
+          <div class="flex align-center justify-between mb-5">
+            <label class="flex align-center gap-2 fs-sm cursor-pointer">
+              <input type="checkbox" class="accent-primary"/> Remember me
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mb-4">Sign In →</button>
+        </form>
+
+        <div class="text-center mb-6">
+          <span class="fs-sm text-muted">Don't have an account? </span>
+          <a href="register.html" class="fs-sm fw-600 text-accent">Register Now</a>
+        </div>
+
+        <div class="divider-with-text mb-6">
+          <span>Or continue with</span>
+        </div>
+        
+        <div class="grid-2 gap-2 mb-8">
+          <button class="btn btn-outline btn-sm justify-center gap-2">🔵 Google</button>
+          <button class="btn btn-outline btn-sm justify-center gap-2">🔷 Microsoft</button>
+        </div>
+
+        <div class="flex gap-2 justify-center flex-wrap pt-6 border-top">
+          <button class="nav-toggle-btn fs-xs p-2 h-auto w-auto" data-theme-toggle>🌙 Toggle Theme</button>
+          <button class="nav-toggle-btn fs-xs p-2 h-auto w-auto" data-rtl-toggle>RTL →</button>
+        </div>
+
+        <p class="text-center mt-6 fs-xs"><a href="index.html" class="text-muted">← Back to LexCounsel.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard | LexCounsel Legal Practice</title>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="dash-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dash-sidebar" id="sidebar">
+      <div class="dash-sidebar-header">
+        <a href="index.html" class="dash-logo">
+          <span class="dash-logo-text">LexCounsel<span class="text-accent">.</span></span>
+        </a>
+      </div>
+
+      <nav class="dash-nav">
+        <div class="dash-nav-group">
+          <div class="dash-nav-label">Main</div>
+          <a href="#overview" class="dash-nav-link active" data-section="overview">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="dash-nav-text">Overview</span>
+          </a>
+          <a href="#cases" class="dash-nav-link" data-section="cases">
+            <i data-lucide="briefcase"></i>
+            <span class="dash-nav-text">My Cases</span>
+          </a>
+        </div>
+
+        <div class="dash-nav-group">
+          <div class="dash-nav-label">Resources</div>
+          <a href="#documents" class="dash-nav-link" data-section="documents">
+            <i data-lucide="file-text"></i>
+            <span class="dash-nav-text">Documents</span>
+          </a>
+          <a href="#payments" class="dash-nav-link" data-section="payments">
+            <i data-lucide="credit-card"></i>
+            <span class="dash-nav-text">Payments</span>
+          </a>
+          <a href="#messages" class="dash-nav-link" data-section="messages">
+            <i data-lucide="mail"></i>
+            <span class="dash-nav-text">Messages</span>
+          </a>
+        </div>
+
+        <div class="dash-nav-group">
+          <div class="dash-nav-label">Account</div>
+          <a href="#profile" class="dash-nav-link" data-section="profile">
+            <i data-lucide="user"></i>
+            <span class="dash-nav-text">Profile Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="dash-sidebar-footer">
+        <div class="dash-user-profile">
+          <div class="dash-avatar dash-bg-accent text-primary">SJ</div>
+          <div class="dash-user-info">
+            <div class="dash-user-name">Sarah Johnson</div>
+            <div class="dash-user-role">Client Portal</div>
+          </div>
+          <div class="dash-logout-btn">
+            <i data-lucide="log-out" class="dash-icon-sm"></i>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dash-content">
+      
+      <!-- Topbar -->
+      <header class="dash-topbar">
+        <div class="dash-topbar-left">
+          <button class="dash-sidebar-toggle btn-ghost" id="sidebar-toggle">
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="dash-search-box">
+            <i data-lucide="search" class="dash-icon-sm"></i>
+            <input type="text" placeholder="Search my documents or cases...">
+          </div>
+        </div>
+        
+        <div class="dash-topbar-right">
+          <button class="dash-notif-btn btn-ghost relative">
+            <i data-lucide="bell"></i>
+            <span class="dash-notif-dot"></span>
+          </button>
+          <button class="dash-theme-toggle btn-ghost" data-theme-toggle>
+            <i data-lucide="moon"></i>
+          </button>
+          <div class="divider-v hd-hide"></div>
+          <div class="fs-xs fw-500 text-muted sm-hide">Mar 30, 2026</div>
+        </div>
+      </header>
+
+      <!-- Main Body -->
+      <div class="dash-main">
+
+        <!-- 1. Overview Section -->
+        <div id="section-overview" class="dash-section active">
+          <div class="dash-welcome-card reveal">
+            <h2 class="fs-2xl text-white">Sarah Johnson: Case Portal</h2>
+            <p class="mb-8">Current Status: Preparing for the Pre-Trial Consultation on April 12th. All property appraisals have been successfully cross-referenced.</p>
+            <div class="flex gap-4">
+              <button class="btn btn-accent btn-sm">Join Legal Call</button>
+              <button class="btn btn-outline-white btn-sm">View Settlement Docs</button>
+            </div>
+          </div>
+
+          <div class="dash-stats-grid">
+            <div class="stat-widget">
+              <div class="stat-header">
+                <span class="fs-xs uppercase ls-8 fw-600">Active Cases</span>
+                <div class="stat-icon dash-bg-info"><i data-lucide="briefcase"></i></div>
+              </div>
+              <div class="stat-value">1</div>
+              <div class="stat-footer">Family Law - Divorce</div>
+            </div>
+            <div class="stat-widget">
+              <div class="stat-header">
+                <span class="fs-xs uppercase ls-8 fw-600">Documents Filed</span>
+                <div class="stat-icon dash-bg-success"><i data-lucide="file-check"></i></div>
+              </div>
+              <div class="stat-value">18</div>
+              <div class="stat-footer">3 pending review</div>
+            </div>
+            <div class="stat-widget">
+              <div class="stat-header">
+                <span class="fs-xs uppercase ls-8 fw-600">Next Milestone</span>
+                <div class="stat-icon dash-bg-warning"><i data-lucide="calendar"></i></div>
+              </div>
+              <div class="stat-value">Apr 12</div>
+              <div class="stat-footer">Case Hearing Consultation</div>
+            </div>
+            <div class="stat-widget">
+              <div class="stat-header">
+                <span class="fs-xs uppercase ls-8 fw-600">Outstanding Fees</span>
+                <div class="stat-icon dash-bg-accent"><i data-lucide="credit-card"></i></div>
+              </div>
+              <div class="stat-value">$1,250</div>
+              <div class="stat-footer">Due in 5 days</div>
+            </div>
+          </div>
+
+          <div class="grid-2-1">
+            <div class="dash-card">
+              <h4 class="dash-card-title mb-6">Recent Documents</h4>
+              <div class="dash-table-container">
+                <table class="dash-table">
+                  <thead><tr><th>Name</th><th>Date</th><th>Status</th><th>Download</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td>Retainer_v2.pdf</td>
+                      <td>Mar 15, 2026</td>
+                      <td><span class="badge badge-success">Signed</span></td>
+                      <td><button class="btn-ghost"><i data-lucide="download"></i></button></td>
+                    </tr>
+                    <tr>
+                      <td>Asset_Disclosure.pdf</td>
+                      <td>Mar 22, 2026</td>
+                      <td><span class="badge badge-pending">Review</span></td>
+                      <td><button class="btn-ghost"><i data-lucide="download"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="dash-card">
+              <h4 class="dash-card-title mb-4">Latest Message</h4>
+              <div class="activity-feed">
+                <div class="activity-item">
+                  <div class="activity-avatar dash-bg-accent text-primary">JH</div>
+                  <div class="activity-info">
+                    <strong>Jonathan M. Hargrove</strong>
+                    <p class="fs-xs mt-1 mb-1">"I'll need the mortgage statements by Friday."</p>
+                    <div class="activity-time">Yesterday at 4:30 PM</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm w-100 mt-4">Open Messenger</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Documents -->
+        <div id="section-documents" class="dash-section">
+          <div class="dash-card">
+            <h4 class="dash-card-title mb-6">Secure Document Upload</h4>
+            <div class="upload-zone mb-6" id="client-dropzone">
+              <i data-lucide="upload-cloud" class="fs-2xl text-accent mb-4"></i>
+              <h5 class="mb-2">Drag & Drop Documents</h5>
+              <p class="fs-xs text-muted">Securely upload PDF or Word files. Encryption handled by LexCounsel.</p>
+            </div>
+            <h4 class="fs-md fw-600 mb-4">My File Library</h4>
+            <div class="dash-table-container">
+              <table class="dash-table">
+                <thead><tr><th>File Name</th><th>Category</th><th>Size</th><th>Date</th></tr></thead>
+                <tbody>
+                  <tr><td>tax_returns_2025.pdf</td><td>Tax Docs</td><td>2.4 MB</td><td>Mar 20</td></tr>
+                  <tr><td>property_deed.jpg</td><td>Property</td><td>1.1 MB</td><td>Mar 18</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Messages -->
+        <div id="section-messages" class="dash-section">
+          <div class="chat-layout">
+            <div class="chat-sidebar">
+              <div class="chat-search">
+                <input type="text" placeholder="Search chats..." class="form-control form-control-sm">
+              </div>
+              <div class="chat-list">
+                <div class="chat-item active">
+                  <div class="dash-avatar dash-bg-accent text-primary">JH</div>
+                  <div class="flex-1">
+                    <div class="fw-600 fs-sm">Jonathan Hargrove</div>
+                    <div class="fs-xs text-muted truncate">"I'll need the mortgage st..."</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-main">
+              <div class="chat-header">
+                <div class="flex align-center gap-3">
+                  <div class="dash-avatar dash-bg-accent text-primary">JH</div>
+                  <div><div class="fw-600">Jonathan M. Hargrove</div><div class="fs-xs text-success">Online</div></div>
+                </div>
+              </div>
+              <div class="chat-messages" id="message-container">
+                <div class="msg-bubble msg-in">Hi Sarah, just following up on our previous call. Do you have the balance sheets from Chase Bank?</div>
+                <div class="msg-bubble msg-out">Hi Jonathan, yes I have them. I'll upload them to the Document Hub now.</div>
+              </div>
+              <div class="chat-input">
+                <input type="text" class="form-control" placeholder="Type your message...">
+                <button class="btn btn-primary btn-sm px-6">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    lucide.createIcons();
+
+    // Section Toggling
+    document.querySelectorAll('.dash-nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        document.querySelectorAll('.dash-nav-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(`section-${sectionId}`)?.classList.add('active');
+        if (window.innerWidth <= 1024) document.getElementById('sidebar').classList.remove('mobile-open');
+      });
+    });
+
+    // Mobile Sidebar Toggle
+    const sidebar = document.getElementById('sidebar');
+    document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+         sidebar.classList.toggle('mobile-open');
+      } else {
+         sidebar.classList.toggle('collapsed');
+      }
+    });
+  </script>
+</body>
+</html>

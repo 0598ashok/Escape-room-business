@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="LexCounsel service details — learn about our process, benefits, FAQs, and how Jonathan M. Hargrove, Esq. can help you."/>
+  <title>Service Details | LexCounsel</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body id="service-detail-page">
+  <!-- Navbar -->
+  <nav id="navbar" role="navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg></div>
+        <span>Lex<em>Counsel</em></span>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <span class="nav-link" tabindex="0">Home <span class="chevron">▾</span></span>
+          <div class="nav-dropdown">
+            <a href="index.html">🏠 Home 1 — Editorial</a>
+            <a href="home2.html">✨ Home 2 — Cinematic</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li>
+        <li class="nav-item"><a href="blogs.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <span class="nav-link" tabindex="0">Dashboard <span class="chevron">▾</span></span>
+          <div class="nav-dropdown">
+            <a href="admin-dashboard.html">⚙️ Admin Dashboard</a>
+            <a href="user-dashboard.html">👤 User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle theme">🌙</button>
+        <button class="nav-toggle-btn rtl-btn" data-rtl-toggle aria-label="Toggle RTL">RTL →</button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="register.html" class="btn btn-accent btn-sm">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-nav">
+      <div class="mobile-nav-link" data-mobile-toggle="sd-home-sub">Home <span>▾</span></div>
+      <div id="sd-home-sub" class="mobile-sub">
+        <a href="index.html" class="mobile-sub-item">🏠 Home 1 — Editorial</a>
+        <a href="home2.html" class="mobile-sub-item">✨ Home 2 — Cinematic</a>
+      </div>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="services.html" class="mobile-nav-link active">Services</a>
+      <a href="blogs.html" class="mobile-nav-link">Blog</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+      <div class="mobile-nav-link" data-mobile-toggle="sd-dash-sub">Dashboard <span>▾</span></div>
+      <div id="sd-dash-sub" class="mobile-sub">
+        <a href="admin-dashboard.html" class="mobile-sub-item">⚙️ Admin Dashboard</a>
+        <a href="user-dashboard.html" class="mobile-sub-item">👤 User Dashboard</a>
+      </div>
+    </div>
+    <div class="mobile-actions">
+      <a href="login.html" class="btn btn-outline btn-sm w-100">Login</a>
+      <a href="register.html" class="btn btn-accent btn-sm w-100">Get Started</a>
+    </div>
+    <div class="mobile-toggles">
+      <button class="nav-toggle-btn" data-theme-toggle>🌙</button>
+      <button class="nav-toggle-btn rtl-btn" data-rtl-toggle>RTL →</button>
+    </div>
+  </div>
+
+  <!-- Dynamic Hero -->
+  <div id="sd-hero" class="page-hero">
+    <div class="container relative">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
+        <a href="services.html">Services</a><span class="breadcrumb-sep">›</span>
+        <span id="sd-title">Service</span>
+      </div>
+      <div class="fs-3 mb-2" id="sd-icon">⚖️</div>
+      <h1 id="sd-title-h1">Service Title</h1>
+      <p id="sd-tagline" class="hero-subtitle">Service tagline loading...</p>
+    </div>
+  </div>
+
+  <!-- Content + Sidebar Layout -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-sidebar" id="sd-layout" style="display:grid; grid-template-columns: 1fr 340px; gap: var(--sp-8);">
+        <!-- Main Content -->
+        <div class="reveal-left">
+          <!-- Overview -->
+          <div class="mb-6">
+            <div class="section-label">Overview</div>
+            <h2 class="fs-lg mb-3">About This Service</h2>
+            <p id="sd-description" class="fs-md lh-185">Loading...</p>
+          </div>
+
+          <!-- Approach -->
+          <div class="mb-6">
+            <div class="section-label">Our Approach</div>
+            <h2 class="fs-lg mb-4">How We Handle Your Case</h2>
+            <div id="sd-process" class="flex flex-col gap-4">Loading process...</div>
+          </div>
+
+          <!-- Benefits -->
+          <div class="mb-6">
+            <div class="section-label">What You Receive</div>
+            <h2 class="fs-lg mb-3">Service Benefits</h2>
+            <div id="sd-benefits" class="grid-2 gap-0">Loading benefits...</div>
+          </div>
+
+          <!-- FAQs -->
+          <div>
+            <div class="section-label">Need Answers?</div>
+            <h2 class="fs-lg mb-4">Frequently Asked Questions</h2>
+            <div id="sd-faqs" class="flex flex-col gap-3">Loading FAQs...</div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="reveal-right">
+          <div class="sidebar-sticky">
+            <!-- CTA Card -->
+            <div class="card p-5 mb-4">
+              <h4 class="mb-2">Ready to Get Started?</h4>
+              <p class="fs-sm mb-4">Schedule a free, confidential consultation with Jonathan M. Hargrove, Esq. and take the first step toward resolution.</p>
+              <a href="contact.html" class="btn btn-primary w-100 mb-2">Book Consultation <span class="arrow">→</span></a>
+              <a href="tel:+15551395291" class="btn btn-outline w-100">📞 Call Now</a>
+              <div class="divider my-4"></div>
+              <div class="flex flex-col gap-2">
+                <div class="flex align-center gap-2 fs-xs"><span class="text-accent fw-700">✓</span><span>Free initial consultation</span></div>
+                <div class="flex align-center gap-2 fs-xs"><span class="text-accent fw-700">✓</span><span>Confidential &amp; secure</span></div>
+                <div class="flex align-center gap-2 fs-xs"><span class="text-accent fw-700">✓</span><span>Response within 2 hours</span></div>
+                <div class="flex align-center gap-2 fs-xs"><span class="text-accent fw-700">✓</span><span>22+ years experience</span></div>
+              </div>
+            </div>
+            <!-- All Services Navigation -->
+            <div class="card p-4">
+              <h5 class="fs-xs uppercase ls-8 text-muted mb-3">All Practice Areas</h5>
+              <div class="flex flex-col gap-1">
+                <a href="service-details.html?service=divorce-separation" class="sidebar-link">⚖️ Divorce &amp; Separation</a>
+                <a href="service-details.html?service=child-custody" class="sidebar-link">👨‍👧 Child Custody</a>
+                <a href="service-details.html?service=adoption" class="sidebar-link">🏠 Adoption</a>
+                <a href="service-details.html?service=wills-trusts" class="sidebar-link">📜 Wills &amp; Trusts</a>
+                <a href="service-details.html?service=estate-planning" class="sidebar-link">🏛️ Estate Planning</a>
+                <a href="service-details.html?service=probate" class="sidebar-link">⚡ Probate</a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head center">
+        <div class="section-label">Explore More</div>
+        <h2 class="section-title">Related Practice Areas</h2>
+      </div>
+      <div class="grid-3" id="sd-related">Loading...</div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section-primary section-sm text-center">
+    <div class="container reveal">
+      <h2 class="text-white mb-2">Start Your Case Today</h2>
+      <p class="text-light max-w-500 mx-auto mb-5">Free consultation. Confidential. No obligation. Jonathan M. Hargrove, Esq. is ready to help.</p>
+      <a href="contact.html" class="btn btn-accent btn-lg">Book Free Consultation <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg></div>
+            <span>Lex<em>Counsel</em></span>
+          </a>
+          <p>Expert Family & Estate Law.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link">in</a><a href="#" class="footer-social-link">𝕏</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Practice Areas</h5>
+          <nav class="footer-links">
+            <a href="service-details.html?service=divorce-separation">Divorce</a>
+            <a href="service-details.html?service=child-custody">Child Custody</a>
+            <a href="service-details.html?service=wills-trusts">Wills & Trusts</a>
+            <a href="service-details.html?service=estate-planning">Estate Planning</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="about.html">About</a>
+            <a href="blogs.html">Blog</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item"><span class="icon">📞</span><span>(555) LEX-LAW1</span></div>
+          <div class="footer-contact-item"><span class="icon">✉️</span><span>contact@lexcounsel.com</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="m-0">&copy; 2026 LexCounsel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Simple observer to sync titles if they are dynamically updated
+    window.addEventListener('DOMContentLoaded', () => {
+      const titleEl = document.querySelector('#sd-title-h1');
+      const breadTitle = document.querySelector('#sd-title');
+      if (titleEl && breadTitle) {
+        const obs = new MutationObserver(() => { breadTitle.textContent = titleEl.textContent; });
+        obs.observe(titleEl, { childList: true, subtree: true });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | LexCounsel Legal Practice</title>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="dash-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dash-sidebar" id="sidebar">
+      <div class="dash-sidebar-header">
+        <a href="index.html" class="dash-logo">
+          <span class="dash-logo-text">LexCounsel<span class="text-accent">.</span></span>
+        </a>
+      </div>
+
+      <nav class="dash-nav">
+        <div class="dash-nav-group">
+          <div class="dash-nav-label">Main</div>
+          <a href="#overview" class="dash-nav-link active" data-section="overview">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="dash-nav-text">Overview</span>
+          </a>
+          <a href="#users" class="dash-nav-link" data-section="users">
+            <i data-lucide="users"></i>
+            <span class="dash-nav-text">User Management</span>
+          </a>
+          <a href="#cases" class="dash-nav-link" data-section="cases">
+            <i data-lucide="briefcase"></i>
+            <span class="dash-nav-text">Case Management</span>
+          </a>
+        </div>
+
+        <div class="dash-nav-group">
+          <div class="dash-nav-label">Management</div>
+          <a href="#documents" class="dash-nav-link" data-section="documents">
+            <i data-lucide="file-text"></i>
+            <span class="dash-nav-text">Documents</span>
+          </a>
+          <a href="#payments" class="dash-nav-link" data-section="payments">
+            <i data-lucide="credit-card"></i>
+            <span class="dash-nav-text">Payments</span>
+          </a>
+          <a href="#messages" class="dash-nav-link" data-section="messages">
+            <i data-lucide="mail"></i>
+            <span class="dash-nav-text">Messages</span>
+          </a>
+        </div>
+
+        <div class="dash-nav-group">
+          <div class="dash-nav-label">System</div>
+          <a href="#settings" class="dash-nav-link" data-section="settings">
+            <i data-lucide="settings"></i>
+            <span class="dash-nav-text">Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="dash-sidebar-footer">
+        <div class="dash-user-profile">
+          <div class="dash-avatar">JH</div>
+          <div class="dash-user-info">
+            <div class="dash-user-name">Jonathan Hargrove</div>
+            <div class="dash-user-role">Lead Attorney</div>
+          </div>
+          <div class="dash-logout-btn">
+            <i data-lucide="log-out" class="dash-icon-sm"></i>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dash-content">
+      
+      <!-- Topbar -->
+      <header class="dash-topbar">
+        <div class="dash-topbar-left">
+          <button class="dash-sidebar-toggle btn-ghost" id="sidebar-toggle">
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="dash-search-box">
+            <i data-lucide="search" class="dash-icon-sm"></i>
+            <input type="text" placeholder="Search cases, clients, or documents...">
+          </div>
+        </div>
+        
+        <div class="dash-topbar-right">
+          <button class="dash-notif-btn btn-ghost relative">
+            <i data-lucide="bell"></i>
+            <span class="dash-notif-dot"></span>
+          </button>
+          <button class="dash-theme-toggle btn-ghost" data-theme-toggle>
+            <i data-lucide="moon"></i>
+          </button>
+          <button class="dash-rtl-toggle btn-ghost" data-rtl-toggle>
+            <i data-lucide="languages"></i>
+          </button>
+          <div class="divider-v"></div>
+          <div class="fs-xs fw-500 text-muted">Mar 30, 2026</div>
+        </div>
+      </header>
+
+      <!-- Main Dash Area -->
+      <div class="dash-main">
+
+        <!-- Section: Overview -->
+        <div id="section-overview" class="dash-section active">
+          <div class="dash-stats-grid">
+            <div class="stat-widget">
+              <div class="stat-header">
+                <span class="fs-xs uppercase ls-8 fw-600">Total Clients</span>
+                <div class="stat-icon dash-bg-accent"><i data-lucide="users"></i></div>
+              </div>
+              <div class="stat-value">248</div>
+              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 14%</span> vs last year</div>
+            </div>
+            <div class="stat-widget">
+              <div class="stat-header">
+                <span class="fs-xs uppercase ls-8 fw-600">Active Cases</span>
+                <div class="stat-icon dash-bg-info"><i data-lucide="briefcase"></i></div>
+              </div>
+              <div class="stat-value">56</div>
+              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 5</span> new this month</div>
+            </div>
+            <div class="stat-widget">
+              <div class="stat-header">
+                <span class="fs-xs uppercase ls-8 fw-600">Closed Cases</span>
+                <div class="stat-icon dash-bg-success"><i data-lucide="check-circle-2"></i></div>
+              </div>
+              <div class="stat-value">192</div>
+              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 98%</span> success rate</div>
+            </div>
+            <div class="stat-widget">
+              <div class="stat-header">
+                <span class="fs-xs uppercase ls-8 fw-600">Monthly Revenue</span>
+                <div class="stat-icon dash-bg-accent"><i data-lucide="dollar-sign"></i></div>
+              </div>
+              <div class="stat-value">$48,500</div>
+              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 22%</span> growth</div>
+            </div>
+          </div>
+
+          <div class="grid-2-1">
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div>
+                   <h4 class="dash-card-title">Revenue Growth</h4>
+                   <p class="dash-card-subtitle">Annual trajectory for 2026</p>
+                </div>
+                <button class="btn btn-sm btn-outline active">Yearly View</button>
+              </div>
+              <div class="chart-body" id="revenue-chart" style="height: 240px;"></div>
+            </div>
+            <div class="dash-card">
+              <h4 class="dash-card-title mb-4">Recent Activity</h4>
+              <div class="activity-feed">
+                <div class="activity-item">
+                  <div class="activity-avatar dash-text-accent">SJ</div>
+                  <div class="activity-info">
+                    <strong>Sarah Johnson</strong> signed the Retainer.
+                    <div class="activity-time">24 mins ago</div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-avatar bg-surface-alt"><i data-lucide="calendar" class="dash-icon-sm"></i></div>
+                  <div class="activity-info">
+                    Hearing scheduled for <strong>David Abbott</strong>.
+                    <div class="activity-time">2 hours ago</div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-avatar dash-bg-success"><i data-lucide="dollar-sign" class="dash-icon-sm"></i></div>
+                  <div class="activity-info">
+                    Payment received from <strong>Laura Miller</strong>.
+                    <div class="activity-time">5 hours ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Users -->
+        <div id="section-users" class="dash-section">
+          <div class="dash-card p-0">
+            <div class="p-6 border-bottom flex align-center justify-between flex-wrap gap-4">
+              <h4 class="fs-lg fw-700 m-0">Client Database</h4>
+              <div class="flex gap-3">
+                <div class="dash-search-box bg-white border max-w-240">
+                  <i data-lucide="search" class="dash-icon-sm"></i>
+                  <input type="text" placeholder="Search clients...">
+                </div>
+                <button class="btn btn-primary btn-sm"><i data-lucide="user-plus"></i> Add Client</button>
+              </div>
+            </div>
+            
+            <div class="dash-table-container">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Client</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Case Type</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="user-table-body">
+                  <!-- JS populated or static -->
+                  <tr>
+                    <td><div class="user-cell"><div class="dash-avatar scale-sm">SJ</div><span class="user-name">Sarah Johnson</span></div></td>
+                    <td>s.johnson@example.com</td>
+                    <td>(555) 123-4567</td>
+                    <td>Family Law</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td><button class="btn-ghost" data-modal="user-modal"><i data-lucide="eye"></i></button></td>
+                  </tr>
+                  <!-- More rows... -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Cases -->
+        <div id="section-cases" class="dash-section">
+          <div class="flex justify-between align-center mb-6">
+            <h4 class="fs-lg fw-700 m-0">Active Case Files</h4>
+            <div class="flex gap-3">
+               <button class="btn btn-outline btn-sm">Filter</button>
+               <button class="btn btn-primary btn-sm">New File</button>
+            </div>
+          </div>
+
+          <div class="kanban-grid">
+            <div class="kanban-col">
+              <div class="kanban-header"><span class="kanban-title">Inquiry</span></div>
+              <div class="kanban-card">
+                <div class="kanban-card-meta"><span>#C-3021</span><span class="badge badge-pending">New</span></div>
+                <h6 class="kanban-card-title">Child Custody Modification</h6>
+                <p class="fs-xs text-muted">Client: Emily Watson</p>
+                <div class="kanban-card-footer">
+                  <div class="kanban-date"><i data-lucide="calendar"></i> Apr 15</div>
+                  <div class="kanban-user">JH</div>
+                </div>
+              </div>
+            </div>
+            <!-- More columns... -->
+          </div>
+        </div>
+
+        <!-- Section: Documents -->
+        <div id="section-documents" class="dash-section">
+          <div class="dash-card">
+            <h4 class="dash-card-title mb-4">Document Repository</h4>
+            <div class="upload-zone mb-6" id="dropzone">
+              <i data-lucide="upload-cloud" class="fs-2xl text-accent mb-4"></i>
+              <h5 class="mb-2">Click to upload or drag & drop</h5>
+              <p class="fs-xs text-muted">PDF, DOCX up to 50MB. Securely encrypted.</p>
+            </div>
+            <div class="dash-table-container">
+              <table class="dash-table">
+                <thead><tr><th>File Name</th><th>Client</th><th>Date</th><th>Size</th><th>Action</th></tr></thead>
+                <tbody>
+                  <tr><td>Retainer_Johnson.pdf</td><td>Sarah Johnson</td><td>Mar 15</td><td>1.2 MB</td><td><i data-lucide="download"></i></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Settings -->
+        <div id="section-settings" class="dash-section">
+           <div class="dash-card">
+             <h4 class="dash-card-title mb-6">Platform Settings</h4>
+             <div class="grid-2 gap-8">
+               <div class="form-group pb-4 border-bottom">
+                 <label class="form-label block mb-2">System Theme</label>
+                 <select class="form-control" data-theme-switcher>
+                   <option value="light">Editorial Light (Home 1)</option>
+                   <option value="dark">Cinematic Dark (Home 2)</option>
+                   <option value="system">Follow System</option>
+                 </select>
+               </div>
+               <div class="form-group pb-4 border-bottom">
+                 <label class="form-label block mb-2">Display Mode</label>
+                 <button class="btn btn-outline btn-sm w-100" data-rtl-toggle>Toggle RTL / LTR</button>
+               </div>
+             </div>
+           </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- User Details Modal -->
+  <div class="dash-modal" id="user-modal">
+    <div class="dash-modal-content reveal">
+      <div class="modal-header">
+        <h4 class="m-0">Client Profile Details</h4>
+        <button class="modal-close btn-ghost" onclick="closeModals()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="flex align-center gap-4 mb-6">
+          <div class="dash-avatar fs-lg" style="width: 64px; height: 64px;">SJ</div>
+          <div>
+            <h3 class="m-0 fs-xl">Sarah Johnson</h3>
+            <p class="m-0 text-muted fs-sm">Client Since Jan 2026</p>
+          </div>
+        </div>
+        <div class="grid-2 gap-4">
+          <div class="p-4 bg-surface-alt rounded-md">
+            <span class="fs-xs text-muted uppercase fw-700 block mb-1">Email</span>
+            <div class="fs-sm fw-600">s.johnson@example.com</div>
+          </div>
+          <div class="p-4 bg-surface-alt rounded-md">
+            <span class="fs-xs text-muted uppercase fw-700 block mb-1">Phone</span>
+            <div class="fs-sm fw-600">(555) 123-4567</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm" onclick="closeModals()">Close</button>
+        <button class="btn btn-primary btn-sm">Edit Profile</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Lucide Init
+    lucide.createIcons();
+
+    // Section Toggling logic
+    document.querySelectorAll('.dash-nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        
+        // Links
+        document.querySelectorAll('.dash-nav-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        // Sections
+        document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(`section-${sectionId}`)?.classList.add('active');
+        
+        // Hide sidebar on mobile after click
+        if (window.innerWidth <= 1024) document.getElementById('sidebar').classList.remove('mobile-open');
+      });
+    });
+
+    // Mobile Sidebar Toggle
+    const sidebar = document.getElementById('sidebar');
+    document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+         sidebar.classList.toggle('mobile-open');
+      } else {
+         sidebar.classList.toggle('collapsed');
+      }
+    });
+
+    // Modal helpers
+    function closeModals() {
+      document.querySelectorAll('.dash-modal').forEach(m => m.classList.remove('open'));
+    }
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-modal');
+        document.getElementById(id)?.classList.add('open');
+      });
+    });
+
+    // Simple Render Chart placeholder
+    function initCharts() {
+      const chart = document.getElementById('revenue-chart');
+      if (chart) {
+        chart.innerHTML = '<div class="flex align-end gap-1 h-100 pt-10" style="display:flex;">' + 
+          [40, 60, 45, 80, 55, 90, 70, 85, 60, 95, 80, 100].map(h => `<div class="bg-primary rounded-t flex-1" style="height:${h}%"></div>`).join('') + 
+          '</div>';
+      }
+    }
+    initCharts();
+  </script>
+</body>
+</html>
