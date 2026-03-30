@@ -1855,3 +1855,46 @@ p { color: var(--clr-text-light); line-height: 1.75; }
 @media (max-width: 1024px) {
   .grid-sidebar { grid-template-columns: 1fr !important; }
 }
+
+/* ===================================================
+   Global Mobile & Alignment Fixes (Phase 1-3)
+   =================================================== */
+
+/* Tablet & Mobile Nav + Grids (<= 992px) */
+@media (max-width: 992px) {
+  /* 1. Navbar Stacking */
+  .nav-menu, .nav-actions { display: none !important; }
+  .hamburger { display: flex !important; }
+  
+  /* 2. Footer Responsive */
+  .footer-grid { 
+    grid-template-columns: 1fr 1fr !important; 
+    gap: var(--sp-6) !important;
+  }
+  .footer-brand { grid-column: span 2; max-width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .footer-brand p { max-width: 500px; margin: 0 auto; text-align: center; }
+  .footer-socials { justify-content: center; margin-top: var(--sp-4); }
+
+  /* 3. Structural grids */
+  .grid-2 { grid-template-columns: 1fr !important; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-main-plus-side { grid-template-columns: 1fr !important; }
+}
+
+/* Small Mobile (<= 640px) */
+@media (max-width: 640px) {
+  /* Footer single column */
+  .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
+  .footer-brand { grid-column: span 1; }
+  
+  /* Form stacking */
+  .grid-2.mb-3 { grid-template-columns: 1fr !important; gap: var(--sp-3) !important; }
+  
+  /* Additional padding adjustments to prevent overflow */
+  .container { padding-left: var(--sp-3) !important; padding-right: var(--sp-3) !important; overflow-x: hidden; }
+  body { overflow-x: hidden; }
+
+  /* Grid 3 & 4 absolute stacking */
+  .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
+}
