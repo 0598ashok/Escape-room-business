@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Midnight Escapes...</title>
+    <!-- Automatic Meta Refresh Redirect -->
+    <meta http-equiv="refresh" content="0; url=template/index.html">
+    <script>
+        // JavaScript Fallback Redirect
+        window.location.href = "template/index.html";
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .loader-container {
+            text-align: center;
+        }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #ffffff;
+            border-bottom-color: #ff00ff;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        p {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <span class="loader"></span>
+        <p>Redirecting to experience...</p>
+    </div>
+</body>
+</html>
