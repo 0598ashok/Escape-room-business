@@ -3,282 +3,569 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Player Dashboard — Midnight Escapes adventure portal.">
   <title>Player Dashboard | Midnight Escapes</title>
-  
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dashboard.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-  <div class="dash-layout">
-    
-    <!-- Sidebar -->
-    <aside class="dash-sidebar" id="sidebar">
-      <div class="dash-sidebar-header">
-        <a href="index.html" class="dash-logo">
-          <span class="dash-logo-text">Midnight<span class="text-accent">Escapes</span></span>
+<div class="dash-layout">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="dash-sidebar" id="sidebar">
+    <div class="dash-sidebar-header">
+      <a href="index.html" class="dash-logo">
+        <div class="dash-logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+          </svg>
+        </div>
+        <span class="dash-logo-text">Midnight<span style="color:var(--clr-accent)">Escapes</span></span>
+      </a>
+    </div>
+
+    <nav class="dash-nav" role="navigation">
+      <div class="dash-nav-group">
+        <div class="dash-nav-label">My Portal</div>
+        <a class="dash-nav-link active" data-section="overview" href="#overview">
+          <i data-lucide="layout-dashboard"></i>
+          <span class="dash-nav-text">Overview</span>
+        </a>
+        <a class="dash-nav-link" data-section="adventures" href="#adventures">
+          <i data-lucide="map"></i>
+          <span class="dash-nav-text">My Adventures</span>
+        </a>
+        <a class="dash-nav-link" data-section="bookings" href="#bookings">
+          <i data-lucide="calendar"></i>
+          <span class="dash-nav-text">My Bookings</span>
         </a>
       </div>
 
-      <nav class="dash-nav">
-        <div class="dash-nav-group">
-          <div class="dash-nav-label">Main</div>
-          <a href="#overview" class="dash-nav-link active" data-section="overview">
-            <i data-lucide="layout-dashboard"></i>
-            <span class="dash-nav-text">Overview</span>
-          </a>
-          <a href="#cases" class="dash-nav-link" data-section="cases">
-            <i data-lucide="map"></i>
-            <span class="dash-nav-text">My Adventures</span>
-          </a>
-        </div>
+      <div class="dash-nav-group">
+        <div class="dash-nav-label">Resources</div>
+        <a class="dash-nav-link" data-section="waivers" href="#waivers">
+          <i data-lucide="file-text"></i>
+          <span class="dash-nav-text">My Waivers</span>
+          <span class="nav-badge" style="background:#ef4444;color:#fff;">2</span>
+        </a>
+        <a class="dash-nav-link" data-section="messages" href="#messages">
+          <i data-lucide="mail"></i>
+          <span class="dash-nav-text">Messages</span>
+        </a>
+      </div>
 
-        <div class="dash-nav-group">
-          <div class="dash-nav-label">Resources</div>
-          <a href="#documents" class="dash-nav-link" data-section="documents">
-            <i data-lucide="file-text"></i>
-            <span class="dash-nav-text">My Waivers</span>
-          </a>
-          <a href="#payments" class="dash-nav-link" data-section="payments">
-            <i data-lucide="credit-card"></i>
-            <span class="dash-nav-text">Bookings</span>
-          </a>
-          <a href="#messages" class="dash-nav-link" data-section="messages">
-            <i data-lucide="mail"></i>
-            <span class="dash-nav-text">Messages</span>
-          </a>
-        </div>
+      <div class="dash-nav-group">
+        <div class="dash-nav-label">Account</div>
+        <a class="dash-nav-link" data-section="profile" href="#profile">
+          <i data-lucide="user"></i>
+          <span class="dash-nav-text">Profile Settings</span>
+        </a>
+      </div>
+    </nav>
 
-        <div class="dash-nav-group">
-          <div class="dash-nav-label">Account</div>
-          <a href="#profile" class="dash-nav-link" data-section="profile">
-            <i data-lucide="user"></i>
-            <span class="dash-nav-text">Profile Settings</span>
-          </a>
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-profile" title="Logged in as Sarah Johnson">
+        <div class="dash-avatar" style="background:var(--clr-accent);color:var(--clr-primary);">SJ</div>
+        <div class="dash-user-info">
+          <div class="dash-user-name">Sarah Johnson</div>
+          <div class="dash-user-role">Player Portal</div>
         </div>
-      </nav>
-
-      <div class="dash-sidebar-footer">
-        <div class="dash-user-profile">
-          <div class="dash-avatar dash-bg-accent text-primary">SJ</div>
-          <div class="dash-user-info">
-            <div class="dash-user-name">Sarah Johnson</div>
-            <div class="dash-user-role">Player Portal</div>
-          </div>
-          <div class="dash-logout-btn">
-            <i data-lucide="log-out" class="dash-icon-sm"></i>
-          </div>
+        <div class="dash-logout-btn" onclick="window.location='login.html'" title="Logout">
+          <i data-lucide="log-out" class="dash-icon-sm"></i>
         </div>
       </div>
-    </aside>
+    </div>
+  </aside>
 
-    <!-- Main Content -->
-    <main class="dash-content">
-      
-      <!-- Topbar -->
-      <header class="dash-topbar">
-        <div class="dash-topbar-left">
-          <button class="dash-sidebar-toggle btn-ghost" id="sidebar-toggle">
-            <i data-lucide="menu"></i>
-          </button>
-          <div class="dash-search-box">
-            <i data-lucide="search" class="dash-icon-sm"></i>
-            <input type="text" placeholder="Search my waivers or bookings...">
+  <!-- Mobile Backdrop -->
+  <div class="mobile-backdrop" id="mobile-backdrop" onclick="closeSidebar()"></div>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main class="dash-content">
+
+    <!-- Topbar -->
+    <header class="dash-topbar">
+      <div class="dash-topbar-left">
+        <button class="dash-sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" class="dash-icon-md"></i>
+        </button>
+        <div class="dash-search-box">
+          <i data-lucide="search" class="dash-icon-sm"></i>
+          <input type="text" placeholder="Search waivers, bookings...">
+        </div>
+      </div>
+      <div class="dash-topbar-right">
+        <button class="dash-topbar-btn" onclick="alert('Notifications')" style="position:relative;" title="Notifications">
+          <i data-lucide="bell" class="dash-icon-md"></i>
+          <span class="dash-notif-dot"></span>
+        </button>
+        <button class="dash-topbar-btn" data-theme-toggle title="Toggle theme">
+          <i data-lucide="moon" class="dash-icon-md"></i>
+        </button>
+        <div class="divider-v"></div>
+        <a href="contact.html" class="btn btn-accent btn-sm" style="white-space:nowrap;">Book Room</a>
+      </div>
+    </header>
+
+    <!-- Scroll Area -->
+    <div class="dash-main" id="dash-main-scroll">
+
+      <!-- ═══════════════════ OVERVIEW ═══════════════════ -->
+      <div id="section-overview" class="dash-section active">
+
+        <!-- Welcome Card -->
+        <div class="dash-welcome-card">
+          <div class="dash-welcome-inner">
+            <h2>Welcome back, Sarah! 👋</h2>
+            <p>Your next adventure is coming up on <strong style="color:var(--clr-accent);">April 12th — Haunted Mansion</strong>. Your group of 6 is confirmed. Ensure all waivers are signed before arrival.</p>
+            <div class="dash-welcome-actions">
+              <button class="btn btn-accent btn-sm" onclick="activateSection('waivers')">
+                <i data-lucide="file-check" class="dash-icon-sm"></i> Sign Waivers
+              </button>
+              <button class="btn btn-outline-white btn-sm" onclick="activateSection('messages')">
+                <i data-lucide="mail" class="dash-icon-sm"></i> Message Game Master
+              </button>
+            </div>
           </div>
         </div>
-        
-        <div class="dash-topbar-right">
-          <button class="dash-notif-btn btn-ghost relative">
-            <i data-lucide="bell"></i>
-            <span class="dash-notif-dot"></span>
-          </button>
-          <button class="dash-theme-toggle btn-ghost" data-theme-toggle>
-            <i data-lucide="moon"></i>
-          </button>
-          <div class="divider-v hd-hide"></div>
-          <div class="fs-xs fw-500 text-muted sm-hide">Mar 30, 2026</div>
+
+        <!-- Stats -->
+        <div class="dash-stats-grid">
+          <div class="stat-widget">
+            <div class="stat-header"><span class="stat-label">Upcoming Escapes</span><div class="stat-icon dash-bg-info"><i data-lucide="calendar"></i></div></div>
+            <div class="stat-value">1</div>
+            <div class="stat-footer">Haunted Mansion · Apr 12</div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-header"><span class="stat-label">Waivers Signed</span><div class="stat-icon dash-bg-success"><i data-lucide="file-check"></i></div></div>
+            <div class="stat-value">4/6</div>
+            <div class="stat-footer"><span style="color:#ef4444;">2 players pending</span></div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-header"><span class="stat-label">Next Session</span><div class="stat-icon dash-bg-warning"><i data-lucide="clock"></i></div></div>
+            <div class="stat-value">Apr 12</div>
+            <div class="stat-footer">Arrival briefing at 9:45 AM</div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-header"><span class="stat-label">Reward Points</span><div class="stat-icon dash-bg-accent"><i data-lucide="star"></i></div></div>
+            <div class="stat-value">2,450</div>
+            <div class="stat-footer">Master Escape Status 🏆</div>
+          </div>
         </div>
-      </header>
 
-      <!-- Main Body -->
-      <div class="dash-main">
-
-        <!-- 1. Overview Section -->
-        <div id="section-overview" class="dash-section active">
-          <div class="dash-welcome-card reveal">
-            <h2 class="fs-2xl text-white">Sarah Johnson: Adventure Portal</h2>
-            <p class="mb-8">Current Status: Preparing for the <strong>Haunted Mansion</strong> escape on April 12th. Your group of 6 is confirmed. Please ensure all waivers are signed before arrival.</p>
-            <div class="flex gap-4">
-              <button class="btn btn-accent btn-sm">Sign Waiver</button>
-              <button class="btn btn-outline-white btn-sm">Invite Teammates</button>
+        <!-- Docs + Message preview -->
+        <div class="dash-grid-2-1">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div>
+                <div class="dash-card-title">My Documents</div>
+                <div class="dash-card-subtitle">Waivers and guides for your upcoming session</div>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="activateSection('waivers')">View All</button>
+            </div>
+            <div class="dash-table-wrap">
+              <table class="dash-table">
+                <thead><tr><th>Document</th><th>Date</th><th>Status</th><th></th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="td-name">Waiver_HauntedMansion.pdf</td>
+                    <td>Mar 15, 2026</td>
+                    <td><span class="dash-badge dash-badge-success">Signed ✓</span></td>
+                    <td><button class="td-btn" title="Download"><i data-lucide="download"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="td-name">Group_Leader_Guide.pdf</td>
+                    <td>Mar 22, 2026</td>
+                    <td><span class="dash-badge dash-badge-info">Available</span></td>
+                    <td><button class="td-btn" title="Download"><i data-lucide="download"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="td-name">Teammate_Waiver_Mark.pdf</td>
+                    <td>—</td>
+                    <td><span class="dash-badge dash-badge-warning">Pending</span></td>
+                    <td><button class="td-btn" title="Send reminder"><i data-lucide="send"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
-          <div class="dash-stats-grid">
-            <div class="stat-widget">
-              <div class="stat-header">
-                <span class="fs-xs uppercase ls-8 fw-600">Upcoming Escapes</span>
-                <div class="stat-icon dash-bg-info"><i data-lucide="calendar"></i></div>
-              </div>
-              <div class="stat-value">1</div>
-              <div class="stat-footer">Haunted Mansion - 10:00 AM</div>
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title">Latest Message</div>
+              <button class="btn btn-outline btn-sm" onclick="activateSection('messages')">Open Chat</button>
             </div>
-            <div class="stat-widget">
-              <div class="stat-header">
-                <span class="fs-xs uppercase ls-8 fw-600">Waivers Signed</span>
-                <div class="stat-icon dash-bg-success"><i data-lucide="file-check"></i></div>
-              </div>
-              <div class="stat-value">4/6</div>
-              <div class="stat-footer">2 players pending</div>
-            </div>
-            <div class="stat-widget">
-              <div class="stat-header">
-                <span class="fs-xs uppercase ls-8 fw-600">Next Adventure</span>
-                <div class="stat-icon dash-bg-warning"><i data-lucide="clock"></i></div>
-              </div>
-              <div class="stat-value">Apr 12</div>
-              <div class="stat-footer">Arrival Briefing at 9:45 AM</div>
-            </div>
-            <div class="stat-widget">
-              <div class="stat-header">
-                <span class="fs-xs uppercase ls-8 fw-600">Reward Points</span>
-                <div class="stat-icon dash-bg-accent"><i data-lucide="star"></i></div>
-              </div>
-              <div class="stat-value">2,450</div>
-              <div class="stat-footer">Master Escape Status</div>
-            </div>
-          </div>
-
-          <div class="grid-2-1">
-            <div class="dash-card">
-              <h4 class="dash-card-title mb-6">Adventure Documents</h4>
-              <div class="dash-table-container">
-                <table class="dash-table">
-                  <thead><tr><th>Name</th><th>Date</th><th>Status</th><th>Download</th></tr></thead>
-                  <tbody>
-                    <tr>
-                      <td>Waiver_HauntedMansion.pdf</td>
-                      <td>Mar 15, 2026</td>
-                      <td><span class="badge badge-success">Signed</span></td>
-                      <td><button class="btn-ghost"><i data-lucide="download"></i></button></td>
-                    </tr>
-                    <tr>
-                      <td>Group_Leader_Guide.pdf</td>
-                      <td>Mar 22, 2026</td>
-                      <td><span class="badge badge-pending">Preview</span></td>
-                      <td><button class="btn-ghost"><i data-lucide="download"></i></button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="dash-card">
-              <h4 class="dash-card-title mb-4">Latest Message</h4>
+            <div class="dash-card-body">
               <div class="activity-feed">
                 <div class="activity-item">
-                  <div class="activity-avatar dash-bg-accent text-primary">AT</div>
+                  <div class="activity-avatar" style="background:var(--clr-accent);color:var(--clr-primary);font-weight:700;">AT</div>
                   <div class="activity-info">
-                    <strong>Alex Thorne</strong>
-                    <p class="fs-xs mt-1 mb-1">"I've added a few extra clues to your session. Good luck!"</p>
+                    <strong>Alex Thorne</strong> — Game Master
+                    <p style="font-size:.82rem;color:var(--dash-text-muted);margin-top:4px;font-style:italic;">"Looking forward to your group's run! Arrive 15 mins early for the intro briefing."</p>
                     <div class="activity-time">Yesterday at 4:30 PM</div>
                   </div>
                 </div>
               </div>
-              <button class="btn btn-outline btn-sm w-100 mt-4">Open Messenger</button>
+              <button class="btn btn-outline btn-sm" style="width:100%;margin-top:12px;" onclick="activateSection('messages')">
+                Reply to Alex →
+              </button>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Section: Documents -->
-        <div id="section-documents" class="dash-section">
-          <div class="dash-card">
-            <h4 class="dash-card-title mb-6">Secure Waiver Upload</h4>
-            <div class="upload-zone mb-6" id="client-dropzone">
-              <i data-lucide="upload-cloud" class="fs-2xl text-accent mb-4"></i>
-              <h5 class="mb-2">Drag & Drop Signed Waivers</h5>
-              <p class="fs-xs text-muted">Securely upload PDF or JPG files of your group's waivers.</p>
+      <!-- ═══════════════════ ADVENTURES (HISTORY) ═══════════════════ -->
+      <div id="section-adventures" class="dash-section">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">My Adventures</h1>
+            <div class="dash-page-subtitle">Your complete escape room history</div>
+          </div>
+          <a href="services.html" class="btn btn-primary btn-sm">Browse New Rooms</a>
+        </div>
+
+        <div class="dash-grid-3" style="margin-bottom:20px;">
+          <div class="stat-widget">
+            <div class="stat-header"><span class="stat-label">Rooms Played</span><div class="stat-icon dash-bg-accent"><i data-lucide="door-open"></i></div></div>
+            <div class="stat-value">4</div>
+            <div class="stat-footer">All rooms attempted</div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-header"><span class="stat-label">Times Escaped</span><div class="stat-icon dash-bg-success"><i data-lucide="trophy"></i></div></div>
+            <div class="stat-value">2</div>
+            <div class="stat-footer">50% success rate 🔥</div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-header"><span class="stat-label">Best Time</span><div class="stat-icon dash-bg-info"><i data-lucide="zap"></i></div></div>
+            <div class="stat-value">38m</div>
+            <div class="stat-footer">Spy Mission · Feb 2026</div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-table-wrap">
+            <table class="dash-table">
+              <thead>
+                <tr><th>Room</th><th>Date</th><th>Players</th><th>Time Used</th><th>Outcome</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;">👻</span><span class="td-name">Haunted Mansion</span></div></td>
+                  <td>Apr 12, 2026 (upcoming)</td><td>6</td><td>—</td>
+                  <td><span class="dash-badge dash-badge-info">Upcoming</span></td>
+                </tr>
+                <tr>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;">🕵️</span><span class="td-name">Spy Mission</span></div></td>
+                  <td>Feb 20, 2026</td><td>5</td><td>38 min</td>
+                  <td><span class="dash-badge dash-badge-success">Escaped ✓</span></td>
+                </tr>
+                <tr>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;">🏥</span><span class="td-name">The Asylum</span></div></td>
+                  <td>Jan 14, 2026</td><td>4</td><td>60 min (timeout)</td>
+                  <td><span class="dash-badge dash-badge-danger">Not Escaped</span></td>
+                </tr>
+                <tr>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;">💎</span><span class="td-name">Treasure Hunt</span></div></td>
+                  <td>Dec 28, 2025</td><td>6</td><td>51 min</td>
+                  <td><span class="dash-badge dash-badge-success">Escaped ✓</span></td>
+                </tr>
+                <tr>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;">⛓️</span><span class="td-name">Prison Break</span></div></td>
+                  <td>Nov 5, 2025</td><td>3</td><td>60 min (timeout)</td>
+                  <td><span class="dash-badge dash-badge-danger">Not Escaped</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════ BOOKINGS ═══════════════════ -->
+      <div id="section-bookings" class="dash-section">
+        <div class="dash-page-header">
+          <h1 class="dash-page-title">My Bookings</h1>
+          <a href="contact.html" class="btn btn-primary btn-sm"><i data-lucide="plus" class="dash-icon-sm"></i> New Booking</a>
+        </div>
+        <div class="dash-card">
+          <div class="dash-table-wrap">
+            <table class="dash-table">
+              <thead><tr><th>Booking ID</th><th>Room</th><th>Date &amp; Time</th><th>Players</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>#B-8802</td>
+                  <td><div class="user-cell"><span style="font-size:1.1rem;">👻</span><span class="td-name">Haunted Mansion</span></div></td>
+                  <td>Apr 12, 2026 · 10:00 AM</td><td>6</td><td>$540</td>
+                  <td><span class="dash-badge dash-badge-info">Confirmed</span></td>
+                  <td><div class="td-actions"><button class="td-btn" title="View details"><i data-lucide="eye"></i></button><button class="td-btn danger" title="Cancel" onclick="if(confirm('Cancel booking?'))alert('Booking cancelled.')"><i data-lucide="x"></i></button></div></td>
+                </tr>
+                <tr>
+                  <td>#B-8750</td>
+                  <td><div class="user-cell"><span style="font-size:1.1rem;">🕵️</span><span class="td-name">Spy Mission</span></div></td>
+                  <td>Feb 20, 2026 · 2:00 PM</td><td>5</td><td>$450</td>
+                  <td><span class="dash-badge dash-badge-success">Completed</span></td>
+                  <td><div class="td-actions"><button class="td-btn" title="Download receipt"><i data-lucide="download"></i></button></div></td>
+                </tr>
+                <tr>
+                  <td>#B-8700</td>
+                  <td><div class="user-cell"><span style="font-size:1.1rem;">🏥</span><span class="td-name">The Asylum</span></div></td>
+                  <td>Jan 14, 2026 · 6:00 PM</td><td>4</td><td>$360</td>
+                  <td><span class="dash-badge dash-badge-success">Completed</span></td>
+                  <td><div class="td-actions"><button class="td-btn" title="Download receipt"><i data-lucide="download"></i></button></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════ WAIVERS ═══════════════════ -->
+      <div id="section-waivers" class="dash-section">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">My Waivers</h1>
+            <div class="dash-page-subtitle">Upload and manage your group's signed waivers</div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-body">
+            <div class="upload-zone" id="client-dropzone" onclick="alert('File upload: Select a PDF or JPG to upload your signed waiver.')">
+              <div class="upload-icon">☁️</div>
+              <h5>Drag &amp; Drop or Click to Upload</h5>
+              <p>PDF or JPG files — up to 10 MB. All data is encrypted.</p>
             </div>
-            <h4 class="fs-md fw-600 mb-4">My File Library</h4>
-            <div class="dash-table-container">
+            <div style="font-weight:600;font-size:.95rem;color:var(--dash-text);margin-bottom:12px;">My File Library</div>
+            <div class="dash-table-wrap">
               <table class="dash-table">
-                <thead><tr><th>File Name</th><th>Category</th><th>Size</th><th>Date</th></tr></thead>
+                <thead><tr><th>File Name</th><th>Category</th><th>Player</th><th>Size</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
                 <tbody>
-                  <tr><td>digital_waiver_sarah.pdf</td><td>Waiver</td><td>0.8 MB</td><td>Mar 20</td></tr>
-                  <tr><td>group_list.pdf</td><td>Group Data</td><td>0.4 MB</td><td>Mar 18</td></tr>
+                  <tr>
+                    <td class="td-name">Waiver_Sarah_HM.pdf</td><td>Waiver</td><td>Sarah Johnson</td><td>0.8 MB</td><td>Mar 20</td>
+                    <td><span class="dash-badge dash-badge-success">Signed</span></td>
+                    <td><button class="td-btn" title="Download"><i data-lucide="download"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="td-name">Waiver_Mike_HM.pdf</td><td>Waiver</td><td>Mike Chen</td><td>0.7 MB</td><td>Mar 21</td>
+                    <td><span class="dash-badge dash-badge-success">Signed</span></td>
+                    <td><button class="td-btn" title="Download"><i data-lucide="download"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="td-name">Waiver_Mark_HM.pdf</td><td>Waiver</td><td>Mark Torres</td><td>—</td><td>—</td>
+                    <td><span class="dash-badge dash-badge-warning">Pending</span></td>
+                    <td><button class="td-btn" title="Send reminder" onclick="alert('Reminder sent to Mark Torres!')"><i data-lucide="send"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="td-name">Group_Leader_Guide.pdf</td><td>Guide</td><td>All</td><td>1.2 MB</td><td>Mar 22</td>
+                    <td><span class="dash-badge dash-badge-info">Reference</span></td>
+                    <td><button class="td-btn" title="Download"><i data-lucide="download"></i></button></td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Section: Messages -->
-        <div id="section-messages" class="dash-section">
-          <div class="chat-layout">
-            <div class="chat-sidebar">
-              <div class="chat-search">
-                <input type="text" placeholder="Search chats..." class="form-control form-control-sm">
+      <!-- ═══════════════════ MESSAGES ═══════════════════ -->
+      <div id="section-messages" class="dash-section">
+        <div class="dash-page-header">
+          <h1 class="dash-page-title">Messages</h1>
+        </div>
+        <div class="chat-layout">
+          <div class="chat-sidebar-panel">
+            <div class="chat-search">
+              <input type="text" placeholder="Search chats..." class="chat-input-field" style="border-radius:8px;padding:8px 14px;">
+            </div>
+            <div class="chat-list">
+              <div class="chat-item active">
+                <div class="dash-avatar" style="background:var(--clr-accent);color:var(--clr-primary);width:34px;height:34px;font-size:.75rem;">AT</div>
+                <div class="chat-item-info">
+                  <div class="chat-item-name">Alex Thorne</div>
+                  <div class="chat-item-preview">Arrive 15 mins early...</div>
+                </div>
               </div>
-              <div class="chat-list">
-                <div class="chat-item active">
-                  <div class="dash-avatar dash-bg-accent text-primary">AT</div>
-                  <div class="flex-1">
-                    <div class="fw-600 fs-sm">Alex Thorne</div>
-                    <div class="fs-xs text-muted truncate">"I've added a few extra clues..."</div>
+              <div class="chat-item">
+                <div class="dash-avatar" style="width:34px;height:34px;font-size:.75rem;background:#0a2647;">ME</div>
+                <div class="chat-item-info">
+                  <div class="chat-item-name">Midnight Escapes</div>
+                  <div class="chat-item-preview">Booking #B-8802 confirmed!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-main-panel">
+            <div class="chat-topbar">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dash-avatar" style="background:var(--clr-accent);color:var(--clr-primary);width:34px;height:34px;font-size:.75rem;">AT</div>
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;color:var(--dash-text);">Alex Thorne</div>
+                  <div class="chat-online">Online</div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-messages" id="player-messages">
+              <div class="msg-bubble msg-in">Hi Sarah! Looking forward to your group's run on April 12th 🎉<div class="msg-time">Yesterday · 4:20 PM</div></div>
+              <div class="msg-bubble msg-out">Hi Alex! Super excited. We've been watching puzzle-solving videos 😄<div class="msg-time">Yesterday · 4:22 PM</div></div>
+              <div class="msg-bubble msg-in">Ha! Love the prep. Don't forget to arrive 15 mins early for the intro briefing.<div class="msg-time">Yesterday · 4:24 PM</div></div>
+              <div class="msg-bubble msg-out">Absolutely! Can we add one more player — we'd be 7 instead of 6?<div class="msg-time">Yesterday · 4:30 PM</div></div>
+              <div class="msg-bubble msg-in">No problem! The room handles up to 8. I'll update the booking right now. See you soon! 🔐<div class="msg-time">Yesterday · 4:32 PM</div></div>
+            </div>
+            <div class="chat-input-row">
+              <input class="chat-input-field" id="player-msg-input" type="text" placeholder="Type a message...">
+              <button class="chat-send-btn" id="player-send-btn" title="Send">
+                <i data-lucide="send"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════ PROFILE SETTINGS ═══════════════════ -->
+      <div id="section-profile" class="dash-section">
+        <div class="dash-page-header">
+          <h1 class="dash-page-title">Profile Settings</h1>
+        </div>
+        <div class="dash-grid-2-1" style="align-items:start;">
+
+          <!-- Form -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title">Personal Information</div>
+            </div>
+            <div class="dash-card-body">
+              <div class="form-row" style="margin-bottom:16px;">
+                <div class="form-group" style="margin-bottom:0;"><label class="form-label">First Name</label><input class="form-control" value="Sarah"></div>
+                <div class="form-group" style="margin-bottom:0;"><label class="form-label">Last Name</label><input class="form-control" value="Johnson"></div>
+              </div>
+              <div class="form-group"><label class="form-label">Email Address</label><input class="form-control" type="email" value="s.johnson@example.com"></div>
+              <div class="form-group"><label class="form-label">Phone Number</label><input class="form-control" value="(555) 123-4567"></div>
+              <div class="form-group">
+                <label class="form-label">Preferred Room</label>
+                <select class="form-control">
+                  <option>Haunted Mansion</option><option>Spy Mission</option><option>Treasure Hunt</option>
+                  <option>Prison Break</option><option>The Lost Tomb</option><option>The Asylum</option>
+                </select>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="alert('Profile saved!')">Save Changes</button>
+            </div>
+          </div>
+
+          <!-- Right panel -->
+          <div>
+            <!-- Avatar card -->
+            <div class="dash-card" style="margin-bottom:16px;">
+              <div class="dash-card-body" style="text-align:center;">
+                <div class="dash-avatar" style="width:72px;height:72px;font-size:1.4rem;background:var(--clr-accent);color:var(--clr-primary);margin:0 auto 12px;">SJ</div>
+                <div style="font-weight:700;font-size:1rem;color:var(--dash-text);margin-bottom:4px;">Sarah Johnson</div>
+                <div style="font-size:.78rem;color:var(--dash-text-muted);margin-bottom:14px;">Member since Jan 2026</div>
+                <div class="dash-badge dash-badge-gold" style="margin:0 auto;display:inline-flex;">🏆 Master Escape Status</div>
+              </div>
+            </div>
+
+            <!-- Preferences -->
+            <div class="dash-card">
+              <div class="dash-card-header"><div class="dash-card-title">Preferences</div></div>
+              <div class="dash-card-body">
+                <div class="settings-row" style="padding:10px 0;">
+                  <div class="settings-label" style="flex:1;">
+                    <div class="settings-label-title" style="font-size:.85rem;">Dark Mode</div>
+                  </div>
+                  <div class="settings-control">
+                    <label class="toggle">
+                      <input type="checkbox" id="profile-theme-toggle">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="settings-row" style="padding:10px 0;border-bottom:none;">
+                  <div class="settings-label" style="flex:1;">
+                    <div class="settings-label-title" style="font-size:.85rem;">Email Reminders</div>
+                  </div>
+                  <div class="settings-control">
+                    <label class="toggle">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="chat-main">
-              <div class="chat-header">
-                <div class="flex align-center gap-3">
-                  <div class="dash-avatar dash-bg-accent text-primary">AT</div>
-                  <div><div class="fw-600">Alex Thorne</div><div class="fs-xs text-success">Online</div></div>
-                </div>
-              </div>
-              <div class="chat-messages" id="message-container">
-                <div class="msg-bubble msg-in">Hi Sarah, looking forward to your group's run tomorrow! Don't forget to arrive 15 mins early for the intro.</div>
-                <div class="msg-bubble msg-out">Hi Alex, we'll be there! Can we add one extra player at the door?</div>
-                <div class="msg-bubble msg-in">Absolutely, we can handle that. See you then!</div>
-              </div>
-              <div class="chat-input">
-                <input type="text" class="form-control" placeholder="Type your message...">
-                <button class="btn btn-primary btn-sm px-6">Send</button>
-              </div>
-            </div>
           </div>
         </div>
-
       </div>
-    </main>
-  </div>
 
-  <script src="assets/js/main.js"></script>
-  <script>
-    lucide.createIcons();
+    </div><!-- /.dash-main -->
+  </main>
+</div><!-- /.dash-layout -->
 
-    // Section Toggling
-    document.querySelectorAll('.dash-nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const sectionId = link.getAttribute('data-section');
-        document.querySelectorAll('.dash-nav-link').forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
-        document.getElementById(`section-${sectionId}`)?.classList.add('active');
-        if (window.innerWidth <= 1024) document.getElementById('sidebar').classList.remove('mobile-open');
-      });
+<script src="assets/js/main.js"></script>
+<script>
+  lucide.createIcons();
+
+  // ── Section Navigation ──
+  function activateSection(id) {
+    document.querySelectorAll('.dash-nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+    const link = document.querySelector(`[data-section="${id}"]`);
+    const section = document.getElementById(`section-${id}`);
+    if (link) link.classList.add('active');
+    if (section) section.classList.add('active');
+    if (window.innerWidth <= 1024) closeSidebar();
+    document.getElementById('dash-main-scroll').scrollTop = 0;
+  }
+
+  document.querySelectorAll('.dash-nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      activateSection(link.getAttribute('data-section'));
     });
+  });
 
-    // Mobile Sidebar Toggle
+  // ── Sidebar Toggle ──
+  function openSidebar() {
+    document.getElementById('sidebar').classList.add('mobile-open');
+    document.getElementById('mobile-backdrop').classList.add('show');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('mobile-open');
+    document.getElementById('mobile-backdrop').classList.remove('show');
+  }
+  document.getElementById('sidebar-toggle').addEventListener('click', () => {
     const sidebar = document.getElementById('sidebar');
-    document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
-      if (window.innerWidth <= 1024) {
-         sidebar.classList.toggle('mobile-open');
-      } else {
-         sidebar.classList.toggle('collapsed');
-      }
+    if (window.innerWidth <= 1024) {
+      sidebar.classList.contains('mobile-open') ? closeSidebar() : openSidebar();
+    } else {
+      sidebar.classList.toggle('collapsed');
+    }
+  });
+
+  // ── Profile Theme Toggle ──
+  const profileToggle = document.getElementById('profile-theme-toggle');
+  if (profileToggle) {
+    profileToggle.addEventListener('change', () => {
+      document.documentElement.setAttribute('data-theme', profileToggle.checked ? 'dark' : 'light');
     });
-  </script>
+  }
+
+  // ── Chat Send ──
+  const playerSend = document.getElementById('player-send-btn');
+  const playerInput = document.getElementById('player-msg-input');
+  if (playerSend && playerInput) {
+    function sendPlayerMsg() {
+      const val = playerInput.value.trim();
+      if (!val) return;
+      const msgs = document.getElementById('player-messages');
+      const div = document.createElement('div');
+      div.className = 'msg-bubble msg-out';
+      div.innerHTML = val + '<div class="msg-time">Just now</div>';
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+      playerInput.value = '';
+    }
+    playerSend.addEventListener('click', sendPlayerMsg);
+    playerInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendPlayerMsg(); });
+  }
+</script>
 </body>
 </html>
