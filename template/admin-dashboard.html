@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | LexCounsel Legal Practice</title>
+  <title>Admin Dashboard | Midnight Escapes</title>
   
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dashboard.css">
@@ -17,7 +17,7 @@
     <aside class="dash-sidebar" id="sidebar">
       <div class="dash-sidebar-header">
         <a href="index.html" class="dash-logo">
-          <span class="dash-logo-text">LexCounsel<span class="text-accent">.</span></span>
+          <span class="dash-logo-text">Midnight<span class="text-accent">Escapes</span></span>
         </a>
       </div>
 
@@ -30,11 +30,11 @@
           </a>
           <a href="#users" class="dash-nav-link" data-section="users">
             <i data-lucide="users"></i>
-            <span class="dash-nav-text">User Management</span>
+            <span class="dash-nav-text">Player Management</span>
           </a>
           <a href="#cases" class="dash-nav-link" data-section="cases">
-            <i data-lucide="briefcase"></i>
-            <span class="dash-nav-text">Case Management</span>
+            <i data-lucide="calendar"></i>
+            <span class="dash-nav-text">Booking Management</span>
           </a>
         </div>
 
@@ -42,7 +42,7 @@
           <div class="dash-nav-label">Management</div>
           <a href="#documents" class="dash-nav-link" data-section="documents">
             <i data-lucide="file-text"></i>
-            <span class="dash-nav-text">Documents</span>
+            <span class="dash-nav-text">Waivers & Docs</span>
           </a>
           <a href="#payments" class="dash-nav-link" data-section="payments">
             <i data-lucide="credit-card"></i>
@@ -65,10 +65,10 @@
 
       <div class="dash-sidebar-footer">
         <div class="dash-user-profile">
-          <div class="dash-avatar">JH</div>
+          <div class="dash-avatar">AT</div>
           <div class="dash-user-info">
-            <div class="dash-user-name">Jonathan Hargrove</div>
-            <div class="dash-user-role">Lead Attorney</div>
+            <div class="dash-user-name">Alex Thorne</div>
+            <div class="dash-user-role">Master Game Master</div>
           </div>
           <div class="dash-logout-btn">
             <i data-lucide="log-out" class="dash-icon-sm"></i>
@@ -88,7 +88,7 @@
           </button>
           <div class="dash-search-box">
             <i data-lucide="search" class="dash-icon-sm"></i>
-            <input type="text" placeholder="Search cases, clients, or documents...">
+            <input type="text" placeholder="Search bookings, players, or waivers...">
           </div>
         </div>
         
@@ -116,35 +116,35 @@
           <div class="dash-stats-grid">
             <div class="stat-widget">
               <div class="stat-header">
-                <span class="fs-xs uppercase ls-8 fw-600">Total Clients</span>
+                <span class="fs-xs uppercase ls-8 fw-600">Total Players</span>
                 <div class="stat-icon dash-bg-accent"><i data-lucide="users"></i></div>
               </div>
-              <div class="stat-value">248</div>
-              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 14%</span> vs last year</div>
+              <div class="stat-value">1,420</div>
+              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 18%</span> vs last month</div>
             </div>
             <div class="stat-widget">
               <div class="stat-header">
-                <span class="fs-xs uppercase ls-8 fw-600">Active Cases</span>
-                <div class="stat-icon dash-bg-info"><i data-lucide="briefcase"></i></div>
+                <span class="fs-xs uppercase ls-8 fw-600">Active Bookings</span>
+                <div class="stat-icon dash-bg-info"><i data-lucide="calendar"></i></div>
               </div>
-              <div class="stat-value">56</div>
-              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 5</span> new this month</div>
+              <div class="stat-value">42</div>
+              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 12</span> new today</div>
             </div>
             <div class="stat-widget">
               <div class="stat-header">
-                <span class="fs-xs uppercase ls-8 fw-600">Closed Cases</span>
-                <div class="stat-icon dash-bg-success"><i data-lucide="check-circle-2"></i></div>
+                <span class="fs-xs uppercase ls-8 fw-600">Escapes Completed</span>
+                <div class="stat-icon dash-bg-success"><i data-lucide="door-open"></i></div>
               </div>
-              <div class="stat-value">192</div>
-              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 98%</span> success rate</div>
+              <div class="stat-value">856</div>
+              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 44%</span> success rate</div>
             </div>
             <div class="stat-widget">
               <div class="stat-header">
                 <span class="fs-xs uppercase ls-8 fw-600">Monthly Revenue</span>
                 <div class="stat-icon dash-bg-accent"><i data-lucide="dollar-sign"></i></div>
               </div>
-              <div class="stat-value">$48,500</div>
-              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 22%</span> growth</div>
+              <div class="stat-value">$32,480</div>
+              <div class="stat-footer"><span class="trend-up"><i data-lucide="trending-up"></i> 15%</span> growth</div>
             </div>
           </div>
 
@@ -165,21 +165,21 @@
                 <div class="activity-item">
                   <div class="activity-avatar dash-text-accent">SJ</div>
                   <div class="activity-info">
-                    <strong>Sarah Johnson</strong> signed the Retainer.
+                    <strong>Sarah Johnson</strong> booked Haunted Mansion.
                     <div class="activity-time">24 mins ago</div>
                   </div>
                 </div>
                 <div class="activity-item">
                   <div class="activity-avatar bg-surface-alt"><i data-lucide="calendar" class="dash-icon-sm"></i></div>
                   <div class="activity-info">
-                    Hearing scheduled for <strong>David Abbott</strong>.
+                    Briefing scheduled for <strong>The Watson Group</strong>.
                     <div class="activity-time">2 hours ago</div>
                   </div>
                 </div>
                 <div class="activity-item">
                   <div class="activity-avatar dash-bg-success"><i data-lucide="dollar-sign" class="dash-icon-sm"></i></div>
                   <div class="activity-info">
-                    Payment received from <strong>Laura Miller</strong>.
+                    Payment received for <strong>Team Building Event</strong>.
                     <div class="activity-time">5 hours ago</div>
                   </div>
                 </div>
@@ -192,13 +192,13 @@
         <div id="section-users" class="dash-section">
           <div class="dash-card p-0">
             <div class="p-6 border-bottom flex align-center justify-between flex-wrap gap-4">
-              <h4 class="fs-lg fw-700 m-0">Client Database</h4>
+              <h4 class="fs-lg fw-700 m-0">Player Database</h4>
               <div class="flex gap-3">
                 <div class="dash-search-box bg-white border max-w-240">
                   <i data-lucide="search" class="dash-icon-sm"></i>
-                  <input type="text" placeholder="Search clients...">
+                  <input type="text" placeholder="Search players...">
                 </div>
-                <button class="btn btn-primary btn-sm"><i data-lucide="user-plus"></i> Add Client</button>
+                <button class="btn btn-primary btn-sm"><i data-lucide="user-plus"></i> Add Player</button>
               </div>
             </div>
             
@@ -206,10 +206,10 @@
               <table class="dash-table">
                 <thead>
                   <tr>
-                    <th>Client</th>
+                    <th>Player</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Case Type</th>
+                    <th>Last Room</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
@@ -220,8 +220,8 @@
                     <td><div class="user-cell"><div class="dash-avatar scale-sm">SJ</div><span class="user-name">Sarah Johnson</span></div></td>
                     <td>s.johnson@example.com</td>
                     <td>(555) 123-4567</td>
-                    <td>Family Law</td>
-                    <td><span class="badge badge-success">Active</span></td>
+                    <td>Haunted Mansion</td>
+                    <td><span class="badge badge-success">Completed</span></td>
                     <td><button class="btn-ghost" data-modal="user-modal"><i data-lucide="eye"></i></button></td>
                   </tr>
                   <!-- More rows... -->
@@ -234,7 +234,7 @@
         <!-- Section: Cases -->
         <div id="section-cases" class="dash-section">
           <div class="flex justify-between align-center mb-6">
-            <h4 class="fs-lg fw-700 m-0">Active Case Files</h4>
+            <h4 class="fs-lg fw-700 m-0">Upcoming Bookings</h4>
             <div class="flex gap-3">
                <button class="btn btn-outline btn-sm">Filter</button>
                <button class="btn btn-primary btn-sm">New File</button>
@@ -243,14 +243,14 @@
 
           <div class="kanban-grid">
             <div class="kanban-col">
-              <div class="kanban-header"><span class="kanban-title">Inquiry</span></div>
+              <div class="kanban-header"><span class="kanban-title">Confirmed</span></div>
               <div class="kanban-card">
-                <div class="kanban-card-meta"><span>#C-3021</span><span class="badge badge-pending">New</span></div>
-                <h6 class="kanban-card-title">Child Custody Modification</h6>
-                <p class="fs-xs text-muted">Client: Emily Watson</p>
+                <div class="kanban-card-meta"><span>#B-8802</span><span class="badge badge-pending">Upcoming</span></div>
+                <h6 class="kanban-card-title">Haunted Mansion - 6 Players</h6>
+                <p class="fs-xs text-muted">Lead: Sarah Johnson</p>
                 <div class="kanban-card-footer">
                   <div class="kanban-date"><i data-lucide="calendar"></i> Apr 15</div>
-                  <div class="kanban-user">JH</div>
+                  <div class="kanban-user">AT</div>
                 </div>
               </div>
             </div>
@@ -261,17 +261,17 @@
         <!-- Section: Documents -->
         <div id="section-documents" class="dash-section">
           <div class="dash-card">
-            <h4 class="dash-card-title mb-4">Document Repository</h4>
+            <h4 class="dash-card-title mb-4">Waiver Repository</h4>
             <div class="upload-zone mb-6" id="dropzone">
               <i data-lucide="upload-cloud" class="fs-2xl text-accent mb-4"></i>
-              <h5 class="mb-2">Click to upload or drag & drop</h5>
-              <p class="fs-xs text-muted">PDF, DOCX up to 50MB. Securely encrypted.</p>
+              <h5 class="mb-2">Click to upload signed waivers or drag & drop</h5>
+              <p class="fs-xs text-muted">PDF, JPG up to 10MB. Securely archived.</p>
             </div>
             <div class="dash-table-container">
               <table class="dash-table">
-                <thead><tr><th>File Name</th><th>Client</th><th>Date</th><th>Size</th><th>Action</th></tr></thead>
+                <thead><tr><th>File Name</th><th>Player</th><th>Date</th><th>Size</th><th>Action</th></tr></thead>
                 <tbody>
-                  <tr><td>Retainer_Johnson.pdf</td><td>Sarah Johnson</td><td>Mar 15</td><td>1.2 MB</td><td><i data-lucide="download"></i></td></tr>
+                  <tr><td>Waiver_Johnson.pdf</td><td>Sarah Johnson</td><td>Mar 15</td><td>0.8 MB</td><td><i data-lucide="download"></i></td></tr>
                 </tbody>
               </table>
             </div>
@@ -307,15 +307,15 @@
   <div class="dash-modal" id="user-modal">
     <div class="dash-modal-content reveal">
       <div class="modal-header">
-        <h4 class="m-0">Client Profile Details</h4>
+        <h4 class="m-0">Player Profile Details</h4>
         <button class="modal-close btn-ghost" onclick="closeModals()"><i data-lucide="x"></i></button>
       </div>
       <div class="modal-body">
         <div class="flex align-center gap-4 mb-6">
-          <div class="dash-avatar fs-lg" style="width: 64px; height: 64px;">SJ</div>
+          <div class="dash-avatar fs-lg" style="width: 64px; height: 64px;">AT</div>
           <div>
             <h3 class="m-0 fs-xl">Sarah Johnson</h3>
-            <p class="m-0 text-muted fs-sm">Client Since Jan 2026</p>
+            <p class="m-0 text-muted fs-sm">Player Since Jan 2026</p>
           </div>
         </div>
         <div class="grid-2 gap-4">

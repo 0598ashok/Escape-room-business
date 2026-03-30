@@ -1,5 +1,5 @@
 /* =====================================================
-   LEXCOUNSEL — main.js
+   MIDNIGHT ESCAPES — main.js
    Modular ES6 JavaScript
    ===================================================== */
 
@@ -12,136 +12,136 @@ const on = (el, ev, fn, opts) => el && el.addEventListener(ev, fn, opts);
 
 /* ── Services Data ── */
 const SERVICES = {
-  'divorce-separation': {
-    title: 'Divorce & Separation',
-    icon: '⚖️',
-    heroColor: '#0A2647',
-    tagline: 'Protecting your rights through life\'s most difficult transitions.',
-    description: `Divorce is one of the most emotionally and legally complex events in a person's life. At LexCounsel, Jonathan M. Hargrove, Esq. brings over two decades of experience to help clients navigate property division, spousal support, and the dissolution of marriage with clarity and compassion. We work to secure equitable outcomes while minimizing conflict and protecting your financial future.`,
+  'haunted-mansion': {
+    title: 'Haunted Mansion',
+    icon: '🏚️',
+    heroColor: '#1a1a1a',
+    tagline: 'Uncover the secrets of the Blackwood Estate.',
+    description: `The Blackwood Estate has stood silent for eighty years, ever since the mysterious disappearance of the entire family during a winter gala. Local legends speak of flickering lights and ethereal music echoing through the halls. You and your team are paranormal investigators tasked with entering the mansion, finding the family heirlooms, and escaping before the clock strikes midnight. But be warned: some secrets are meant to stay buried, and the spirits within do not take kindly to intruders.`,
     process: [
-      { step: 1, title: 'Initial Consultation', desc: 'We assess your case, goals, and legal options in a confidential session.' },
-      { step: 2, title: 'Filing & Documentation', desc: 'We prepare and file all necessary legal documents with the court.' },
-      { step: 3, title: 'Negotiation / Mediation', desc: 'We advocate for your best interests in settlement discussions.' },
-      { step: 4, title: 'Court Representation', desc: 'If required, we provide strong litigation representation.' }
+      { step: 1, title: 'The Briefing', desc: 'Meet your Game Master and receive your investigative tools.' },
+      { step: 2, title: 'Infiltration', desc: 'Enter the foyer and begin your search for the first clue.' },
+      { step: 3, title: 'The Ritual', desc: 'Solve the mechanical puzzles to unlock the hidden study.' },
+      { step: 4, title: 'Escape', desc: 'Exorcise the mansion\'s curse and find the exit before it\'s too late.' }
     ],
-    benefits: ['Fair asset division', 'Spousal support guidance', 'Minimized court time', 'Confidential process', 'Post-divorce modifications', 'Compassionate counsel'],
+    benefits: ['High-Intensity Atmosphere', 'Mechanical Puzzles', 'Non-Linear Gameplay', 'Professional Set Design', 'Thematic Soundscapes', 'Multi-Room Experience'],
     faqs: [
-      { q: 'How long does a divorce take?', a: 'Uncontested divorces may resolve in 3–6 months. Contested cases can take 1–2 years depending on complexity.' },
-      { q: 'Will I have to go to court?', a: 'Many cases are settled through mediation without a trial. We always seek the most efficient resolution.' },
-      { q: 'How is property divided in divorce?', a: 'Property division follows equitable distribution principles, considering contributions, duration of marriage, and financial circumstances.' }
+      { q: 'Is it actually scary?', a: 'It features jump scares and high-tension atmosphere. We recommend it for ages 14 and up.' },
+      { q: 'What is the success rate?', a: 'Currently, about 35% of teams escape within the 60-minute time limit.' },
+      { q: 'Are we actually locked in?', a: 'For safety, all doors feature emergency release buttons, though the "narrative" lock remains until you solve the final puzzle.' }
     ]
   },
-  'child-custody': {
-    title: 'Child Custody',
-    icon: '👨‍👧',
-    heroColor: '#144272',
-    tagline: 'Putting your children\'s best interests first, always.',
-    description: `Child custody disputes require a delicate balance of legal advocacy and emotional sensitivity. LexCounsel provides experienced representation in both physical and legal custody matters, parenting plan negotiations, and modification proceedings. We place the welfare of your children at the center of every decision.`,
+  'prison-break': {
+    title: 'Prison Break',
+    icon: '⛓️',
+    heroColor: '#2c3e50',
+    tagline: 'Escape the high-security Sector 9 before the guards return.',
+    description: `Wrongfully accused and sentenced to life in the notorious Ironclad Penitentiary, your only hope is the legendary "Ghost" inmate who left behind a trail of clues. You have 60 minutes during the scheduled guard rotation to navigate the high-tech security systems, crawl through the ventilation shafts, and reach the yard. It will take physical agility, logical thinking, and perfect coordination to win your freedom. The countdown begins now.`,
     process: [
-      { step: 1, title: 'Case Evaluation', desc: 'We evaluate current circumstances and define the ideal custody arrangement.' },
-      { step: 2, title: 'Parenting Plan', desc: 'We draft a comprehensive, child-centered parenting plan.' },
-      { step: 3, title: 'Mediation', desc: 'We facilitate constructive dialogue to reach mutually agreeable terms.' },
-      { step: 4, title: 'Court Order', desc: 'We finalize and enforce legally binding custody orders.' }
+      { step: 1, title: 'Processing', desc: 'Your team is split into neighboring cells to begin the escape.' },
+      { step: 2, title: 'The Breakout', desc: 'Communicate through the walls to unlock each other\'s cells.' },
+      { step: 3, title: 'Security Bypass', desc: 'Disable the laser grid and hack the warden\'s terminal.' },
+      { step: 4, title: 'Final Run', desc: 'Coordinate the exit sequence to open the main gate.' }
     ],
-    benefits: ['Child-centered approach', 'Parenting plan drafting', 'Modification proceedings', 'Guardian ad litem coordination', 'Relocation disputes', 'Emergency custody orders'],
+    benefits: ['Physical Challenges', 'Cooperative Logic', 'High-Tech Props', 'Split-Team Start', 'Immersive Audio', 'Adrenaline Pumping'],
     faqs: [
-      { q: 'What is the difference between legal and physical custody?', a: 'Legal custody concerns decision-making authority; physical custody determines where the child primarily lives.' },
-      { q: 'Can custody orders be modified?', a: 'Yes. If there has been a material change in circumstances, the court may modify existing custody orders.' },
-      { q: 'How does the court determine custody?', a: 'Courts use the "best interests of the child" standard, considering factors like stability, parental fitness, and the child\'s preferences.' }
+      { q: 'Does this room require crawling?', a: 'Yes, there is a short crawling section, but an alternative path can be provided upon request.' },
+      { q: 'Can we play with just 2 people?', a: 'Yes, but the Difficulty is significantly higher without a full team of 4-6.' },
+      { q: 'Is there a dress code?', a: 'We recommend comfortable clothing and closed-toe shoes for the physical sections.' }
     ]
   },
-  'adoption': {
-    title: 'Adoption Services',
-    icon: '🏠',
-    heroColor: '#0d3157',
-    tagline: 'Building families through expert legal guidance.',
-    description: `The adoption process is a joyful journey that requires careful legal navigation. Jonathan M. Hargrove, Esq. guides families through domestic, international, and stepparent adoptions, ensuring every legal requirement is met with precision and care. We make the path to expanding your family as smooth as possible.`,
+  'spy-mission': {
+    title: 'Spy Mission',
+    icon: '🕵️',
+    heroColor: '#1c2833',
+    tagline: 'Infiltrate, Extract, Evade. The world is counting on you.',
+    description: `The rogue organization known as "The Kraken" has developed a global blackout device. Your mission: infiltrate their underground base in Zurich, locate the override codes, and disable the device. You'll need to use cutting-edge spy gadgets, decipher encrypted communications, and avoid detection by the AI security system. Every second counts in this high-stakes game of international espionage. Good luck, Agent.`,
     process: [
-      { step: 1, title: 'Adoption Assessment', desc: 'We determine the appropriate adoption pathway for your family.' },
-      { step: 2, title: 'Home Study', desc: 'We coordinate with agencies for required home study processes.' },
-      { step: 3, title: 'Petition Filing', desc: 'We file adoption petitions and handle all court documentation.' },
-      { step: 4, title: 'Finalization', desc: 'We attend finalization hearings and secure the adoption decree.' }
+      { step: 1, title: 'Mission Intel', desc: 'Receive your gadget kit and the targets for infiltration.' },
+      { step: 2, title: 'The Breach', desc: 'Hack the outer perimeter and enter the secure laboratory.' },
+      { step: 3, title: 'Data Extraction', desc: 'Locate the hidden server and bypass the biometric locks.' },
+      { step: 4, title: 'Override', desc: 'Execute the final command and evacuate the facility.' }
     ],
-    benefits: ['Domestic adoption', 'Stepparent adoption', 'Foster-to-adopt', 'Home study coordination', 'Consent termination', 'Post-adoption support'],
+    benefits: ['Logic & Deduction', 'Electronic Gadgets', 'Stealth Elements', 'Multiple Endings', 'High Difficulty', 'Elite Experience'],
     faqs: [
-      { q: 'How long does adoption take?', a: 'Timelines vary: domestic newborn adoption averages 1–2 years; stepparent adoptions can finalize in 3–6 months.' },
-      { q: 'What rights do birth parents have?', a: 'Birth parents must voluntarily terminate or have parental rights legally terminated before adoption can proceed.' },
-      { q: 'Can same-sex couples adopt?', a: 'Yes. Same-sex couples have equal adoption rights. We proudly serve all families.' }
+      { q: 'How difficult is this room?', a: 'This is our hardest room, with a 5/5 difficulty rating and a 15% success rate.' },
+      { q: 'What gadgets do we get?', a: 'You will use UV lights, signal decoders, and thermal scanners during the mission.' },
+      { q: 'Is there an age limit?', a: 'Due to the complexity of the puzzles, we recommend this room for ages 16 and up.' }
     ]
   },
-  'wills-trusts': {
-    title: 'Wills & Trusts',
-    icon: '📜',
-    heroColor: '#0A2647',
-    tagline: 'Securing your legacy for the generations ahead.',
-    description: `Creating a comprehensive estate plan with a well-drafted will and trust structure is the most responsible gift you can leave your loved ones. LexCounsel designs customized wills, revocable and irrevocable trusts, and living wills that reflect your wishes and protect your assets from unnecessary probate and taxation.`,
+  'treasure-hunt': {
+    title: 'Treasure Hunt',
+    icon: '💎',
+    heroColor: '#7d6608',
+    tagline: 'Find the lost Aztec Gold before the jungle swallows you whole.',
+    description: `Deep in the heart of the Amazon lies the Temple of the Sun, home to the legendary Golden Idol. Many have sought it, but none have returned. Your team of explorers has found the entrance, but the temple's ancient traps have been triggered. You have 60 minutes to solve the environmental puzzles, navigate the shifting walls, and claim the treasure before the temple collapses forever. Discovery awaits!`,
     process: [
-      { step: 1, title: 'Estate Review', desc: 'We audit your assets, beneficiaries, and specific wishes.' },
-      { step: 2, title: 'Plan Design', desc: 'We design the optimal will and trust structure for your estate.' },
-      { step: 3, title: 'Document Drafting', desc: 'We draft legally sound documents tailored to your situation.' },
-      { step: 4, title: 'Execution & Storage', desc: 'We oversee proper signing, witnessing, and secure storage.' }
+      { step: 1, title: 'Base Camp', desc: 'Gather your equipment and enter the temple ruins.' },
+      { step: 2, title: 'The Labyrinth', desc: 'Navigate the maze of mirrors and light-based puzzles.' },
+      { step: 3, title: 'The Inner Sanctum', desc: 'Solve the linguistic trials of the Aztec priests.' },
+      { step: 4, title: 'The Idol', desc: 'Claim the treasure and find the hidden exit path.' }
     ],
-    benefits: ['Custom will drafting', 'Revocable living trusts', 'Irrevocable trusts', 'Pour-over wills', 'Healthcare directives', 'Power of attorney'],
+    benefits: ['Family Friendly', 'Visual Puzzles', 'Stunning Decor', 'Large Group Capacity', 'Adventure Feel', 'Exploration Focus'],
     faqs: [
-      { q: 'Do I need both a will and a trust?', a: 'It depends on your estate size and goals. Many clients benefit from both: a trust for major assets and a will as a safety net.' },
-      { q: 'What happens without a will?', a: 'Your estate passes via intestate succession laws, which may not reflect your wishes and can be costly.' },
-      { q: 'Can I change my will after signing?', a: 'Yes. Wills can be amended via codicil or fully revoked and replaced at any time.' }
+      { q: 'Is this room good for kids?', a: 'Absolutely! It is our most family-friendly experience and relies on visual logic.' },
+      { q: 'How many people can play?', a: 'This room can accommodate up to 8 players comfortably.' },
+      { q: 'Are there live animals?', a: 'No, all jungle elements and "creatures" are high-quality animatronics/props.' }
     ]
   },
-  'estate-planning': {
-    title: 'Estate Planning',
-    icon: '🏛️',
-    heroColor: '#144272',
-    tagline: 'Comprehensive strategies that protect what you\'ve built.',
-    description: `Estate planning goes beyond a will. LexCounsel develops holistic strategies encompassing tax planning, business succession, asset protection, and charitable giving. Jonathan M. Hargrove, Esq. works closely with financial advisors and CPAs to create plans that minimize estate taxes and maximize your legacy.`,
+  'lost-tomb': {
+    title: 'The Lost Tomb',
+    icon: '🔍',
+    heroColor: '#5d4037',
+    tagline: 'Resurrect the past in the Valley of the Kings.',
+    description: `An undiscovered tomb has been unearthed, but the lead archeologist has gone missing. Rumors of an ancient curse surround the site. Your team must enter the burial chamber, decode the hieroglyphics, and find the Ankh of Life to reverse the curse and escape. The air is thin, and the shadows are growing. Will you make history, or become a part of it?`,
     process: [
-      { step: 1, title: 'Financial Assessment', desc: 'Complete review of assets, liabilities, and tax exposure.' },
-      { step: 2, title: 'Strategy Development', desc: 'Designing a tax-efficient, comprehensive estate plan.' },
-      { step: 3, title: 'Legal Drafting', desc: 'Preparation of all required legal instruments and documents.' },
-      { step: 4, title: 'Ongoing Review', desc: 'Annual reviews to adjust for life changes and new legislation.' }
+      { step: 1, title: 'Excavation', desc: 'Search the dig site for clues left by the missing doctor.' },
+      { step: 2, title: 'The Chamber', desc: 'Solve the astronomical puzzles to open the tomb.' },
+      { step: 3, title: 'The Trial', desc: 'Pass the judgment of Osiris through weight and balance.' },
+      { step: 4, title: 'Resurrection', desc: 'Locate the artifact and find the secret corridor out.' }
     ],
-    benefits: ['Tax minimization', 'Business succession', 'Asset protection trusts', 'Charitable planning', 'Life insurance trusts', 'Annual plan reviews'],
+    benefits: ['Historical Accuracy', 'Tactile Puzzles', 'Mystery Solving', 'Immersive Lighting', 'Cinematic Reveal', 'Unique Theme'],
     faqs: [
-      { q: 'When should I start estate planning?', a: 'As soon as you have assets, dependents, or specific wishes. Estate planning is not just for the wealthy or elderly.' },
-      { q: 'How can I minimize estate taxes?', a: 'Strategies include irrevocable trusts, lifetime gifting, charitable planning, and proper beneficiary designations.' },
-      { q: 'What is a power of attorney?', a: 'A POA designates someone to manage your financial or medical decisions if you become incapacitated.' }
+      { q: 'Is it dusty/dirty?', a: 'While the set looks like a dig site, it is cleaned daily and safe for all players.' },
+      { q: 'Do we need to know history?', a: 'No outside knowledge is required; everything you need is inside the room.' },
+      { q: 'What is the lighting like?', a: 'The room starts dim but features dynamic lighting that changes with your progress.' }
     ]
   },
-  'probate': {
-    title: 'Probate Administration',
-    icon: '⚡',
-    heroColor: '#0d3157',
-    tagline: 'Efficient estate administration with compassionate guidance.',
-    description: `The probate process can be lengthy and burdensome without proper legal guidance. LexCounsel streamlines probate administration for executors and beneficiaries, handling creditor claims, court filings, asset distribution, and dispute resolution. We handle the legal complexities so you can focus on what matters.`,
+  'asylum': {
+    title: 'The Asylum',
+    icon: '🧠',
+    heroColor: '#424242',
+    tagline: 'Face your darkest fears in Ravensworth Clinic.',
+    description: `Abandoned since 1964 following a series of unethical experiments, the Ravensworth Asylum for the Criminally Insane is not as empty as it seems. You and your team are thrill-seekers who have broken in on a dare. Now, the doors have locked, and the "Doctor" is coming for his next subjects. You must navigate the flickering corridors, solve the twisted psychological puzzles, and escape before you become a permanent resident.`,
     process: [
-      { step: 1, title: 'Petition Filing', desc: 'Filing the petition for probate and appointment of executor.' },
-      { step: 2, title: 'Asset Inventory', desc: 'Identifying, valuing, and securing all estate assets.' },
-      { step: 3, title: 'Creditor Resolution', desc: 'Notifying creditors and resolving valid claims against the estate.' },
-      { step: 4, title: 'Distribution', desc: 'Distributing remaining assets to beneficiaries per the will or law.' }
+      { step: 1, title: 'The Dare', desc: 'Break into the lobby and realize you aren\'t alone.' },
+      { step: 2, title: 'The Ward', desc: 'Navigate the padded cells and find the keys to the lab.' },
+      { step: 3, title: 'The Experiment', desc: 'Solve the sensory-deprivation puzzles to progress.' },
+      { step: 4, title: 'The Escape', desc: 'Find the hidden emergency exit before the Doctor arrives.' }
     ],
-    benefits: ['Executor representation', 'Beneficiary advocacy', 'Creditor negotiations', 'Will contests', 'Estate tax filings', 'Multi-state probate'],
+    benefits: ['Horror Elements', 'Psychological Thriller', 'Sensory Puzzles', 'Jumpscares', 'Intense Narrative', 'Highly Immersive'],
     faqs: [
-      { q: 'How long does probate take?', a: 'Simple estates may close in 6–9 months. Complex estates or disputes can extend proceedings to 2+ years.' },
-      { q: 'Can probate be avoided?', a: 'Yes — through living trusts, joint ownership, beneficiary designations, and payable-on-death accounts.' },
-      { q: 'What are executor duties?', a: 'Executors must inventory assets, notify creditors, file taxes, and distribute assets according to the will.' }
+      { q: 'How scary is it?', a: 'This is our most intense horror experience. Expect loud noises, low light, and actors.' },
+      { q: 'Can we stop if it\'s too much?', a: 'Yes, all rooms have a "panic button" that immediately ends the game and opens all doors.' },
+      { q: 'Is there an age limit?', a: 'Strictly 18+ due to the intensity and nature of the themes.' }
     ]
   }
 };
 
 /* ── Blog Data ── */
 const BLOGS = [
-  { id: 1, title: 'Understanding Equitable Distribution in Divorce', cat: 'Family Law', date: 'March 15, 2026', author: 'Jonathan M. Hargrove, Esq.', readTime: '7 min read', icon: '⚖️', excerpt: 'A comprehensive guide to how courts divide marital property and what factors influence the outcome of asset division proceedings.' },
-  { id: 2, title: 'Creating a Comprehensive Estate Plan in 2026', cat: 'Estate Law', date: 'March 8, 2026', author: 'Jonathan M. Hargrove, Esq.', readTime: '9 min read', icon: '📜', excerpt: 'Why estate planning is more critical than ever, and the five cornerstone documents every adult should have in place.' },
-  { id: 3, title: 'Child Custody: What the Courts Really Consider', cat: 'Family Law', date: 'Feb 28, 2026', author: 'Jonathan M. Hargrove, Esq.', readTime: '6 min read', icon: '👨‍👧', excerpt: 'Breaking down the "best interests of the child" standard and how judges evaluate custody arrangements.' },
-  { id: 4, title: 'Revocable vs. Irrevocable Trusts: Which Is Right for You?', cat: 'Estate Law', date: 'Feb 20, 2026', author: 'Jonathan M. Hargrove, Esq.', readTime: '8 min read', icon: '🏛️', excerpt: 'A side-by-side comparison of trust types to help you make an informed estate planning decision.' },
-  { id: 5, title: 'The Adoption Journey: Step-by-Step Legal Guide', cat: 'Family Law', date: 'Feb 12, 2026', author: 'Jonathan M. Hargrove, Esq.', readTime: '11 min read', icon: '🏠', excerpt: 'From home study to finalization, a detailed walkthrough of the legal steps in domestic adoption.' },
-  { id: 6, title: 'Probate vs. Non-Probate Assets: Key Differences', cat: 'Estate Law', date: 'Feb 5, 2026', author: 'Jonathan M. Hargrove, Esq.', readTime: '5 min read', icon: '📋', excerpt: 'Understanding which assets pass through your will and which transfer outside probate can save your heirs time and money.' }
+  { id: 1, title: '5 Tips to Beat the Clock in Any Escape Room', cat: 'Pro Tips', date: 'March 15, 2026', author: 'Alex Thorne', readTime: '5 min read', icon: '⏱️', excerpt: 'Master the art of time management. From effective communication to organized searching, here is how the experts escape in record time.' },
+  { id: 2, title: 'Why Team Building is Better in an Escape Room', cat: 'Events', date: 'March 8, 2026', author: 'Alex Thorne', readTime: '7 min read', icon: '🤝', excerpt: 'Corporate puzzles revealed. How collaborative problem-solving translates to better workplace synergy and higher employee morale.' },
+  { id: 3, title: 'The Psychology of Fear: Designing the Asylum', cat: 'Behind the Scenes', date: 'Feb 28, 2026', author: 'Alex Thorne', readTime: '9 min read', icon: '🧠', excerpt: 'A deep dive into the psychological triggers and atmospheric design used to create our most intense horror experience yet.' },
+  { id: 4, title: 'Beginner?s Guide to Your First Escape Room', cat: 'Pro Tips', date: 'Feb 20, 2026', author: 'Alex Thorne', readTime: '6 min read', icon: '🗝️', excerpt: 'Everything you need to know before your first adventure. No spoilers, just essential strategies for your first 60 minutes of fun.' },
+  { id: 5, title: 'Uncovering the Lore: The Blackwood Estate History', cat: 'Deep Lore', date: 'Feb 12, 2026', author: 'Alex Thorne', readTime: '10 min read', icon: '🏚️', excerpt: 'Read the official backstory of the Haunted Mansion. Discover the hidden details that make this room our players? favorite.' },
+  { id: 6, title: 'Escape Room vs. VR: Which is the Ultimate Adventure?', cat: 'Lifestyle', date: 'Feb 5, 2026', author: 'Alex Thorne', readTime: '5 min read', icon: '🕶️', excerpt: 'Comparing tactile reality with virtual worlds. Why physical interaction and real-life teamwork still reign supreme in the world of puzzles.' }
 ];
 
 /* ── Theme Management ── */
 const ThemeManager = (() => {
   const HTML = document.documentElement;
-  const STORAGE_KEY = 'lx-theme';
+  const STORAGE_KEY = 'me-theme';
   const DARK_CSS_ID = 'dark-mode-css';
 
   function loadDarkCSS() {
@@ -194,7 +194,7 @@ const ThemeManager = (() => {
 /* ── RTL Management ── */
 const RTLManager = (() => {
   const HTML = document.documentElement;
-  const STORAGE_KEY = 'lx-dir';
+  const STORAGE_KEY = 'me-dir';
   const RTL_CSS_ID = 'rtl-css';
 
   function getBasePath() {
@@ -606,7 +606,7 @@ function initServiceDetails() {
   }
 
   // Update page title & meta
-  document.title = `${data.title} | LexCounsel`;
+  document.title = `${data.title} | Midnight Escapes`;
   const metaDesc = $('meta[name="description"]');
   if (metaDesc) metaDesc.content = data.description.substring(0, 155);
 
