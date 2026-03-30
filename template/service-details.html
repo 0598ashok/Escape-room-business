@@ -9,18 +9,21 @@
 </head>
 <body id="service-detail-page">
   <!-- Navbar -->
-  <nav id="navbar" role="navigation">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">
-        <div class="logo-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg></div>
+      <a href="index.html" class="nav-logo" aria-label="Midnight Escapes Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg>
+        </div>
         <span>Midnight<em>Escapes</em></span>
       </a>
-      <ul class="nav-menu">
+
+      <ul class="nav-menu" role="list">
         <li class="nav-item">
-          <span class="nav-link" tabindex="0">Home <span class="chevron">▾</span></span>
-          <div class="nav-dropdown">
-            <a href="index.html">🏠 Home 1 — Editorial</a>
-            <a href="home2.html">✨ Home 2 — Cinematic</a>
+          <span class="nav-link" tabindex="0" aria-haspopup="true">Home <span class="chevron" aria-hidden="true">▾</span></span>
+          <div class="nav-dropdown" role="menu">
+            <a href="index.html" role="menuitem"><span class="dd-icon">🏠</span> Home 1 — Editorial</a>
+            <a href="home2.html" role="menuitem"><span class="dd-icon">✨</span> Home 2 — Cinematic</a>
           </div>
         </li>
         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
@@ -28,28 +31,34 @@
         <li class="nav-item"><a href="blogs.html" class="nav-link">Blog</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         <li class="nav-item">
-          <span class="nav-link" tabindex="0">Dashboard <span class="chevron">▾</span></span>
-          <div class="nav-dropdown">
-            <a href="admin-dashboard.html">⚙️ Admin Dashboard</a>
-            <a href="user-dashboard.html">👤 Player Dashboard</a>
+          <span class="nav-link" tabindex="0" aria-haspopup="true">Dashboard <span class="chevron" aria-hidden="true">▾</span></span>
+          <div class="nav-dropdown" role="menu">
+            <a href="admin-dashboard.html" role="menuitem"><span class="dd-icon">⚙️</span> Admin Dashboard</a>
+            <a href="user-dashboard.html" role="menuitem"><span class="dd-icon">👤</span> User Dashboard</a>
           </div>
         </li>
       </ul>
+
       <div class="nav-actions">
-        <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle theme">🌙</button>
-        <button class="nav-toggle-btn rtl-btn" data-rtl-toggle aria-label="Toggle RTL">RTL →</button>
+        <button class="nav-toggle-btn" data-theme-toggle id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button class="nav-toggle-btn" data-rtl-toggle id="rtl-toggle" aria-label="Toggle RTL/LTR layout" title="Toggle RTL/LTR" style="font-size:.72rem;padding:0 6px;width:auto;min-width:48px">RTL →</button>
         <a href="login.html" class="btn btn-outline btn-sm">Login</a>
         <a href="register.html" class="btn btn-accent btn-sm">Get Started</a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobile-drawer">
+  <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-label="Mobile navigation">
     <div class="mobile-nav">
-      <div class="mobile-nav-link" data-mobile-toggle="sd-home-sub">Home <span>▾</span></div>
-      <div id="sd-home-sub" class="mobile-sub">
+      <div class="mobile-nav-link" data-mobile-toggle="mob-home-sub">
+        Home <span>▾</span>
+      </div>
+      <div id="mob-home-sub" class="mobile-sub" style="display:none">
         <a href="index.html" class="mobile-sub-item">🏠 Home 1 — Editorial</a>
         <a href="home2.html" class="mobile-sub-item">✨ Home 2 — Cinematic</a>
       </div>
@@ -57,8 +66,10 @@
       <a href="services.html" class="mobile-nav-link active">Services</a>
       <a href="blogs.html" class="mobile-nav-link">Blog</a>
       <a href="contact.html" class="mobile-nav-link">Contact</a>
-      <div class="mobile-nav-link" data-mobile-toggle="sd-dash-sub">Dashboard <span>▾</span></div>
-      <div id="sd-dash-sub" class="mobile-sub">
+      <div class="mobile-nav-link" data-mobile-toggle="mob-dash-sub">
+        Dashboard <span>▾</span>
+      </div>
+      <div id="mob-dash-sub" class="mobile-sub" style="display:none">
         <a href="admin-dashboard.html" class="mobile-sub-item">⚙️ Admin Dashboard</a>
         <a href="user-dashboard.html" class="mobile-sub-item">👤 User Dashboard</a>
       </div>
@@ -68,10 +79,11 @@
       <a href="register.html" class="btn btn-accent btn-sm w-100">Get Started</a>
     </div>
     <div class="mobile-toggles">
-      <button class="nav-toggle-btn" data-theme-toggle>🌙</button>
-      <button class="nav-toggle-btn rtl-btn" data-rtl-toggle>RTL →</button>
+      <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+      <button class="nav-toggle-btn" data-rtl-toggle aria-label="Toggle RTL" style="font-size:.72rem;width:auto;min-width:48px;padding:0 6px">RTL →</button>
     </div>
   </div>
+
 
   <!-- Dynamic Hero -->
   <div id="sd-hero" class="page-hero">

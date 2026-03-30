@@ -6,60 +6,434 @@
   <meta name="description" content="Create your Midnight Escapes player account to access booking management, waivers, and direct Game Master communication."/>
   <title>Register | Midnight Escapes</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    /* ── Register Auth Page Scoped Styles ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    .auth-root {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    /* ── Left Brand Panel (Gold accent for register) ── */
+    .auth-brand-panel {
+      position: relative;
+      background: linear-gradient(135deg, #3d2800 0%, #6b4400 50%, #a86c00 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 48px;
+      overflow: hidden;
+    }
+    .auth-brand-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .auth-brand-glow {
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,220,100,.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .auth-brand-glow-2 {
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,200,50,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .auth-brand-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 420px;
+    }
+    .auth-brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      margin-bottom: 36px;
+    }
+    .auth-brand-logo .logo-icon {
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,.15);
+      border: 2px solid rgba(255,255,255,.3);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .auth-brand-logo .logo-icon svg { width: 26px; height: 26px; fill: white; }
+    .auth-brand-logo span {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+    }
+    .auth-brand-logo span em { color: rgba(255,235,150,.9); font-style: normal; }
+    .auth-brand-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .auth-brand-desc {
+      font-size: .92rem;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .auth-perks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .auth-perk-card {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 12px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .auth-perk-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .auth-perk-title { font-size: .8rem; font-weight: 700; color: white; }
+    .auth-perk-desc { font-size: .72rem; color: rgba(255,255,255,.65); margin-top: 4px; line-height: 1.4; }
+    .auth-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .auth-trust-item { font-size: .78rem; color: rgba(255,255,255,.7); display: flex; align-items: center; gap: 6px; }
+    .auth-trust-item .tick { color: rgba(255,220,120,.9); font-weight: 700; }
+
+    /* ── Right Form Panel ── */
+    .auth-form-panel {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 32px 40px;
+      background: var(--clr-surface);
+      position: relative;
+      overflow-y: auto;
+      min-height: 100vh;
+    }
+    .auth-form-panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--clr-accent-dark), var(--clr-accent), var(--clr-accent-light));
+    }
+    .auth-controls {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+    }
+    .auth-ctrl-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: .75rem;
+      font-weight: 600;
+      border: 1.5px solid var(--clr-border);
+      background: var(--clr-white);
+      color: var(--clr-text);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .auth-ctrl-btn:hover {
+      background: var(--clr-accent);
+      color: var(--clr-primary);
+      border-color: var(--clr-accent);
+    }
+    .auth-form-card {
+      width: 100%;
+      max-width: 460px;
+    }
+
+    /* Mobile logo */
+    .auth-mobile-logo {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+    .auth-mobile-logo .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--clr-primary);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .auth-mobile-logo .logo-icon svg { width: 20px; height: 20px; fill: var(--clr-accent); }
+    .auth-mobile-logo span {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--clr-primary);
+    }
+    .auth-mobile-logo span em { color: var(--clr-accent); font-style: normal; }
+
+    .auth-form-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--clr-primary);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .auth-form-subtitle {
+      font-size: .88rem;
+      color: var(--clr-text-muted);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    /* Social Login */
+    .social-login-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 10px;
+      border-radius: 10px;
+      font-size: .82rem;
+      font-weight: 600;
+      border: 1.5px solid var(--clr-border);
+      background: var(--clr-white);
+      color: var(--clr-text);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .social-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+    .social-btn.google:hover { border-color: #EA4335; background: #fef2f2; }
+    .social-btn.facebook:hover { border-color: #1877F2; background: #eff6ff; }
+    .social-btn.apple:hover { border-color: #000; background: #1f2937; color: white; }
+    .social-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* Divider */
+    .auth-divider {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--clr-border);
+    }
+    .auth-divider span { font-size: .78rem; color: var(--clr-text-muted); font-weight: 500; white-space: nowrap; }
+
+    /* Form styles */
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: .84rem; font-weight: 600; color: var(--clr-text); margin-bottom: 5px; }
+    .input-wrap { position: relative; }
+    .input-icon {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      font-size: .9rem; pointer-events: none; z-index: 1;
+    }
+    .form-control {
+      width: 100%; padding: 11px 16px 11px 42px;
+      border: 1.5px solid var(--clr-border); border-radius: 10px;
+      font-size: .88rem; color: var(--clr-text); background: var(--clr-white);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    .form-control:focus { border-color: var(--clr-accent); box-shadow: 0 0 0 3px rgba(201,168,76,.12); }
+    .form-control.error { border-color: var(--clr-danger); }
+    .form-error { font-size: .75rem; color: var(--clr-danger); margin-top: 4px; display: none; }
+    .form-error.show { display: block; }
+    .password-toggle {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; font-size: .9rem; color: var(--clr-text-muted); z-index: 1;
+    }
+    .password-toggle:hover { color: var(--clr-accent); }
+
+    /* Password strength meter */
+    .strength-meter { margin: 6px 0 14px; }
+    .strength-bars { display: flex; gap: 4px; margin-bottom: 5px; }
+    .strength-bar { height: 4px; flex: 1; border-radius: 99px; background: var(--clr-border); transition: background .3s; }
+    .strength-label { font-size: .72rem; color: var(--clr-text-muted); }
+
+    /* Terms */
+    .terms-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .terms-row input { margin-top: 3px; flex-shrink: 0; accent-color: var(--clr-accent); }
+    .terms-row label { font-size: .82rem; color: var(--clr-text-light); cursor: pointer; line-height: 1.5; }
+    .terms-row label a { color: var(--clr-accent); font-weight: 600; }
+
+    .btn-auth {
+      width: 100%; padding: 13px;
+      border-radius: 10px; font-size: .95rem; font-weight: 700; letter-spacing: .02em;
+      background: var(--clr-primary); color: white; border: none; cursor: pointer;
+      transition: all 0.2s; margin-bottom: 16px;
+    }
+    .btn-auth:hover {
+      background: var(--clr-primary-light); transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(10,38,71,.3);
+    }
+    .auth-switch { text-align: center; font-size: .88rem; color: var(--clr-text-muted); margin-bottom: 16px; }
+    .auth-switch a { color: var(--clr-accent); font-weight: 700; }
+    .auth-switch a:hover { text-decoration: underline; }
+    .auth-back-link { display: block; text-align: center; font-size: .8rem; color: var(--clr-text-muted); }
+    .auth-back-link:hover { color: var(--clr-accent); }
+
+    /* Dark mode overrides */
+    [data-theme="dark"] .auth-form-panel { background: #0D1525; }
+    [data-theme="dark"] .auth-ctrl-btn { background: rgba(255,255,255,.06); color: #E6EDF3; border-color: rgba(255,255,255,.1); }
+    [data-theme="dark"] .auth-ctrl-btn:hover { background: var(--clr-accent); color: var(--clr-primary); }
+    [data-theme="dark"] .social-btn { background: rgba(255,255,255,.05); color: #E6EDF3; border-color: rgba(255,255,255,.1); }
+    [data-theme="dark"] .social-btn.google:hover { background: rgba(234,67,53,.15); border-color: #EA4335; }
+    [data-theme="dark"] .social-btn.facebook:hover { background: rgba(24,119,242,.15); border-color: #1877F2; }
+    [data-theme="dark"] .social-btn.apple:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); }
+    [data-theme="dark"] .form-control { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1); color: #E6EDF3; }
+    [data-theme="dark"] .form-label { color: rgba(230,237,243,.85); }
+    [data-theme="dark"] .auth-form-title { color: #E6EDF3; }
+    [data-theme="dark"] .terms-row label { color: rgba(230,237,243,.65); }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .auth-root { grid-template-columns: 1fr; }
+      .auth-brand-panel { display: none; }
+      .auth-mobile-logo { display: flex; }
+      .auth-controls { position: absolute; }
+      .auth-form-panel { min-height: 100vh; padding: 80px 24px 40px; align-items: flex-start; }
+      .form-row-2 { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body class="flex flex-col min-h-screen">
-  <div class="auth-page">
-    <!-- Brand panel (Golden variant for Register) -->
-    <div class="auth-brand reveal-left" style="background:linear-gradient(135deg,var(--clr-accent-dark) 0%,var(--clr-accent) 50%,var(--clr-accent-light) 100%)">
-      <div class="auth-brand-content max-w-500 mx-auto">
-        <a href="index.html" class="nav-logo mb-6 justify-center text-primary">
-          <div class="logo-icon primary"><svg viewBox="0 0 24 24" class="w-26 h-26" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="var(--clr-primary)"/></svg></div>
-          <span class="fs-xl text-primary">Midnight<em class="no-italic fw-900">Escapes</em></span>
+<body>
+  <div class="auth-root">
+
+    <!-- ── Left Brand Panel ── -->
+    <div class="auth-brand-panel">
+      <div class="auth-brand-glow"></div>
+      <div class="auth-brand-glow-2"></div>
+      <div class="auth-brand-inner">
+        <a href="index.html" class="auth-brand-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+          </div>
+          <span>Midnight<em>Escapes</em></span>
         </a>
-        <h2 class="text-primary fs-2xl mb-3">Join Midnight Escapes.<br/>Unleash Your Mind.</h2>
-        <p class="text-primary-muted opacity-75 mb-8">Create a free account today and get immediate access to our secure player portal.</p>
-        
-        <div class="grid-2 gap-3 max-w-340 mx-auto">
-          <div class="card p-3 text-center bg-white-transparent border-0">
-            <div class="fs-xl mb-1">🗺️</div>
-            <div class="fs-xs fw-600 text-primary">Room Tracking</div>
+
+        <h2 class="auth-brand-heading">Join Midnight Escapes.<br/>Unleash Your Mind.</h2>
+        <p class="auth-brand-desc">Create a free account and get instant access to our player portal — bookings, waivers, and more.</p>
+
+        <div class="auth-perks-grid">
+          <div class="auth-perk-card">
+            <div class="auth-perk-icon">🗺️</div>
+            <div class="auth-perk-title">Room Tracking</div>
+            <div class="auth-perk-desc">See your booking history</div>
           </div>
-          <div class="card p-3 text-center bg-white-transparent border-0">
-            <div class="fs-xl mb-1">✍️</div>
-            <div class="fs-xs fw-600 text-primary">Waiver Hub</div>
+          <div class="auth-perk-card">
+            <div class="auth-perk-icon">✍️</div>
+            <div class="auth-perk-title">Waiver Hub</div>
+            <div class="auth-perk-desc">Sign digitally, instantly</div>
           </div>
-          <div class="card p-3 text-center bg-white-transparent border-0">
-            <div class="fs-xl mb-1">💬</div>
-            <div class="fs-xs fw-600 text-primary">Direct Chat</div>
+          <div class="auth-perk-card">
+            <div class="auth-perk-icon">💬</div>
+            <div class="auth-perk-title">Direct Chat</div>
+            <div class="auth-perk-desc">Message your Game Master</div>
           </div>
-          <div class="card p-3 text-center bg-white-transparent border-0">
-            <div class="fs-xl mb-1">🎁</div>
-            <div class="fs-xs fw-600 text-primary">Gift Cards</div>
+          <div class="auth-perk-card">
+            <div class="auth-perk-icon">🎁</div>
+            <div class="auth-perk-title">Gift Cards</div>
+            <div class="auth-perk-desc">Buy &amp; redeem vouchers</div>
           </div>
+        </div>
+
+        <div class="auth-trust">
+          <div class="auth-trust-item"><span class="tick">✓</span> Free forever</div>
+          <div class="auth-trust-item"><span class="tick">✓</span> Secure &amp; private</div>
+          <div class="auth-trust-item"><span class="tick">✓</span> No spam</div>
         </div>
       </div>
     </div>
 
-    <!-- Form panel -->
-    <div class="auth-form reveal-right">
-      <div class="auth-card">
-        <div class="text-center mb-6">
-          <h1 class="fs-xl mb-1">Create Your Account</h1>
-          <p class="fs-sm text-muted">Join Midnight Escapes' secure player portal.</p>
+    <!-- ── Right Form Panel ── -->
+    <div class="auth-form-panel">
+
+      <!-- Controls: Theme & RTL toggles -->
+      <div class="auth-controls">
+        <button class="auth-ctrl-btn" data-theme-toggle id="theme-toggle" aria-label="Toggle dark mode">🌙 Theme</button>
+        <button class="auth-ctrl-btn" data-rtl-toggle id="rtl-toggle" aria-label="Toggle RTL layout">RTL →</button>
+      </div>
+
+      <div class="auth-form-card">
+
+        <!-- Mobile-only logo -->
+        <a href="index.html" class="auth-mobile-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg>
+          </div>
+          <span>Midnight<em>Escapes</em></span>
+        </a>
+
+        <h1 class="auth-form-title">Create Your Account</h1>
+        <p class="auth-form-subtitle">Join Midnight Escapes' secure player portal — free &amp; instant.</p>
+
+        <!-- Social Login -->
+        <div class="social-login-grid">
+          <button class="social-btn google" type="button" aria-label="Sign up with Google">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google
+          </button>
+          <button class="social-btn facebook" type="button" aria-label="Sign up with Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/></svg>
+            Facebook
+          </button>
+          <button class="social-btn apple" type="button" aria-label="Sign up with Apple">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-.42.3-.6.48A4.44 4.44 0 0 0 17.4 12c.03 2.44 2.14 3.26 2.17 3.27-.02.06-.34 1.16-1.12 2.06l.26.17zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" fill="currentColor"/></svg>
+            Apple
+          </button>
         </div>
 
+        <div class="auth-divider">
+          <span>or sign up with email</span>
+        </div>
+
+        <!-- Register Form -->
         <form data-validate-form data-success-msg="Account created! Redirecting..." id="register-form">
-          <div class="grid-2 mb-3">
-            <div class="form-group mb-0">
-              <label class="form-label">First Name *</label>
+          <div class="form-row-2">
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label" for="reg-fname">First Name *</label>
               <div class="input-wrap">
                 <span class="input-icon">👤</span>
                 <input id="reg-fname" type="text" class="form-control" data-validate="required" placeholder="First Name"/>
               </div>
               <div class="form-error"></div>
             </div>
-            <div class="form-group mb-0">
-              <label class="form-label">Last Name *</label>
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label" for="reg-lname">Last Name *</label>
               <div class="input-wrap">
                 <span class="input-icon">👤</span>
                 <input id="reg-lname" type="text" class="form-control" data-validate="required" placeholder="Last Name"/>
@@ -67,9 +441,9 @@
               <div class="form-error"></div>
             </div>
           </div>
-          
+
           <div class="form-group">
-            <label class="form-label">Email Address *</label>
+            <label class="form-label" for="reg-email">Email Address *</label>
             <div class="input-wrap">
               <span class="input-icon">✉️</span>
               <input id="reg-email" type="email" class="form-control" data-validate="required,email" placeholder="your@email.com"/>
@@ -78,7 +452,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Phone Number *</label>
+            <label class="form-label" for="reg-phone">Phone Number *</label>
             <div class="input-wrap">
               <span class="input-icon">📞</span>
               <input id="reg-phone" type="tel" class="form-control" data-validate="required,phone" placeholder="(555) 000-0000"/>
@@ -87,25 +461,28 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Experience Interest</label>
-            <select class="form-control">
-              <option value="">Select a room (optional)</option>
-              <option>Haunted Mansion</option>
-              <option>Prison Break</option>
-              <option>Spy Mission</option>
-              <option>Treasure Hunt</option>
-              <option>The Lost Tomb</option>
-              <option>The Asylum</option>
-              <option>Not Sure Yet</option>
-            </select>
+            <label class="form-label" for="reg-interest">Experience Interest</label>
+            <div class="input-wrap">
+              <span class="input-icon">🗝️</span>
+              <select id="reg-interest" class="form-control">
+                <option value="">Select a room (optional)</option>
+                <option>Haunted Mansion</option>
+                <option>Prison Break</option>
+                <option>Spy Mission</option>
+                <option>Treasure Hunt</option>
+                <option>The Lost Tomb</option>
+                <option>The Asylum</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Password *</label>
+            <label class="form-label" for="reg-pass">Password *</label>
             <div class="input-wrap">
               <span class="input-icon">🔒</span>
               <input id="reg-pass" type="password" class="form-control" data-validate="required,password" placeholder="Min. 8 characters"/>
-              <button type="button" class="password-toggle" data-password-toggle>👁️</button>
+              <button type="button" class="password-toggle" data-password-toggle aria-label="Toggle password visibility">👁️</button>
             </div>
             <div class="form-error"></div>
           </div>
@@ -121,36 +498,31 @@
             <div class="strength-label" id="strength-label">Password strength</div>
           </div>
 
-          <div class="flex align-start gap-2 mb-4">
-            <input type="checkbox" id="reg-terms" required class="mt-1 flex-shrink-0 cursor-pointer accent-primary"/>
-            <label for="reg-terms" class="fs-xs text-muted cursor-pointer lh-14">I agree to the <a href="#" class="text-accent">Terms</a> and <a href="#" class="text-accent">Privacy Policy</a>. I understand that registration is required for digital waiver signing.</label>
+          <div class="terms-row">
+            <input type="checkbox" id="reg-terms" required/>
+            <label for="reg-terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. Registration is required for digital waiver signing.</label>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-lg w-100 mb-6">Create Account →</button>
+          <button type="submit" class="btn-auth">Create Account →</button>
         </form>
 
-        <div class="text-center">
-          <span class="fs-sm text-muted">Already have an account? </span>
-          <a href="login.html" class="fs-sm fw-600 text-accent">Sign In</a>
+        <div class="auth-switch">
+          Already have an account? <a href="login.html">Sign In</a>
         </div>
 
-        <div class="flex gap-2 justify-center flex-wrap pt-6 mt-6 border-top">
-          <button class="nav-toggle-btn fs-xs p-2 h-auto w-auto" data-theme-toggle>🌙 Toggle Theme</button>
-          <button class="nav-toggle-btn fs-xs p-2 h-auto w-auto" data-rtl-toggle>RTL →</button>
-        </div>
-
-        <p class="text-center mt-6 fs-xs"><a href="index.html" class="text-muted">← Back to MidnightEscapes.com</a></p>
+        <a href="index.html" class="auth-back-link">← Back to MidnightEscapes.com</a>
       </div>
     </div>
+
   </div>
 
   <script src="assets/js/main.js"></script>
   <script>
-    // Password strength meter logic
+    // Password strength meter
     const passInput = document.getElementById('reg-pass');
     const bars = [document.getElementById('sb1'), document.getElementById('sb2'), document.getElementById('sb3'), document.getElementById('sb4')];
     const label = document.getElementById('strength-label');
-    
+
     if (passInput) {
       passInput.addEventListener('input', () => {
         const v = passInput.value;
@@ -159,17 +531,17 @@
         if (/[A-Z]/.test(v)) score++;
         if (/[0-9]/.test(v)) score++;
         if (/[^A-Za-z0-9]/.test(v)) score++;
-        
+
         const colors = ['#dc2626', '#d97706', '#C9A84C', '#16a34a'];
         const labels = ['Weak', 'Fair', 'Good', 'Strong'];
-        
+
         bars.forEach((b, i) => {
           b.style.background = i < score ? colors[score - 1] : 'var(--clr-border)';
         });
-        
+
         if (v.length) {
           label.textContent = labels[score - 1] || 'Weak';
-          label.style.color = colors[score - 1];
+          label.style.color = colors[score - 1] || colors[0];
         } else {
           label.textContent = 'Password strength';
           label.style.color = '';

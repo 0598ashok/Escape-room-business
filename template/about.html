@@ -3,24 +3,463 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Meet Alex Thorne — Founder & Master Game Designer of Midnight Escapes. Learn about our mission, theatrical set design, and our journey crafting immersive puzzles."/>
+  <meta name="description" content="Meet Alex Thorne — Founder & Master Game Designer of Midnight Escapes. Learn about our mission, theatrical set design, and journey crafting immersive puzzles."/>
   <title>Our Story | Midnight Escapes</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    /* ── About Page Scoped Styles ── */
+
+    /* ── Hero ── */
+    .about-hero {
+      position: relative;
+      padding: 160px 0 100px;
+      background: linear-gradient(135deg, var(--clr-primary-dark) 0%, var(--clr-primary) 60%, #1a4a7c 100%);
+      overflow: hidden;
+      text-align: center;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .about-hero-glow {
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .about-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .about-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,.12);
+      border: 1px solid rgba(201,168,76,.3);
+      border-radius: 99px;
+      padding: 7px 20px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 24px;
+    }
+    .about-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .about-hero-title .gold { color: var(--clr-accent); }
+    .about-hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.7);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .about-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 20px;
+    }
+    .about-hero-breadcrumb a { color: var(--clr-accent); text-decoration: none; }
+    .about-hero-breadcrumb a:hover { text-decoration: underline; }
+    .about-hero-breadcrumb span { opacity: .5; }
+
+    /* ── Founder Section ── */
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .founder-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .founder-card {
+      background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-light));
+      border-radius: 24px;
+      padding: 48px 40px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 20px 60px rgba(10,38,71,.3);
+    }
+    .founder-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: rgba(201,168,76,.1);
+      border-radius: 50%;
+    }
+    .founder-emoji {
+      font-size: 5rem;
+      margin-bottom: 16px;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .founder-name {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .founder-role {
+      font-size: .84rem;
+      color: var(--clr-accent);
+      font-weight: 600;
+      letter-spacing: .05em;
+      position: relative;
+      z-index: 1;
+    }
+    .founder-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -16px;
+      background: var(--clr-accent);
+      border-radius: 16px;
+      padding: 14px 18px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(201,168,76,.4);
+    }
+    .founder-badge-num {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--clr-primary);
+      line-height: 1;
+    }
+    .founder-badge-text {
+      font-size: .65rem;
+      color: var(--clr-primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-top: 4px;
+    }
+    .founder-text .section-label {
+      margin-bottom: 12px;
+    }
+    .founder-text h2 {
+      margin-bottom: 20px;
+    }
+    .founder-text p {
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .founder-quote {
+      background: rgba(201,168,76,.06);
+      border-left: 4px solid var(--clr-accent);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 24px;
+      margin: 24px 0 32px;
+    }
+    .founder-quote p { font-style: italic; color: var(--clr-primary); font-size: 1rem; margin: 0; line-height: 1.7; }
+    .founder-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ── Stats Strip ── */
+    .stats-strip {
+      background: var(--clr-primary);
+      padding: 60px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 24px;
+      position: relative;
+    }
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 20%; bottom: 20%;
+      width: 1px;
+      background: rgba(255,255,255,.15);
+    }
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--clr-accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label-text {
+      font-size: .82rem;
+      color: rgba(255,255,255,.65);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 600;
+    }
+
+    /* ── Timeline ── */
+    .timeline-container {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .timeline-spine {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--clr-accent), rgba(201,168,76,.1));
+      transform: translateX(-50%);
+    }
+    .tl-items { display: flex; flex-direction: column; gap: 0; }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 0;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .tl-left {
+      padding-right: 32px;
+      text-align: right;
+    }
+    .tl-right {
+      padding-left: 32px;
+      text-align: left;
+    }
+    .tl-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .tl-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--clr-accent);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--clr-accent);
+    }
+    .tl-year {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--clr-accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .tl-title { font-size: 1rem; font-weight: 700; color: var(--clr-primary); margin-bottom: 6px; }
+    .tl-desc { font-size: .85rem; color: var(--clr-text-muted); line-height: 1.6; }
+    .tl-item.right .tl-left { opacity: 0; pointer-events: none; }
+    .tl-item.left .tl-right { opacity: 0; pointer-events: none; }
+
+    /* ── Skills Section ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .skill-bar-wrap { margin-bottom: 24px; }
+    .skill-bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .skill-name { font-size: .9rem; font-weight: 700; color: var(--clr-primary); }
+    .skill-pct { font-size: .85rem; font-weight: 700; color: var(--clr-accent); }
+    .skill-track {
+      height: 8px;
+      background: var(--clr-surface-alt);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--clr-primary), var(--clr-accent));
+      border-radius: 99px;
+      transition: width 1.5s ease;
+    }
+    .expertise-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .expertise-card {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: all 0.25s;
+      box-shadow: 0 2px 8px rgba(10,38,71,.05);
+    }
+    .expertise-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(10,38,71,.12);
+      border-color: var(--clr-accent);
+    }
+    .expertise-card .ex-icon { font-size: 2rem; margin-bottom: 10px; }
+    .expertise-card h5 { font-size: 1rem; color: var(--clr-primary); margin-bottom: 4px; }
+    .expertise-card p { font-size: .78rem; color: var(--clr-text-muted); line-height: 1.5; }
+
+    /* ── Credentials ── */
+    .cred-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .cred-card {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.25s;
+      box-shadow: 0 2px 8px rgba(10,38,71,.04);
+    }
+    .cred-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(10,38,71,.12);
+      border-color: var(--clr-accent);
+    }
+    .cred-icon { font-size: 2.8rem; margin-bottom: 14px; }
+    .cred-card h4 { font-size: 1.1rem; color: var(--clr-primary); margin-bottom: 8px; }
+    .cred-card p { font-size: .84rem; color: var(--clr-text-muted); margin-bottom: 14px; line-height: 1.6; }
+
+    /* ── Mission & Vision ── */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .mv-card {
+      border-radius: 20px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mv-card.mission {
+      background: var(--clr-primary);
+      color: white;
+    }
+    .mv-card.vision {
+      background: linear-gradient(135deg, var(--clr-accent-dark), var(--clr-accent));
+    }
+    .mv-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+    }
+    .mv-icon { font-size: 2.5rem; margin-bottom: 18px; display: block; position: relative; z-index: 1; }
+    .mv-card h3 { font-size: 1.4rem; margin-bottom: 14px; position: relative; z-index: 1; }
+    .mv-card.mission h3 { color: white; }
+    .mv-card.vision h3 { color: var(--clr-primary); }
+    .mv-card p { font-size: .92rem; line-height: 1.75; position: relative; z-index: 1; }
+    .mv-card.mission p { color: rgba(255,255,255,.75); }
+    .mv-card.vision p { color: rgba(10,38,71,.8); }
+
+    /* ── CTA ── */
+    .about-cta {
+      background: linear-gradient(135deg, var(--clr-primary-dark), var(--clr-primary));
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .about-cta-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; padding: 0 24px; }
+    .about-cta h2 { font-size: clamp(2rem, 4vw, 3rem); color: white; margin-bottom: 16px; }
+    .about-cta p { font-size: 1rem; color: rgba(255,255,255,.7); line-height: 1.75; margin-bottom: 36px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* Dark mode overrides */
+    [data-theme="dark"] .expertise-card { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.1); }
+    [data-theme="dark"] .expertise-card:hover { border-color: var(--clr-accent); }
+    [data-theme="dark"] .expertise-card h5 { color: #E6EDF3; }
+    [data-theme="dark"] .cred-card { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.1); }
+    [data-theme="dark"] .cred-card h4 { color: #E6EDF3; }
+    [data-theme="dark"] .tl-title { color: #E6EDF3; }
+    [data-theme="dark"] .tl-dot { border-color: #0A0F1A; }
+    [data-theme="dark"] .founder-quote p { color: rgba(230,237,243,.8); }
+    [data-theme="dark"] .founder-quote { background: rgba(201,168,76,.08); }
+    [data-theme="dark"] .skill-track { background: rgba(255,255,255,.08); }
+    [data-theme="dark"] .skill-name { color: #E6EDF3; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .founder-grid { grid-template-columns: 1fr; gap: 48px; }
+      .founder-visual { order: -1; }
+      .founder-card { max-width: 320px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2)::after { display: none; }
+      .skills-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cred-cards { grid-template-columns: 1fr 1fr; }
+      .mv-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .timeline-spine { display: none; }
+      .tl-item { grid-template-columns: 1fr; gap: 0; }
+      .tl-item.right .tl-left,
+      .tl-item.left .tl-right { display: none; }
+      .tl-center { justify-content: flex-start; padding-left: 0; margin-bottom: 8px; }
+      .tl-left, .tl-right { text-align: left; padding: 0; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item::after { display: none; }
+      .expertise-cards { grid-template-columns: 1fr 1fr; }
+      .cred-cards { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
+
+  <!-- ── Navbar ── -->
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">
-        <div class="logo-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg></div>
+      <a href="index.html" class="nav-logo" aria-label="Midnight Escapes Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg>
+        </div>
         <span>Midnight<em>Escapes</em></span>
       </a>
-      <ul class="nav-menu">
+
+      <ul class="nav-menu" role="list">
         <li class="nav-item">
-          <span class="nav-link" tabindex="0">Home <span class="chevron">▾</span></span>
-          <div class="nav-dropdown">
-            <a href="index.html"><span class="dd-icon">🏠</span> Home 1 — Editorial</a>
-            <a href="home2.html"><span class="dd-icon">✨</span> Home 2 — Cinematic</a>
+          <span class="nav-link" tabindex="0" aria-haspopup="true">Home <span class="chevron" aria-hidden="true">▾</span></span>
+          <div class="nav-dropdown" role="menu">
+            <a href="index.html" role="menuitem"><span class="dd-icon">🏠</span> Home 1 — Editorial</a>
+            <a href="home2.html" role="menuitem"><span class="dd-icon">✨</span> Home 2 — Cinematic</a>
           </div>
         </li>
         <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
@@ -28,28 +467,32 @@
         <li class="nav-item"><a href="blogs.html" class="nav-link">Blog</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         <li class="nav-item">
-          <span class="nav-link" tabindex="0">Dashboard <span class="chevron">▾</span></span>
-          <div class="nav-dropdown">
-            <a href="admin-dashboard.html"><span class="dd-icon">⚙️</span> Admin Dashboard</a>
-            <a href="user-dashboard.html"><span class="dd-icon">👤</span> Player Dashboard</a>
+          <span class="nav-link" tabindex="0" aria-haspopup="true">Dashboard <span class="chevron" aria-hidden="true">▾</span></span>
+          <div class="nav-dropdown" role="menu">
+            <a href="admin-dashboard.html" role="menuitem"><span class="dd-icon">⚙️</span> Admin Dashboard</a>
+            <a href="user-dashboard.html" role="menuitem"><span class="dd-icon">👤</span> User Dashboard</a>
           </div>
         </li>
       </ul>
+
       <div class="nav-actions">
-        <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle theme">🌙</button>
-        <button class="nav-toggle-btn rtl-btn" data-rtl-toggle aria-label="Toggle RTL">RTL →</button>
+        <button class="nav-toggle-btn" data-theme-toggle id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button class="nav-toggle-btn" data-rtl-toggle id="rtl-toggle" aria-label="Toggle RTL/LTR layout" title="Toggle RTL/LTR" style="font-size:.72rem;padding:0 6px;width:auto;min-width:48px">RTL →</button>
         <a href="login.html" class="btn btn-outline btn-sm">Login</a>
         <a href="register.html" class="btn btn-accent btn-sm">Get Started</a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobile-drawer">
+  <!-- ── Mobile Drawer ── -->
+  <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-label="Mobile navigation">
     <div class="mobile-nav">
-      <div class="mobile-nav-link" data-mobile-toggle="ma-home-sub">Home <span>▾</span></div>
-      <div id="ma-home-sub" class="mobile-sub">
+      <div class="mobile-nav-link" data-mobile-toggle="mob-home-sub">Home <span>▾</span></div>
+      <div id="mob-home-sub" class="mobile-sub" style="display:none">
         <a href="index.html" class="mobile-sub-item">🏠 Home 1 — Editorial</a>
         <a href="home2.html" class="mobile-sub-item">✨ Home 2 — Cinematic</a>
       </div>
@@ -57,8 +500,8 @@
       <a href="services.html" class="mobile-nav-link">Services</a>
       <a href="blogs.html" class="mobile-nav-link">Blog</a>
       <a href="contact.html" class="mobile-nav-link">Contact</a>
-      <div class="mobile-nav-link" data-mobile-toggle="ma-dash-sub">Dashboard <span>▾</span></div>
-      <div id="ma-dash-sub" class="mobile-sub">
+      <div class="mobile-nav-link" data-mobile-toggle="mob-dash-sub">Dashboard <span>▾</span></div>
+      <div id="mob-dash-sub" class="mobile-sub" style="display:none">
         <a href="admin-dashboard.html" class="mobile-sub-item">⚙️ Admin Dashboard</a>
         <a href="user-dashboard.html" class="mobile-sub-item">👤 User Dashboard</a>
       </div>
@@ -68,47 +511,64 @@
       <a href="register.html" class="btn btn-accent btn-sm w-100">Get Started</a>
     </div>
     <div class="mobile-toggles">
-      <button class="nav-toggle-btn" data-theme-toggle>🌙</button>
-      <button class="nav-toggle-btn rtl-btn" data-rtl-toggle>RTL →</button>
+      <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+      <button class="nav-toggle-btn" data-rtl-toggle aria-label="Toggle RTL" style="font-size:.72rem;width:auto;min-width:48px;padding:0 6px">RTL →</button>
     </div>
   </div>
 
-  <!-- 1. Page Hero -->
-  <div class="page-hero">
-    <div class="container relative">
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>About</span></div>
-      <h1>Alex Thorne</h1>
-      <p class="hero-subtitle">Master Game Designer · Founder of Midnight Escapes · Crafting Puzzles Since 2018</p>
-    </div>
-  </div>
 
-  <!-- 2. Bio & Philosophy -->
-  <section class="section">
+  <!-- ══════════════════════════════════════
+       1. HERO
+  ══════════════════════════════════════ -->
+  <section class="about-hero">
+    <div class="about-hero-glow"></div>
+    <div class="about-hero-inner reveal">
+      <div class="about-hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,.7)">About</span>
+      </div>
+      <div class="about-hero-badge">🧩 Meet the Architect</div>
+      <h1 class="about-hero-title">Behind the <span class="gold">Midnight</span> Mystery</h1>
+      <p class="about-hero-desc">Alex Thorne — Founder, Master Game Designer, and the creative mind who turned a Brooklyn warehouse into New York's most acclaimed escape experience.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="services.html" class="btn btn-accent btn-lg">Explore Rooms <span class="arrow">→</span></a>
+        <a href="contact.html" class="btn btn-outline-white btn-lg">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       2. FOUNDER STORY
+  ══════════════════════════════════════ -->
+  <section class="section" style="padding:96px 0">
     <div class="container">
-      <div class="grid-2 align-center">
-        <div class="reveal-left flex justify-center">
-          <div class="about-visual-wrap">
-            <div class="about-lawyer-card">
-              <div class="about-card-circle"></div>
-              <div class="about-card-emoji">🧩</div>
-              <div class="about-card-name">Alex Thorne</div>
-              <div class="about-card-role">Master Designer · Founder</div>
-            </div>
-            <div class="hero-floating-badge-about">
-              <div class="badge-num" data-counter="8" data-suffix="+">8+</div>
-              <div class="badge-text">Years of Design</div>
+      <div class="founder-grid">
+
+        <!-- Visual Card -->
+        <div class="founder-visual reveal-left">
+          <div class="founder-card">
+            <span class="founder-emoji">🧩</span>
+            <div class="founder-name">Alex Thorne</div>
+            <div class="founder-role">Master Designer · Founder</div>
+            <div class="founder-badge">
+              <div class="founder-badge-num" data-counter="8" data-suffix="+">8+</div>
+              <div class="founder-badge-text">Years of Design</div>
             </div>
           </div>
         </div>
-        <div class="reveal-right">
+
+        <!-- Text Content -->
+        <div class="founder-text reveal-right">
           <div class="section-label">The Architect</div>
           <h2 class="section-title">A Vision for Immersive Storytelling</h2>
-          <p class="mb-3">Alex Thorne graduated from the Rhode Island School of Design with a background in theatrical set design and mechanical engineering. After years of designing special effects for off-Broadway productions, Alex saw an opportunity to bring high-production value and narrative depth to the emerging world of escape rooms.</p>
-          <p class="mb-5">In 2018, Alex opened the first Midnight Escapes location in a converted Brooklyn warehouse. What started as a small, experimental project has grown into a world-class facility known for its "logic-first" puzzle design and cinematic atmosphere. Every room is a labor of love, designed to push the boundaries of reality.</p>
-          <div class="quote-box-inline mb-5">
+          <p>Alex Thorne graduated from the Rhode Island School of Design with a background in theatrical set design and mechanical engineering. After years designing special effects for off-Broadway productions, Alex saw an opportunity to bring high-production value and narrative depth to the emerging world of escape rooms.</p>
+          <p>In 2018, Alex opened Midnight Escapes in a converted Brooklyn warehouse. What started as a small experimental project has grown into a world-class facility known for its "logic-first" puzzle design and cinematic atmosphere.</p>
+          <div class="founder-quote">
             <p>"We don't just build rooms — we build worlds that challenge the mind and soul."</p>
           </div>
-          <div class="flex gap-2 flex-wrap">
+          <div class="founder-actions">
             <a href="contact.html" class="btn btn-primary">Book Your Adventure <span class="arrow">→</span></a>
             <a href="services.html" class="btn btn-outline">Explore Rooms</a>
           </div>
@@ -117,192 +577,254 @@
     </div>
   </section>
 
-  <!-- 3. Stats Strip -->
-  <section class="section-primary section-sm">
+
+  <!-- ══════════════════════════════════════
+       3. STATS STRIP
+  ══════════════════════════════════════ -->
+  <section class="stats-strip">
     <div class="container">
-      <div class="grid-4 text-center">
-        <div class="reveal"><div class="stat-num-light" data-counter="8" data-suffix="+">8+</div><div class="stat-label-light">Years in Business</div></div>
-        <div class="reveal delay-1"><div class="stat-num-light" data-counter="50" data-suffix="k+">50k+</div><div class="stat-label-light">Players Escaped</div></div>
-        <div class="reveal delay-2"><div class="stat-num-light" data-counter="42" data-suffix="%">42%</div><div class="stat-label-light">Average Success</div></div>
-        <div class="reveal delay-3"><div class="stat-num-light" data-counter="18" data-suffix="">18</div><div class="stat-label-light">Industry Awards</div></div>
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-number" data-counter="8" data-suffix="+">8+</div>
+          <div class="stat-label-text">Years in Business</div>
+        </div>
+        <div class="stat-item reveal delay-1">
+          <div class="stat-number" data-counter="50" data-suffix="k+">50k+</div>
+          <div class="stat-label-text">Players Escaped</div>
+        </div>
+        <div class="stat-item reveal delay-2">
+          <div class="stat-number" data-counter="42" data-suffix="%">42%</div>
+          <div class="stat-label-text">Average Success Rate</div>
+        </div>
+        <div class="stat-item reveal delay-3">
+          <div class="stat-number" data-counter="18" data-suffix="">18</div>
+          <div class="stat-label-text">Industry Awards</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Career Timeline -->
-  <section class="section section-alt">
+
+  <!-- ══════════════════════════════════════
+       4. TIMELINE
+  ══════════════════════════════════════ -->
+  <section class="section" style="background:var(--clr-surface-alt);padding:96px 0">
     <div class="container">
       <div class="section-head center">
         <div class="section-label">Our Journey</div>
         <h2 class="section-title">Milestones of Mystery</h2>
+        <p class="section-desc mx-auto">From a Brooklyn garage to New York's premier escape room destination.</p>
       </div>
-      <div class="timeline-wrap max-w-800 mx-auto">
-        <!-- Timeline vertical line -->
-        <div class="timeline-line"></div>
-        <div class="timeline-items flex flex-col gap-5">
-          <!-- Item 1 -->
-          <div class="timeline-item reveal grid-2 gap-4 align-center">
-            <div class="timeline-content text-right pr-4">
-              <div class="timeline-year">2018</div>
-              <h4 class="mb-1">Garage Beginnings</h4>
-              <p class="fs-sm text-muted">First prototype room built in a Brooklyn garage for friends and family.</p>
+
+      <div class="timeline-container">
+        <div class="timeline-spine"></div>
+        <div class="tl-items">
+
+          <div class="tl-item left reveal">
+            <div class="tl-left">
+              <div class="tl-year">2018</div>
+              <div class="tl-title">Garage Beginnings</div>
+              <div class="tl-desc">First prototype room built in a Brooklyn garage for friends and family. The spark of something extraordinary.</div>
             </div>
-            <div class="timeline-dot"></div>
-            <div></div>
+            <div class="tl-center"><div class="tl-dot"></div></div>
+            <div class="tl-right"></div>
           </div>
-          <!-- Item 2 -->
-          <div class="timeline-item reveal grid-2 gap-4 align-center">
-            <div></div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content pl-4">
-              <div class="timeline-year">2020</div>
-              <h4 class="mb-1">Midnight Mainstage</h4>
-              <p class="fs-sm text-muted">Opened our current Mystery Lane flagship facility with 3 rooms.</p>
-            </div>
-          </div>
-          <!-- Item 3 -->
-          <div class="timeline-item reveal grid-2 gap-4 align-center">
-            <div class="timeline-content text-right pr-4">
-              <div class="timeline-year">2022</div>
-              <h4 class="mb-1">Tech Revolution</h4>
-              <p class="fs-sm text-muted">Integrated advanced robotics and AI interaction into our gameplay.</p>
-            </div>
-            <div class="timeline-dot"></div>
-            <div></div>
-          </div>
-          <!-- Item 4 -->
-          <div class="timeline-item reveal grid-2 gap-4 align-center">
-            <div></div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content pl-4">
-              <div class="timeline-year">2025</div>
-              <h4 class="mb-1">Best in State Award</h4>
-              <p class="fs-sm text-muted">Voted #1 Immersive Experience for the third consecutive year.</p>
+
+          <div class="tl-item right reveal delay-1">
+            <div class="tl-left"></div>
+            <div class="tl-center"><div class="tl-dot"></div></div>
+            <div class="tl-right">
+              <div class="tl-year">2020</div>
+              <div class="tl-title">Midnight Mainstage</div>
+              <div class="tl-desc">Opened our Mystery Lane flagship facility with 3 fully immersive rooms and a professional game master team.</div>
             </div>
           </div>
+
+          <div class="tl-item left reveal delay-2">
+            <div class="tl-left">
+              <div class="tl-year">2022</div>
+              <div class="tl-title">Tech Revolution</div>
+              <div class="tl-desc">Integrated advanced robotics and AI-driven interactions into gameplay, setting a new industry standard.</div>
+            </div>
+            <div class="tl-center"><div class="tl-dot"></div></div>
+            <div class="tl-right"></div>
+          </div>
+
+          <div class="tl-item right reveal delay-3">
+            <div class="tl-left"></div>
+            <div class="tl-center"><div class="tl-dot"></div></div>
+            <div class="tl-right">
+              <div class="tl-year">2024</div>
+              <div class="tl-title">Best of NYC Award</div>
+              <div class="tl-desc">Voted #1 Immersive Experience by TimeOut Magazine for the third consecutive year with 6 active rooms.</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. Mastery & Skills -->
-  <section class="section">
+
+  <!-- ══════════════════════════════════════
+       5. SKILLS & EXPERTISE
+  ══════════════════════════════════════ -->
+  <section class="section" style="padding:96px 0">
     <div class="container">
-      <div class="section-head center">
+      <div class="section-head center" style="margin-bottom:60px">
         <div class="section-label">Expertise</div>
         <h2 class="section-title">Areas of Mastery</h2>
       </div>
-      <div class="grid-2 align-center gap-8">
+      <div class="skills-grid">
+
+        <!-- Skill Bars -->
         <div class="reveal-left">
-          <div class="flex flex-col gap-3">
-            <div class="skill-item">
-              <div class="flex justify-between mb-1"><span class="fw-600 fs-sm">Set Production & Immersion</span><span class="text-accent fw-700">98%</span></div>
-              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:98%"></div></div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-name">Set Production &amp; Immersion</span>
+              <span class="skill-pct">98%</span>
             </div>
-            <div class="skill-item">
-              <div class="flex justify-between mb-1"><span class="fw-600 fs-sm">Puzzle Logic Design</span><span class="text-accent fw-700">95%</span></div>
-              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+            <div class="skill-track"><div class="skill-fill" style="width:98%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-name">Puzzle Logic Design</span>
+              <span class="skill-pct">95%</span>
             </div>
-            <div class="skill-item">
-              <div class="flex justify-between mb-1"><span class="fw-600 fs-sm">Technology Integration</span><span class="text-accent fw-700">92%</span></div>
-              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:92%"></div></div>
+            <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-name">Technology Integration</span>
+              <span class="skill-pct">92%</span>
             </div>
-            <div class="skill-item">
-              <div class="flex justify-between mb-1"><span class="fw-600 fs-sm">Player Safety & Operations</span><span class="text-accent fw-700">99%</span></div>
-              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:99%"></div></div>
+            <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-name">Player Safety &amp; Operations</span>
+              <span class="skill-pct">99%</span>
             </div>
+            <div class="skill-track"><div class="skill-fill" style="width:99%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header">
+              <span class="skill-name">Narrative &amp; World Building</span>
+              <span class="skill-pct">96%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:96%"></div></div>
           </div>
         </div>
+
+        <!-- Expertise Cards -->
         <div class="reveal-right">
-          <div class="grid-2 gap-3">
-            <div class="card p-4 text-center">
-              <div class="fs-2 mb-2">🎭</div>
+          <div class="expertise-cards">
+            <div class="expertise-card">
+              <div class="ex-icon">🎭</div>
               <h5>Atmosphere</h5>
-              <p class="fs-xs text-muted">Cinematic sound & light</p>
+              <p>Cinematic sound &amp; lighting</p>
             </div>
-            <div class="card p-4 text-center">
-              <div class="fs-2 mb-2">🧩</div>
+            <div class="expertise-card">
+              <div class="ex-icon">🧩</div>
               <h5>Logic</h5>
-              <p class="fs-xs text-muted">Fair but challenging puzzles</p>
+              <p>Fair but challenging puzzles</p>
             </div>
-            <div class="card p-4 text-center">
-              <div class="fs-2 mb-2">🤖</div>
-              <h5>Tech</h5>
-              <p class="fs-xs text-muted">Custom mechanical props</p>
+            <div class="expertise-card">
+              <div class="ex-icon">🤖</div>
+              <h5>Technology</h5>
+              <p>Custom mechanical props</p>
             </div>
-            <div class="card p-4 text-center">
-              <div class="fs-2 mb-2">🛡️</div>
+            <div class="expertise-card">
+              <div class="ex-icon">🛡️</div>
               <h5>Safety</h5>
-              <p class="fs-xs text-muted">Certified operations</p>
+              <p>Certified operations team</p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- 6. Credentials -->
-  <section class="section section-alt">
+
+  <!-- ══════════════════════════════════════
+       6. CREDENTIALS
+  ══════════════════════════════════════ -->
+  <section class="section" style="background:var(--clr-surface-alt);padding:96px 0">
     <div class="container">
-      <div class="section-head center">
-        <div class="section-label">Associations</div>
+      <div class="section-head center" style="margin-bottom:48px">
+        <div class="section-label">Recognition</div>
         <h2 class="section-title">Industry Memberships &amp; Accolades</h2>
       </div>
-      <div class="grid-3">
-        <div class="card reveal text-center p-5">
-          <div class="fs-2-5 mb-2">🌟</div>
+      <div class="cred-cards">
+        <div class="cred-card reveal">
+          <div class="cred-icon">🌟</div>
           <h4>TEPA Global</h4>
-          <p class="fs-sm text-muted">Themed Entertainment & Puzzle Assoc.</p>
-          <div class="badge badge-success mt-2">Member</div>
+          <p>Themed Entertainment &amp; Puzzle Association — our industry's leading professional body.</p>
+          <span class="badge badge-success">Active Member</span>
         </div>
-        <div class="card reveal text-center p-5 delay-1">
-          <div class="fs-2-5 mb-2">🎡</div>
+        <div class="cred-card reveal delay-1">
+          <div class="cred-icon">🎡</div>
           <h4>IAAPA</h4>
-          <p class="fs-sm text-muted">Int. Assoc. of Amusement Parks</p>
-          <div class="badge badge-success mt-2">Member</div>
+          <p>International Association of Amusement Parks and Attractions — global excellence standard.</p>
+          <span class="badge badge-success">Certified Member</span>
         </div>
-        <div class="card reveal text-center p-5 delay-2">
-          <div class="fs-2-5 mb-2">🏆</div>
-          <h4>Best of NYC</h4>
-          <p class="fs-sm text-muted">TimeOut Magazine — 2024</p>
-          <div class="badge badge-gold mt-2">Winner</div>
+        <div class="cred-card reveal delay-2">
+          <div class="cred-icon">🏆</div>
+          <h4>Best of NYC 2024</h4>
+          <p>TimeOut Magazine — voted #1 Immersive Experience in New York for the third year running.</p>
+          <span class="badge badge-gold">Award Winner</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 7. Mission & Vision -->
-  <section class="section">
+
+  <!-- ══════════════════════════════════════
+       7. MISSION & VISION
+  ══════════════════════════════════════ -->
+  <section class="section" style="padding:96px 0">
     <div class="container">
-      <div class="grid-2 gap-6">
-        <div class="card reveal-left p-6 border-top-accent">
-          <div class="fs-3 mb-3">🎯</div>
-          <h3 class="mb-3">Our Mission</h3>
-          <p class="text-muted">To push the boundaries of immersive storytelling, providing meticulously crafted adventures that foster teamwork, spark imagination, and create lasting memories for our players.</p>
+      <div class="section-head center" style="margin-bottom:48px">
+        <div class="section-label">Purpose</div>
+        <h2 class="section-title">Mission &amp; Vision</h2>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-card mission reveal-left">
+          <span class="mv-icon">🎯</span>
+          <h3>Our Mission</h3>
+          <p>To push the boundaries of immersive storytelling, providing meticulously crafted adventures that foster teamwork, spark imagination, and create lasting memories for every player who walks through our doors.</p>
         </div>
-        <div class="card reveal-right p-6 border-top-primary">
-          <div class="fs-3 mb-3">🔭</div>
-          <h3 class="mb-3">Our Vision</h3>
-          <p class="text-muted">To become the world standard for high-production escape experiences, where the line between fiction and reality disappears completely for one unforgettable hour.</p>
+        <div class="mv-card vision reveal-right">
+          <span class="mv-icon">🔭</span>
+          <h3>Our Vision</h3>
+          <p>To become the world standard for high-production escape experiences, where the line between fiction and reality disappears completely — for one unforgettable, mind-bending hour.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. CTA -->
-  <section class="section-primary section-lg text-center">
-    <div class="container reveal">
-      <h2 class="text-white mb-2">Dare to Escape?</h2>
-      <p class="text-light max-w-540 mx-auto mb-5">Your team is ready. The clock is ticking. Book your Midnight Escape today and see if you have what it takes.</p>
-      <div class="flex gap-2 justify-center flex-wrap">
-        <a href="services.html" class="btn btn-accent btn-lg">Book Adventure <span class="arrow">→</span></a>
+
+  <!-- ══════════════════════════════════════
+       8. CTA
+  ══════════════════════════════════════ -->
+  <section class="about-cta">
+    <div class="about-cta-inner reveal">
+      <div class="section-label" style="justify-content:center;display:inline-flex;margin-bottom:16px">Begin Your Quest</div>
+      <h2>Dare to Escape?</h2>
+      <p>Your team is ready. The clock is ticking. Book your Midnight Escape today and discover if you have what it takes.</p>
+      <div class="cta-btns">
+        <a href="services.html" class="btn btn-accent btn-lg">Book an Adventure <span class="arrow">→</span></a>
         <a href="contact.html" class="btn btn-outline-white btn-lg">Group Events</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer id="footer">
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer id="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -310,44 +832,54 @@
             <div class="logo-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg></div>
             <span>Midnight<em>Escapes</em></span>
           </a>
-          <p>Unforgettable immersive adventures. Escape the ordinary.</p>
+          <p>Unforgettable immersive adventures. Escape the ordinary. NY's premier venue since 2018.</p>
           <div class="footer-socials">
-            <a href="#" class="footer-social-link">in</a><a href="#" class="footer-social-link">𝕏</a><a href="#" class="footer-social-link">f</a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">in</a>
+            <a href="#" class="footer-social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="footer-social-link" aria-label="Facebook">f</a>
           </div>
         </div>
         <div class="footer-col">
-          <h5>Practice Areas</h5>
+          <h5>Experience Rooms</h5>
           <nav class="footer-links">
-            <a href="service-details.html?service=divorce-separation">Divorce</a>
-            <a href="service-details.html?service=child-custody">Child Custody</a>
-            <a href="service-details.html?service=adoption">Adoption</a>
-            <a href="service-details.html?service=wills-trusts">Wills & Trusts</a>
-            <a href="service-details.html?service=estate-planning">Estate Planning</a>
-            <a href="service-details.html?service=probate">Probate</a>
+            <a href="service-details.html?service=haunted-mansion">Haunted Mansion</a>
+            <a href="service-details.html?service=prison-break">Prison Break</a>
+            <a href="service-details.html?service=spy-mission">Spy Mission</a>
+            <a href="service-details.html?service=treasure-hunt">Treasure Hunt</a>
+            <a href="service-details.html?service=the-lost-tomb">The Lost Tomb</a>
+            <a href="service-details.html?service=the-asylum">The Asylum</a>
           </nav>
         </div>
         <div class="footer-col">
-          <h5>Quick Links</h5>
+          <h5>Navigation</h5>
           <nav class="footer-links">
-            <a href="about.html">About</a>
-            <a href="blogs.html">Blog</a>
-            <a href="contact.html">Contact</a>
-            <a href="login.html">Client Portal</a>
+            <a href="about.html">Our Story</a>
+            <a href="blogs.html">The Escape Journal</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Player Portal</a>
+            <a href="register.html">Register Free</a>
           </nav>
         </div>
         <div class="footer-col">
           <h5>Contact</h5>
-          <div class="footer-contact-item"><span class="icon">📍</span><span>123 Mystery Lane, New York, NY 10001</span></div>
+          <div class="footer-contact-item"><span class="icon">📍</span><span>123 Mystery Lane<br/>New York, NY 10001</span></div>
           <div class="footer-contact-item"><span class="icon">📞</span><span>(555) ESC-APES</span></div>
           <div class="footer-contact-item"><span class="icon">✉️</span><span>hello@midnightescapes.com</span></div>
+          <div class="footer-contact-item"><span class="icon">🕒</span><span>Mon–Sun: 12pm – 11pm</span></div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="m-0">&copy; 2026 Midnight Escapes. All rights reserved.</p>
-        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+        <p class="m-0">© 2026 Midnight Escapes. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Disclaimer</a>
+        </div>
       </div>
     </div>
   </footer>
+
+  <button id="back-to-top" aria-label="Back to top">↑</button>
 
   <script src="assets/js/main.js"></script>
 </body>
