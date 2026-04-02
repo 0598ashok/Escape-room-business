@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗝️</text></svg>">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Login to the Midnight Escapes player portal to access your bookings, waivers, and messages."/>
-  <title>Player Login | Midnight Escapes</title>
+  <meta name="description" content="Login to the VaultEscape player portal to access your bookings, waivers, and messages."/>
+  <title>Player Login | VaultEscape</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/rtl.css">
   <style>
     /* ── Auth Page Scoped Styles ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -374,6 +377,7 @@
       .auth-form-panel { min-height: 100vh; padding: 80px 24px 40px; }
     }
   </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <div class="auth-root">
@@ -387,7 +391,7 @@
           <div class="logo-icon">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
           </div>
-          <span>Midnight<em>Escapes</em></span>
+          <span>Vault<em>Escape</em></span>
         </a>
 
         <h2 class="auth-brand-heading">Your Adventure<br/>Starts Here</h2>
@@ -395,7 +399,7 @@
 
         <div class="auth-brand-features">
           <div class="auth-feature-item">
-            <span class="auth-feature-icon">🗝️</span>
+            <span class="auth-feature-icon"><i data-lucide="key"></i></span>
             <span class="auth-feature-text">Manage bookings & reservations</span>
           </div>
           <div class="auth-feature-item">
@@ -430,13 +434,13 @@
         <!-- Mobile-only logo -->
         <a href="index.html" class="auth-mobile-logo">
           <div class="logo-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm0 2c1.654 0 3 1.346 3 3v3H9V7c0-1.654 1.346-3 3-3zm-1 11.268A2.001 2.001 0 0 1 12 18a2.001 2.001 0 0 1-1-3.732V13h2v1.268z"/></svg>
           </div>
-          <span>Midnight<em>Escapes</em></span>
+          <span>Vault<em>Escape</em></span>
         </a>
 
         <h1 class="auth-form-title">Welcome Back</h1>
-        <p class="auth-form-subtitle">Sign in to your Midnight Escapes player portal.</p>
+        <p class="auth-form-subtitle">Sign in to your VaultEscape player portal.</p>
 
         <!-- Social Login -->
         <div class="social-login-grid">
@@ -494,7 +498,7 @@
           Don't have an account? <a href="register.html">Create one free</a>
         </div>
 
-        <a href="index.html" class="auth-back-link">← Back to MidnightEscapes.com</a>
+        <a href="index.html" class="auth-back-link">← Back to VaultEscape.com</a>
       </div>
     </div>
 

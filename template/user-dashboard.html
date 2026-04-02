@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗝️</text></svg>">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Player Dashboard — Midnight Escapes adventure portal.">
-  <title>Player Dashboard | Midnight Escapes</title>
+  <meta name="description" content="Player Dashboard — VaultEscape adventure portal.">
+  <title>Player Dashboard | VaultEscape</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -18,11 +21,9 @@
     <div class="dash-sidebar-header">
       <a href="index.html" class="dash-logo">
         <div class="dash-logo-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-          </svg>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm0 2c1.654 0 3 1.346 3 3v3H9V7c0-1.654 1.346-3 3-3zm-1 11.268A2.001 2.001 0 0 1 12 18a2.001 2.001 0 0 1-1-3.732V13h2v1.268z"/></svg>
         </div>
-        <span class="dash-logo-text">Midnight<span style="color:var(--clr-accent)">Escapes</span></span>
+        <span class="dash-logo-text">Vault<span style="color:var(--clr-accent)">Escape</span></span>
       </a>
     </div>
 
@@ -30,15 +31,15 @@
       <div class="dash-nav-group">
         <div class="dash-nav-label">My Portal</div>
         <a class="dash-nav-link active" data-section="overview" href="#overview">
-          <i data-lucide="layout-dashboard"></i>
+          <i data-lucide="layout-dashboard" class="dash-icon-md"></i>
           <span class="dash-nav-text">Overview</span>
         </a>
         <a class="dash-nav-link" data-section="adventures" href="#adventures">
-          <i data-lucide="map"></i>
+          <i data-lucide="trophy" class="dash-icon-md"></i>
           <span class="dash-nav-text">My Adventures</span>
         </a>
         <a class="dash-nav-link" data-section="bookings" href="#bookings">
-          <i data-lucide="calendar"></i>
+          <i data-lucide="calendar-check" class="dash-icon-md"></i>
           <span class="dash-nav-text">My Bookings</span>
         </a>
       </div>
@@ -46,12 +47,12 @@
       <div class="dash-nav-group">
         <div class="dash-nav-label">Resources</div>
         <a class="dash-nav-link" data-section="waivers" href="#waivers">
-          <i data-lucide="file-text"></i>
+          <i data-lucide="file-check" class="dash-icon-md"></i>
           <span class="dash-nav-text">My Waivers</span>
           <span class="nav-badge" style="background:#ef4444;color:#fff;">2</span>
         </a>
         <a class="dash-nav-link" data-section="messages" href="#messages">
-          <i data-lucide="mail"></i>
+          <i data-lucide="message-square" class="dash-icon-md"></i>
           <span class="dash-nav-text">Messages</span>
         </a>
       </div>
@@ -59,7 +60,7 @@
       <div class="dash-nav-group">
         <div class="dash-nav-label">Account</div>
         <a class="dash-nav-link" data-section="profile" href="#profile">
-          <i data-lucide="user"></i>
+          <i data-lucide="user" class="dash-icon-md"></i>
           <span class="dash-nav-text">Profile Settings</span>
         </a>
       </div>
@@ -104,6 +105,9 @@
         <button class="dash-topbar-btn" data-theme-toggle title="Toggle theme">
           <i data-lucide="moon" class="dash-icon-md"></i>
         </button>
+        <button class="dash-topbar-btn" data-rtl-toggle title="Toggle RTL">
+          <i data-lucide="languages" class="dash-icon-md"></i>
+        </button>
         <div class="divider-v"></div>
         <a href="contact.html" class="btn btn-accent btn-sm" style="white-space:nowrap;">Book Room</a>
       </div>
@@ -118,7 +122,7 @@
         <!-- Welcome Card -->
         <div class="dash-welcome-card">
           <div class="dash-welcome-inner">
-            <h2>Welcome back, Sarah! 👋</h2>
+            <h2>Welcome back, Sarah! <i data-lucide="hand"></i></h2>
             <p>Your next adventure is coming up on <strong style="color:var(--clr-accent);">April 12th — Haunted Mansion</strong>. Your group of 6 is confirmed. Ensure all waivers are signed before arrival.</p>
             <div class="dash-welcome-actions">
               <button class="btn btn-accent btn-sm" onclick="activateSection('waivers')">
@@ -134,24 +138,24 @@
         <!-- Stats -->
         <div class="dash-stats-grid">
           <div class="stat-widget">
-            <div class="stat-header"><span class="stat-label">Upcoming Escapes</span><div class="stat-icon dash-bg-info"><i data-lucide="calendar"></i></div></div>
+            <div class="stat-header"><span class="stat-label">Upcoming Escapes</span><div class="stat-icon dash-bg-info"><img src="assets/img/haunted_mansion_1774937219200.png" class="stat-img" alt="Upcoming"></div></div>
             <div class="stat-value">1</div>
             <div class="stat-footer">Haunted Mansion · Apr 12</div>
           </div>
           <div class="stat-widget">
-            <div class="stat-header"><span class="stat-label">Waivers Signed</span><div class="stat-icon dash-bg-success"><i data-lucide="file-check"></i></div></div>
+            <div class="stat-header"><span class="stat-label">Waivers Signed</span><div class="stat-icon dash-bg-success"><img src="assets/img/lost_tomb_1774937402250.png" class="stat-img" alt="Waivers"></div></div>
             <div class="stat-value">4/6</div>
             <div class="stat-footer"><span style="color:#ef4444;">2 players pending</span></div>
           </div>
           <div class="stat-widget">
-            <div class="stat-header"><span class="stat-label">Next Session</span><div class="stat-icon dash-bg-warning"><i data-lucide="clock"></i></div></div>
+            <div class="stat-header"><span class="stat-label">Next Session</span><div class="stat-icon dash-bg-warning"><img src="assets/img/treasure_hunt_1774937365746.png" class="stat-img" alt="Schedule"></div></div>
             <div class="stat-value">Apr 12</div>
             <div class="stat-footer">Arrival briefing at 9:45 AM</div>
           </div>
           <div class="stat-widget">
-            <div class="stat-header"><span class="stat-label">Reward Points</span><div class="stat-icon dash-bg-accent"><i data-lucide="star"></i></div></div>
+            <div class="stat-header"><span class="stat-label">Reward Points</span><div class="stat-icon dash-bg-accent"><img src="assets/img/award_trophy.png" class="stat-img" alt="Points"></div></div>
             <div class="stat-value">2,450</div>
-            <div class="stat-footer">Master Escape Status 🏆</div>
+            <div class="stat-footer">Master Escape Status</div>
           </div>
         </div>
 
@@ -235,7 +239,7 @@
           <div class="stat-widget">
             <div class="stat-header"><span class="stat-label">Times Escaped</span><div class="stat-icon dash-bg-success"><i data-lucide="trophy"></i></div></div>
             <div class="stat-value">2</div>
-            <div class="stat-footer">50% success rate 🔥</div>
+            <div class="stat-footer">50% success rate <i data-lucide="flame"></i></div>
           </div>
           <div class="stat-widget">
             <div class="stat-header"><span class="stat-label">Best Time</span><div class="stat-icon dash-bg-info"><i data-lucide="zap"></i></div></div>
@@ -252,27 +256,27 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><div class="user-cell"><span style="font-size:1.2rem;">👻</span><span class="td-name">Haunted Mansion</span></div></td>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;"><i data-lucide="ghost"></i></span><span class="td-name">Haunted Mansion</span></div></td>
                   <td>Apr 12, 2026 (upcoming)</td><td>6</td><td>—</td>
                   <td><span class="dash-badge dash-badge-info">Upcoming</span></td>
                 </tr>
                 <tr>
-                  <td><div class="user-cell"><span style="font-size:1.2rem;">🕵️</span><span class="td-name">Spy Mission</span></div></td>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;"><i data-lucide="user-search"></i></span><span class="td-name">Spy Mission</span></div></td>
                   <td>Feb 20, 2026</td><td>5</td><td>38 min</td>
                   <td><span class="dash-badge dash-badge-success">Escaped ✓</span></td>
                 </tr>
                 <tr>
-                  <td><div class="user-cell"><span style="font-size:1.2rem;">🏥</span><span class="td-name">The Asylum</span></div></td>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;"><i data-lucide="hospital"></i></span><span class="td-name">The Asylum</span></div></td>
                   <td>Jan 14, 2026</td><td>4</td><td>60 min (timeout)</td>
                   <td><span class="dash-badge dash-badge-danger">Not Escaped</span></td>
                 </tr>
                 <tr>
-                  <td><div class="user-cell"><span style="font-size:1.2rem;">💎</span><span class="td-name">Treasure Hunt</span></div></td>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;"><i data-lucide="gem"></i></span><span class="td-name">Treasure Hunt</span></div></td>
                   <td>Dec 28, 2025</td><td>6</td><td>51 min</td>
                   <td><span class="dash-badge dash-badge-success">Escaped ✓</span></td>
                 </tr>
                 <tr>
-                  <td><div class="user-cell"><span style="font-size:1.2rem;">⛓️</span><span class="td-name">Prison Break</span></div></td>
+                  <td><div class="user-cell"><span style="font-size:1.2rem;"><i data-lucide="link"></i></span><span class="td-name">Prison Break</span></div></td>
                   <td>Nov 5, 2025</td><td>3</td><td>60 min (timeout)</td>
                   <td><span class="dash-badge dash-badge-danger">Not Escaped</span></td>
                 </tr>
@@ -295,21 +299,21 @@
               <tbody>
                 <tr>
                   <td>#B-8802</td>
-                  <td><div class="user-cell"><span style="font-size:1.1rem;">👻</span><span class="td-name">Haunted Mansion</span></div></td>
+                  <td><div class="user-cell"><span style="font-size:1.1rem;"><i data-lucide="ghost"></i></span><span class="td-name">Haunted Mansion</span></div></td>
                   <td>Apr 12, 2026 · 10:00 AM</td><td>6</td><td>$540</td>
                   <td><span class="dash-badge dash-badge-info">Confirmed</span></td>
                   <td><div class="td-actions"><button class="td-btn" title="View details"><i data-lucide="eye"></i></button><button class="td-btn danger" title="Cancel" onclick="if(confirm('Cancel booking?'))alert('Booking cancelled.')"><i data-lucide="x"></i></button></div></td>
                 </tr>
                 <tr>
                   <td>#B-8750</td>
-                  <td><div class="user-cell"><span style="font-size:1.1rem;">🕵️</span><span class="td-name">Spy Mission</span></div></td>
+                  <td><div class="user-cell"><span style="font-size:1.1rem;"><i data-lucide="user-search"></i></span><span class="td-name">Spy Mission</span></div></td>
                   <td>Feb 20, 2026 · 2:00 PM</td><td>5</td><td>$450</td>
                   <td><span class="dash-badge dash-badge-success">Completed</span></td>
                   <td><div class="td-actions"><button class="td-btn" title="Download receipt"><i data-lucide="download"></i></button></div></td>
                 </tr>
                 <tr>
                   <td>#B-8700</td>
-                  <td><div class="user-cell"><span style="font-size:1.1rem;">🏥</span><span class="td-name">The Asylum</span></div></td>
+                  <td><div class="user-cell"><span style="font-size:1.1rem;"><i data-lucide="hospital"></i></span><span class="td-name">The Asylum</span></div></td>
                   <td>Jan 14, 2026 · 6:00 PM</td><td>4</td><td>$360</td>
                   <td><span class="dash-badge dash-badge-success">Completed</span></td>
                   <td><div class="td-actions"><button class="td-btn" title="Download receipt"><i data-lucide="download"></i></button></div></td>
@@ -331,7 +335,7 @@
         <div class="dash-card">
           <div class="dash-card-body">
             <div class="upload-zone" id="client-dropzone" onclick="alert('File upload: Select a PDF or JPG to upload your signed waiver.')">
-              <div class="upload-icon">☁️</div>
+              <div class="upload-icon"><i data-lucide="cloud"></i></div>
               <h5>Drag &amp; Drop or Click to Upload</h5>
               <p>PDF or JPG files — up to 10 MB. All data is encrypted.</p>
             </div>
@@ -388,7 +392,7 @@
               <div class="chat-item">
                 <div class="dash-avatar" style="width:34px;height:34px;font-size:.75rem;background:#0a2647;">ME</div>
                 <div class="chat-item-info">
-                  <div class="chat-item-name">Midnight Escapes</div>
+                  <div class="chat-item-name">VaultEscape</div>
                   <div class="chat-item-preview">Booking #B-8802 confirmed!</div>
                 </div>
               </div>
@@ -405,11 +409,11 @@
               </div>
             </div>
             <div class="chat-messages" id="player-messages">
-              <div class="msg-bubble msg-in">Hi Sarah! Looking forward to your group's run on April 12th 🎉<div class="msg-time">Yesterday · 4:20 PM</div></div>
-              <div class="msg-bubble msg-out">Hi Alex! Super excited. We've been watching puzzle-solving videos 😄<div class="msg-time">Yesterday · 4:22 PM</div></div>
+              <div class="msg-bubble msg-in">Hi Sarah! Looking forward to your group's run on April 12th <i data-lucide="party-popper"></i><div class="msg-time">Yesterday · 4:20 PM</div></div>
+              <div class="msg-bubble msg-out">Hi Alex! Super excited. We've been watching puzzle-solving videos <i data-lucide="smile"></i><div class="msg-time">Yesterday · 4:22 PM</div></div>
               <div class="msg-bubble msg-in">Ha! Love the prep. Don't forget to arrive 15 mins early for the intro briefing.<div class="msg-time">Yesterday · 4:24 PM</div></div>
               <div class="msg-bubble msg-out">Absolutely! Can we add one more player — we'd be 7 instead of 6?<div class="msg-time">Yesterday · 4:30 PM</div></div>
-              <div class="msg-bubble msg-in">No problem! The room handles up to 8. I'll update the booking right now. See you soon! 🔐<div class="msg-time">Yesterday · 4:32 PM</div></div>
+              <div class="msg-bubble msg-in">No problem! The room handles up to 8. I'll update the booking right now. See you soon! <i data-lucide="lock"></i><div class="msg-time">Yesterday · 4:32 PM</div></div>
             </div>
             <div class="chat-input-row">
               <input class="chat-input-field" id="player-msg-input" type="text" placeholder="Type a message...">
@@ -459,7 +463,7 @@
                 <div class="dash-avatar" style="width:72px;height:72px;font-size:1.4rem;background:var(--clr-accent);color:var(--clr-primary);margin:0 auto 12px;">SJ</div>
                 <div style="font-weight:700;font-size:1rem;color:var(--dash-text);margin-bottom:4px;">Sarah Johnson</div>
                 <div style="font-size:.78rem;color:var(--dash-text-muted);margin-bottom:14px;">Member since Jan 2026</div>
-                <div class="dash-badge dash-badge-gold" style="margin:0 auto;display:inline-flex;">🏆 Master Escape Status</div>
+                <div class="dash-badge dash-badge-gold" style="margin:0 auto;display:inline-flex;"><i data-lucide="trophy"></i> Master Escape Status</div>
               </div>
             </div>
 
@@ -499,7 +503,6 @@
   </main>
 </div><!-- /.dash-layout -->
 
-<script src="assets/js/main.js"></script>
 <script>
   lucide.createIcons();
 
@@ -540,14 +543,6 @@
     }
   });
 
-  // ── Profile Theme Toggle ──
-  const profileToggle = document.getElementById('profile-theme-toggle');
-  if (profileToggle) {
-    profileToggle.addEventListener('change', () => {
-      document.documentElement.setAttribute('data-theme', profileToggle.checked ? 'dark' : 'light');
-    });
-  }
-
   // ── Chat Send ──
   const playerSend = document.getElementById('player-send-btn');
   const playerInput = document.getElementById('player-msg-input');
@@ -567,5 +562,6 @@
     playerInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendPlayerMsg(); });
   }
 </script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

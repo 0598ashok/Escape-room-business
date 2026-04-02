@@ -1,21 +1,130 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗝️</text></svg>">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Midnight Escapes Journal — in-depth strategy guides, room lore, and puzzle tips by Alex Thorne, Master Game Master."/>
-  <title>The Escape Journal | Midnight Escapes</title>
+  <meta name="description" content="VaultEscape Journal — In-depth stories, pro strategies, and behind-the-scenes room design insights."/>
+  <title>Article | VaultEscape</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* ── Blog Details Editorial Styling ── */
+    .bd-hero {
+      position: relative;
+      padding: 140px 0 100px;
+      color: white;
+      text-align: center;
+      background: var(--clr-primary-dark);
+      overflow: hidden;
+    }
+    .bd-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+      z-index: 0;
+      filter: blur(2px);
+    }
+    .bd-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,38,71,0.4), rgba(10,38,71,1));
+      z-index: 1;
+    }
+    .bd-hero-content { position: relative; z-index: 2; }
+    
+    .bd-title { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 32px; max-width: 900px; margin-inline: auto; }
+
+    /* Reading Layout */
+    .bd-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 64px;
+      padding: 80px 0;
+    }
+    .bd-article { max-width: 800px; }
+    
+    /* Typography */
+    .bd-content { font-size: 1.2rem; line-height: 1.9; color: var(--clr-text-light); }
+    .bd-content p { margin-bottom: 28px; }
+    .bd-content h4 { font-size: 1.75rem; margin: 48px 0 24px; color: var(--clr-primary); }
+    .bd-content blockquote {
+      margin: 40px 0;
+      padding: 32px;
+      background: rgba(212,175,55,0.05);
+      border-left: 4px solid var(--clr-accent);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--clr-primary);
+      border-radius: 0 12px 12px 0;
+    }
+
+    /* Author Bio */
+    .bd-author-section {
+      margin-top: 80px;
+      padding-top: 60px;
+      border-top: 1px solid var(--clr-border);
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .bd-author-img {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: var(--clr-primary);
+      color: var(--clr-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; flex-shrink: 0;
+    }
+    .bd-author-info h5 { margin-bottom: 8px; font-size: 1.25rem; }
+    .bd-author-info p { font-size: .95rem; color: var(--clr-text-muted); margin-bottom: 16px; }
+
+    /* Sidebar */
+    .bd-sidebar { position: sticky; top: 120px; align-self: start; }
+    .bd-sidebar-box {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      padding: 32px;
+      border-radius: 20px;
+      margin-bottom: 32px;
+    }
+    .bd-sidebar-title { font-size: 1.1rem; margin-bottom: 20px; border-bottom: 2px solid var(--clr-accent); display: inline-block; padding-bottom: 4px; }
+
+    /* Related Grid */
+    .related-blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+
+    /* Meta Utility */
+    .meta-row { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    .meta-item { display: flex; align-items: center; gap: 8px; font-size: .85rem; opacity: 0.8; color: white; }
+    .meta-item i { width: 16px; height: 16px; color: var(--clr-accent); }
+
+    @media (max-width: 1024px) {
+      .bd-main-grid { grid-template-columns: 1fr; gap: 48px; }
+      .bd-sidebar { display: none; } /* Sidebar hidden on tablet/mobile for focus */
+    }
+    @media (max-width: 768px) {
+      .related-blog-grid { grid-template-columns: 1fr; }
+      .bd-author-section { flex-direction: column; text-align: center; }
+    }
+
+    [data-theme="dark"] .bd-content h4 { color: white; }
+    [data-theme="dark"] .bd-content blockquote { color: white; background: rgba(255,255,255,0.03); }
+    [data-theme="dark"] .bd-sidebar-box { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); }
+  </style>
 </head>
 <body id="blog-detail-page">
   <!-- Navbar -->
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="Midnight Escapes Home">
+      <a href="index.html" class="nav-logo" aria-label="VaultEscape Home">
         <div class="logo-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm0 2c1.654 0 3 1.346 3 3v3H9V7c0-1.654 1.346-3 3-3zm-1 11.268A2.001 2.001 0 0 1 12 18a2.001 2.001 0 0 1-1-3.732V13h2v1.268z"/></svg>
         </div>
-        <span>Midnight<em>Escapes</em></span>
+        <span>Vault<em>Escape</em></span>
       </a>
 
       <ul class="nav-menu" role="list">
@@ -84,144 +193,79 @@
     </div>
   </div>
 
-
-  <!-- Page Hero -->
-  <div class="page-hero">
-    <div class="container relative text-center">
-      <div class="breadcrumb justify-center">
-        <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
-        <a href="blogs.html">Journal</a><span class="breadcrumb-sep">›</span>
-        <span>Article</span>
-      </div>
-      <div id="bd-meta" class="blog-meta justify-center mb-3 text-light">Loading metadata...</div>
-      <h1 id="bd-title" class="max-w-800 mx-auto">Loading article...</h1>
-    </div>
-  </div>
-
-  <!-- Article + Sidebar -->
-  <section class="section">
-    <div class="container">
-      <div class="grid-sidebar" style="display:grid; grid-template-columns: 1fr 300px; gap: var(--sp-8);" id="blog-detail-layout">
-        <!-- Article Content -->
-        <article class="reveal-left">
-          <!-- Featured Image -->
-          <div class="blog-hero-img-large mb-6" style="height:360px;background:linear-gradient(135deg,#0A2647,#144272);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:6rem">👻</div>
-
-          <!-- Body -->
-          <div class="article-body">
-            <h3>Introduction</h3>
-            <p>When you step into a Midnight Escapes room, the clock becomes your greatest enemy. One of the most critical aspects is determining how your team will communicate. Unlike a casual puzzle box, our immersive rooms follow the doctrine of distributed intelligence — meaning every player has a piece of the solution, but no one has the whole picture.</p>
-            <p>Understanding team dynamics is critical for anyone entering our experiences. As a Game Master who has facilitated thousands of escapes over five years, I've seen how a well-coordinated team can turn a 15% success rate into a decisive victory.</p>
-
-            <h3>The Golden Rule: Direct Communication</h3>
-            <p>Before a team can solve a lock, they must first distinguish between "clutter" and "clues". Direct communication generally includes shouting out everything you find, regardless of how small it seems. This can include:</p>
-            <ul>
-              <li>Key symbols carved into the furniture</li>
-              <li>Strange patterns on the wall that align with floor tiles</li>
-              <li>Audio cues that sound like Morse code or rhythmic tapping</li>
-              <li>Hidden compartments found by tactile searching</li>
-            </ul>
-            <p>Non-essential items — environmental decor that isn't part of a puzzle — are generally "red herrings". However, this classification can become complicated when the lore and the puzzles are deeply integrated.</p>
-
-            <blockquote>"The line between a decoration and a clue is often blurry in practice. Verbalizing what you see is essential to connecting the dots across the room."</blockquote>
-
-            <h3>Factors Game Masters Consider</h3>
-            <p>Our puzzle design philosophy outlines numerous factors we weigh when determining room difficulty. Key considerations include the "Aha!" moment frequency, the variety of puzzle types (tactile, logic, visual), and the flow of the narrative.</p>
-          </div>
-
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-1 mt-5">
-            <span class="tag">Strategy</span><span class="tag">Teamwork</span><span class="tag">Pro-Tips</span><span class="tag">Adventure</span>
-          </div>
-
-          <!-- Author Box -->
-          <div class="author-box">
-            <div class="author-avatar-lg">🕵️</div>
-            <div>
-              <div class="fs-xs text-muted uppercase ls-8 mb-1">Written by</div>
-              <h4 class="mb-1">Alex Thorne</h4>
-              <p class="fs-sm m-0">Master Game Master at Midnight Escapes. 5+ years of immersive puzzle design and narrative direction. Passionate about creating unforgettable mystery experiences.</p>
-            </div>
-          </div>
-
-          <!-- Comments Section -->
-          <div class="mt-8">
-            <h3 class="fs-lg mb-4">Leave a Comment</h3>
-            <form data-validate-form data-success-msg="Your comment has been submitted for review.">
-              <div class="grid-2 mb-3">
-                <div class="form-group mb-0">
-                  <label class="form-label">Name *</label>
-                  <input type="text" class="form-control" data-validate="required" placeholder="Your Name"/>
-                  <div class="form-error"></div>
-                </div>
-                <div class="form-group mb-0">
-                  <label class="form-label">Email *</label>
-                  <input type="email" class="form-control" data-validate="required,email" placeholder="your@email.com"/>
-                  <div class="form-error"></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Comment *</label>
-                <textarea class="form-control" rows="4" data-validate="required,min:10" placeholder="Share your thoughts..."></textarea>
-                <div class="form-error"></div>
-              </div>
-              <button type="submit" class="btn btn-primary">Post Comment ↗</button>
-            </form>
-
-            <div class="mt-8">
-              <h4 class="fs-md mb-3">1 Comment</h4>
-              <div class="comment-item">
-                <div class="comment-avatar">SM</div>
-                <div>
-                  <div class="fw-600 fs-sm text-primary">Sarah M.</div>
-                  <div class="fs-xs text-muted mb-2">March 16, 2026</div>
-                  <p class="fs-sm m-0">This is incredibly helpful. I had no idea about the "distributive intelligence" concept. Booking my next game for the Haunted Mansion today!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Sidebar -->
-        <aside class="reveal-right">
-          <div class="sidebar-sticky">
-            <!-- Author Compact -->
-            <div class="card p-4 text-center mb-4">
-              <div class="fs-3 mb-2">🕵️</div>
-              <h5 class="mb-1">Alex Thorne</h5>
-              <div class="fs-xs text-muted mb-3">Master Game Master · Midnight Escapes</div>
-              <a href="about.html" class="btn btn-outline btn-sm w-100">Full Story</a>
-            </div>
-            <!-- Related Services -->
-            <div class="card p-4 mb-4">
-              <h5 class="fs-xs uppercase ls-8 text-muted mb-3">Experience Rooms</h5>
-              <div class="flex flex-col gap-1">
-                <a href="service-details.html?service=haunted-mansion" class="sidebar-link">🏚️ Haunted Mansion</a>
-                <a href="service-details.html?service=prison-break" class="sidebar-link">⛓️ Prison Break</a>
-                <a href="service-details.html?service=spy-mission" class="sidebar-link">🕵️ Spy Mission</a>
-              </div>
-            </div>
-            <!-- CTA -->
-            <div class="card section-primary p-5 text-center">
-              <div class="fs-2 mb-2">🗝️</div>
-              <h5 class="text-white mb-1">Book Your Quest</h5>
-              <p class="fs-xs text-light mb-4">Challenge your mind at Midnight Escapes today.</p>
-              <a href="contact.html" class="btn btn-accent btn-sm w-100">Reserve now</a>
-            </div>
-          </div>
-        </aside>
+  <!-- Editorial Hero -->
+  <header class="bd-hero">
+    <div id="bd-hero-bg" class="bd-hero-bg"></div>
+    <div class="bd-hero-overlay"></div>
+    <div class="container bd-hero-content">
+      <div class="reveal">
+        <div id="bd-meta" class="meta-row">
+          <!-- Dynamically Populated -->
+        </div>
+        <h1 id="bd-title" class="bd-title">Loading Article...</h1>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Related Posts -->
-  <section class="section section-alt">
+  <!-- Article Section -->
+  <main class="container">
+    <div class="bd-main-grid">
+      <!-- Article Content -->
+      <article class="bd-article">
+        <div class="breadcrumb mb-5">
+          <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
+          <a href="blogs.html">Journal</a><span class="breadcrumb-sep">›</span>
+          <span>Story</span>
+        </div>
+        
+        <div id="bd-content" class="bd-content reveal">
+          <!-- Dynamically Populated -->
+        </div>
+
+        <!-- Author Bio -->
+        <div class="bd-author-section reveal">
+          <div class="bd-author-img"><i data-lucide="user"></i></div>
+          <div class="bd-author-info">
+            <h5>Written by <span id="bd-author-name">Alex Thorne</span></h5>
+            <p>Alex is the Master Game Designer at VaultEscape. With over a decade of experience in immersive theater and puzzle mechanics, Alex crafts the stories that keep you guessing until the final second.</p>
+            <div class="flex gap-3">
+              <a href="#" class="fs-xs text-accent fw-700">Follow on 𝕏</a>
+              <a href="#" class="fs-xs text-accent fw-700">LinkedIn Profile</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="bd-sidebar">
+        <div class="bd-sidebar-box reveal-right">
+          <h5 class="bd-sidebar-title">Join the Insider List</h5>
+          <p class="fs-sm mb-4">Never miss a puzzle secret. Get monthly strategy guides delivered to your inbox.</p>
+          <form data-validate-form data-success-msg="You're on the list!">
+            <input type="email" class="form-control mb-3" data-validate="required,email" placeholder="email@address.com">
+            <button type="submit" class="btn btn-accent btn-block btn-sm">Subscribe →</button>
+          </form>
+        </div>
+
+        <div class="bd-sidebar-box reveal-right">
+          <h5 class="bd-sidebar-title">Book an Adventure</h5>
+          <p class="fs-sm mb-4">Ready to test your skills? Our rooms are booking fast for the upcoming weekend.</p>
+          <a href="services.html" class="btn btn-primary btn-block btn-sm">View Rooms</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Related Articles -->
+  <section class="section section-alt border-top">
     <div class="container">
       <div class="section-head center">
-        <div class="section-label">Keep Reading</div>
-        <h2 class="section-title">Related Articles</h2>
+        <div class="section-label">Journal</div>
+        <h2 class="section-title">Explore More Stories</h2>
       </div>
-      <div class="grid-3" id="bd-related">Loading related articles...</div>
+      <div id="bd-related" class="related-blog-grid">
+        <!-- Dynamically Populated -->
+      </div>
     </div>
   </section>
 
@@ -231,38 +275,39 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-logo">
-            <div class="logo-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/></svg></div>
-            <span>Midnight<em>Escapes</em></span>
+            <div class="logo-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm0 2c1.654 0 3 1.346 3 3v3H9V7c0-1.654 1.346-3 3-3zm-1 11.268A2.001 2.001 0 0 1 12 18a2.001 2.001 0 0 1-1-3.732V13h2v1.268z"/></svg></div>
+            <span>Vault<em>Escape</em></span>
           </a>
-          <p>Unforgettable Immersive Adventures.</p>
+          <p>Unforgettable immersive adventures. Escape the ordinary.</p>
           <div class="footer-socials">
-            <a href="#" class="footer-social-link">in</a><a href="#" class="footer-social-link">𝕏</a>
+            <a href="#" class="footer-social-link">in</a><a href="#" class="footer-social-link">𝕏</a><a href="#" class="footer-social-link">f</a>
           </div>
         </div>
         <div class="footer-col">
-          <h5>Experiences</h5>
+          <h5>Experience Rooms</h5>
           <nav class="footer-links">
             <a href="service-details.html?service=haunted-mansion">Haunted Mansion</a>
             <a href="service-details.html?service=prison-break">Prison Break</a>
             <a href="service-details.html?service=spy-mission">Spy Mission</a>
+            <a href="service-details.html?service=treasure-hunt">Treasure Hunt</a>
           </nav>
         </div>
         <div class="footer-col">
           <h5>Quick Links</h5>
           <nav class="footer-links">
             <a href="about.html">Our Story</a>
-            <a href="blogs.html">Journal</a>
+            <a href="blogs.html">Blog</a>
             <a href="contact.html">Contact</a>
           </nav>
         </div>
         <div class="footer-col">
           <h5>Contact</h5>
           <div class="footer-contact-item"><span class="icon">📞</span><span>(555) ESC-APES</span></div>
-          <div class="footer-contact-item"><span class="icon">✉️</span><span>hello@midnightescapes.com</span></div>
+          <div class="footer-contact-item"><span class="icon">✉️</span><span>hello@vaultescape.com</span></div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="m-0">&copy; 2026 Midnight Escapes. All rights reserved.</p>
+        <p class="m-0">&copy; 2026 VaultEscape. All rights reserved.</p>
       </div>
     </div>
   </footer>

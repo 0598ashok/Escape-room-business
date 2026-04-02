@@ -1,109 +1,267 @@
 /* ===================================================
-   LEXCOUNSEL - RTL (Right-to-Left) Support
+   VAULTESCAPE - RTL (Right-to-Left) Support
    Arabic language layout overrides
    =================================================== */
 
-[dir="rtl"] {
+/* ─── GLOBAL DIRECTION ─────────────────────────── */
+html[dir="rtl"] {
   direction: rtl;
-  text-align: right;
 }
 
-/* Navigation */
-[dir="rtl"] .nav-inner { flex-direction: row-reverse; }
-[dir="rtl"] .nav-menu { flex-direction: row-reverse; }
-[dir="rtl"] .nav-actions { flex-direction: row-reverse; }
-[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
-[dir="rtl"] .nav-dropdown { left: auto; right: 50%; transform: translateX(50%); }
-[dir="rtl"] .nav-item:hover .nav-dropdown,
-[dir="rtl"] .nav-item.dropdown-open .nav-dropdown {
-  transform: translateX(50%) translateY(0);
+html[dir="rtl"] body {
+  direction: rtl !important;
+  text-align: right !important;
 }
-[dir="rtl"] .nav-dropdown a { flex-direction: row-reverse; }
-[dir="rtl"] .nav-dropdown a:hover { padding-left: 14px; padding-right: 18px; }
 
-/* Section Label */
-[dir="rtl"] .section-label { flex-direction: row-reverse; }
-[dir="rtl"] .section-head.center .section-label { justify-content: center; }
+/* ─── Global Utility Overrides ──────────────────── */
+/* Use !important to ensure mirroring wins over style.css */
+html[dir="rtl"] .ml-auto { margin-right: auto !important; margin-left: 0 !important; }
+html[dir="rtl"] .mr-auto { margin-left: auto !important; margin-right: 0 !important; }
 
-/* Footer */
-[dir="rtl"] .footer-grid { direction: rtl; }
-[dir="rtl"] .footer-links a:hover { padding-left: 0; padding-right: 6px; }
-[dir="rtl"] .footer-contact-item { flex-direction: row-reverse; }
-[dir="rtl"] .footer-socials { flex-direction: row-reverse; }
-[dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
-[dir="rtl"] .footer-bottom-links { flex-direction: row-reverse; }
+html[dir="rtl"] .ml-1 { margin-right: var(--sp-1) !important; margin-left: 0 !important; }
+html[dir="rtl"] .mr-1 { margin-left: var(--sp-1) !important; margin-right: 0 !important; }
+html[dir="rtl"] .ml-2 { margin-right: var(--sp-2) !important; margin-left: 0 !important; }
+html[dir="rtl"] .mr-2 { margin-left: var(--sp-2) !important; margin-right: 0 !important; }
+html[dir="rtl"] .ml-3 { margin-right: var(--sp-3) !important; margin-left: 0 !important; }
+html[dir="rtl"] .mr-3 { margin-left: var(--sp-3) !important; margin-right: 0 !important; }
+html[dir="rtl"] .ml-4 { margin-right: var(--sp-4) !important; margin-left: 0 !important; }
+html[dir="rtl"] .mr-4 { margin-left: var(--sp-4) !important; margin-right: 0 !important; }
 
-/* Buttons */
-[dir="rtl"] .btn { flex-direction: row-reverse; }
-[dir="rtl"] .btn:hover .arrow { transform: translateX(-4px); }
+html[dir="rtl"] .pl-1 { padding-right: var(--sp-1) !important; padding-left: 0 !important; }
+html[dir="rtl"] .pr-1 { padding-left: var(--sp-1) !important; padding-right: 0 !important; }
+html[dir="rtl"] .pl-2 { padding-right: var(--sp-2) !important; padding-left: 0 !important; }
+html[dir="rtl"] .pr-2 { padding-left: var(--sp-2) !important; padding-right: 0 !important; }
+html[dir="rtl"] .pl-3 { padding-right: var(--sp-3) !important; padding-left: 0 !important; }
+html[dir="rtl"] .pr-3 { padding-left: var(--sp-3) !important; padding-right: 0 !important; }
+html[dir="rtl"] .pl-4 { padding-right: var(--sp-4) !important; padding-left: 0 !important; }
+html[dir="rtl"] .pr-4 { padding-left: var(--sp-4) !important; padding-right: 0 !important; }
 
-/* Forms */
-[dir="rtl"] .form-row { direction: rtl; }
-[dir="rtl"] .input-icon { left: auto; right: 14px; }
-[dir="rtl"] .input-wrap .form-control { padding-left: 16px; padding-right: 42px; }
-[dir="rtl"] .password-toggle { left: 14px; right: auto; }
+html[dir="rtl"] .text-left { text-align: right !important; }
+html[dir="rtl"] .text-right { text-align: left !important; }
 
-/* Cards */
-[dir="rtl"] .service-card { direction: rtl; }
-[dir="rtl"] .testimonial-author { flex-direction: row-reverse; }
-[dir="rtl"] .blog-meta { flex-direction: row-reverse; }
+html[dir="rtl"] .flex { flex-direction: row; }
+html[dir="rtl"] .flex-row-reverse { flex-direction: row !important; }
 
-/* Breadcrumb */
-[dir="rtl"] .breadcrumb { flex-direction: row-reverse; }
+/* ─── Navigation (Public Pages) ─────────────────── */
+html[dir="rtl"] #navbar { direction: rtl; }
 
-/* Accordion */
-[dir="rtl"] .accordion-trigger { flex-direction: row-reverse; }
+html[dir="rtl"] .nav-inner {
+  flex-direction: row-reverse !important;
+}
 
-/* Tabs */
-[dir="rtl"] .tabs { flex-direction: row-reverse; }
+html[dir="rtl"] .nav-menu {
+  flex-direction: row-reverse !important;
+}
 
-/* Grids */
-[dir="rtl"] .grid-2,
-[dir="rtl"] .grid-3,
-[dir="rtl"] .grid-4,
-[dir="rtl"] .grid-auto { direction: rtl; }
+html[dir="rtl"] .nav-dropdown {
+  left: auto !important;
+  right: 50% !important;
+  transform: translateX(50%) translateY(-8px) !important;
+  text-align: right !important;
+}
+
+html[dir="rtl"] .nav-item:hover .nav-dropdown,
+html[dir="rtl"] .nav-item.dropdown-open .nav-dropdown {
+  transform: translateX(50%) translateY(0) !important;
+}
+
+html[dir="rtl"] .nav-dropdown a {
+  flex-direction: row-reverse !important;
+  text-align: right !important;
+}
+html[dir="rtl"] .nav-dropdown a:hover {
+  padding-left: 14px !important;
+  padding-right: 18px !important;
+}
+
+html[dir="rtl"] .nav-actions {
+  flex-direction: row-reverse !important;
+}
 
 /* Mobile Drawer */
-[dir="rtl"] .mobile-nav-link { flex-direction: row-reverse; }
-[dir="rtl"] .mobile-sub { padding-left: 0; padding-right: var(--sp-2); }
-[dir="rtl"] .mobile-actions { flex-direction: row-reverse; }
-[dir="rtl"] .mobile-toggles { flex-direction: row-reverse; }
+html[dir="rtl"] .mobile-drawer {
+  left: 0 !important;
+  right: 0 !important;
+  text-align: right !important;
+}
+html[dir="rtl"] .mobile-nav-link { flex-direction: row-reverse !important; }
+html[dir="rtl"] .mobile-sub { padding-left: 0 !important; padding-right: var(--sp-2) !important; }
+html[dir="rtl"] .mobile-actions { flex-direction: row-reverse !important; }
+html[dir="rtl"] .mobile-toggles { flex-direction: row-reverse !important; }
 
-/* Dashboard */
-[dir="rtl"] .dash-layout { flex-direction: row-reverse; }
-[dir="rtl"] .dash-sidebar { border-right: none; border-left: 1px solid var(--clr-border); }
-[dir="rtl"] .dash-nav-link { flex-direction: row-reverse; }
-[dir="rtl"] .dash-nav-link.active::before { left: auto; right: 0; }
-[dir="rtl"] .dash-header { flex-direction: row-reverse; }
-[dir="rtl"] .stat-widget { direction: rtl; }
-[dir="rtl"] .dash-table { direction: rtl; }
+/* ─── Buttons ────────────────────────────────────── */
+html[dir="rtl"] .btn .arrow {
+  display: inline-block;
+  transform: scaleX(-1);
+  margin-left: 0 !important;
+  margin-right: 6px !important;
+}
+html[dir="rtl"] .btn:hover .arrow { transform: scaleX(-1) translateX(-4px) !important; }
 
-/* Back to top */
-[dir="rtl"] #back-to-top { right: auto; left: 32px; }
+/* ─── Wall of Fame (index.html Cards) ─────────── */
+html[dir="rtl"] .card[style*="border-left"] {
+  border-left: none !important;
+  border-right: 4px solid var(--clr-accent) !important;
+}
+html[dir="rtl"] .card[style*="border-left:4px solid var(--clr-primary)"] {
+  border-right: 4px solid var(--clr-primary) !important;
+}
+html[dir="rtl"] .card[style*="border-left:4px solid var(--clr-accent-dark)"] {
+  border-right: 4px solid var(--clr-accent-dark) !important;
+}
 
-/* Auth */
-[dir="rtl"] .auth-container { flex-direction: row-reverse; }
+/* ─── Section Headers (Blog/Services) ─────────── */
+html[dir="rtl"] .section-head[style*="display:flex"] {
+  flex-direction: row-reverse !important;
+}
 
-/* Page Hero */
-[dir="rtl"] .page-hero { direction: rtl; }
-[dir="rtl"] .breadcrumb { direction: ltr; } /* keep breadcrumb arrows correct */
+/* ─── Statistics / CTA Strip ────────────────────── */
+html[dir="rtl"] section[style*="background:linear-gradient(135deg"] {
+  background: linear-gradient(315deg, var(--clr-primary-dark), var(--clr-primary)) !important;
+}
+html[dir="rtl"] .section-label[style*="justify-content:center"] {
+  justify-content: center !important;
+}
 
-/* Process Steps */
-[dir="rtl"] .process-step { flex-direction: row-reverse; }
-[dir="rtl"] .process-connector { transform: scaleX(-1); }
+/* ─── Testimonial Slider Fixes ──────────────────── */
+html[dir="rtl"] .testimonial-track {
+  direction: rtl !important;
+}
+html[dir="rtl"] [data-testimonial-prev],
+html[dir="rtl"] [data-testimonial-next] {
+  transform: scaleX(-1) !important;
+}
 
-/* Blog Sidebar */
-[dir="rtl"] .blog-layout { flex-direction: row-reverse; }
+/* ─── Feature Icons & Badges ────────────────────── */
+html[dir="rtl"] .badge { margin-right: 0 !important; margin-left: 8px !important; }
+html[dir="rtl"] .contact-icon { margin-right: 0 !important; margin-left: 12px !important; }
 
-/* Timeline */
-[dir="rtl"] .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
-[dir="rtl"] .timeline-item:nth-child(even) { flex-direction: row; }
+/* ─── Hero (Editorial — index.html) ─────────────── */
+html[dir="rtl"] .hero-split-bg {
+  background: linear-gradient(75deg, var(--clr-surface) 0%, var(--clr-surface) 48%, var(--clr-primary-dark) 48%) !important;
+}
+html[dir="rtl"] .hero-pattern-overlay {
+  left: 0 !important;
+  right: 52% !important;
+}
+html[dir="rtl"] .hero-text-side {
+  padding: var(--sp-8) 0 var(--sp-8) var(--sp-8) !important;
+}
+html[dir="rtl"] .hero-cta-group { flex-direction: row-reverse; justify-content: flex-end; }
+html[dir="rtl"] .hero-stats-row { flex-direction: row-reverse; }
 
-/* Hero split */
-[dir="rtl"] .hero-split { flex-direction: row-reverse; }
+html[dir="rtl"] .hero-floating-badge {
+  left: auto !important;
+  right: -24px !important;
+}
 
-/* Stat cards in row */
-[dir="rtl"] .stats-row { flex-direction: row-reverse; }
+/* ─── Hero (Cinematic — home2.html) ─────────────── */
+html[dir="rtl"] .c-hero-text { text-align: right !important; }
+html[dir="rtl"] .c-hero-cta { flex-direction: row-reverse !important; justify-content: flex-end !important; }
 
-/* Footer */
-[dir="rtl"] .footer-col { text-align: right; }
+/* ─── Sections & Layout ─────────────────────────── */
+html[dir="rtl"] .section-label { flex-direction: row-reverse !important; }
+html[dir="rtl"] .section-label::before { margin-right: 0 !important; margin-left: 8px !important; }
+html[dir="rtl"] .section-head { text-align: right !important; }
+html[dir="rtl"] .section-head.center { text-align: center !important; }
+
+/* ─── About / Feature Sections ───────────────────── */
+html[dir="rtl"] .about-visual-wrap { order: 2 !important; }
+html[dir="rtl"] .about-text-wrap { order: 1 !important; }
+html[dir="rtl"] .about-award-badge { left: 0 !important; right: auto !important; }
+
+/* ─── Cards & Grids ─────────────────────────────── */
+html[dir="rtl"] .grid-2, 
+html[dir="rtl"] .grid-3, 
+html[dir="rtl"] .grid-4 { 
+  direction: rtl !important; 
+}
+
+html[dir="rtl"] .service-card { text-align: right !important; }
+html[dir="rtl"] .card-icon-box,
+html[dir="rtl"] .stat-icon { margin-right: 0 !important; margin-left: auto !important; }
+
+html[dir="rtl"] .dash-table thead th { text-align: right !important; }
+html[dir="rtl"] .td-actions { flex-direction: row !important; }
+html[dir="rtl"] .nav-badge { margin-left: 0 !important; margin-right: auto !important; }
+html[dir="rtl"] .dash-logout-btn { margin-left: 0 !important; margin-right: auto !important; }
+html[dir="rtl"] .dash-sidebar-header { flex-direction: row !important; }
+html[dir="rtl"] .dash-user-profile { flex-direction: row !important; }
+
+/* ─── Testimonials ───────────────────────────────── */
+html[dir="rtl"] .testimonial-author { flex-direction: row-reverse !important; justify-content: flex-end; }
+html[dir="rtl"] .testimonial-avatar { margin-right: 0 !important; margin-left: 12px !important; }
+
+/* ─── Contact ─────────────────────────────────────── */
+html[dir="rtl"] .contact-item { flex-direction: row-reverse !important; text-align: right; }
+html[dir="rtl"] .contact-icon-box { margin-right: 0 !important; margin-left: 12px !important; }
+
+/* ─── Footer ─────────────────────────────────────── */
+html[dir="rtl"] #footer { text-align: right; }
+html[dir="rtl"] .footer-grid { 
+  grid-template-columns: 2fr 1fr 1fr 1fr !important;
+  direction: rtl !important;
+}
+html[dir="rtl"] .footer-socials { flex-direction: row-reverse !important; justify-content: flex-end; }
+html[dir="rtl"] .footer-contact-item { flex-direction: row-reverse !important; }
+html[dir="rtl"] .footer-contact-item .icon { margin-right: 0 !important; margin-left: 10px !important; }
+html[dir="rtl"] .footer-bottom { flex-direction: row-reverse !important; }
+
+/* ─── DASHBOARD SUPPORT ─────────────────────────── */
+html[dir="rtl"] .dash-layout { flex-direction: row !important; }
+
+html[dir="rtl"] .dash-sidebar {
+  border-right: none !important;
+  border-left: 1px solid var(--dash-sidebar-border) !important;
+}
+html[dir="rtl"] .dash-sidebar-header { flex-direction: row-reverse !important; }
+html[dir="rtl"] .dash-nav-link { flex-direction: row-reverse !important; text-align: right !important; }
+html[dir="rtl"] .dash-nav-link i, 
+html[dir="rtl"] .dash-nav-link svg { 
+  margin-right: 0 !important;
+  margin-left: 12px !important; 
+}
+html[dir="rtl"] .nav-badge { margin-left: 0 !important; margin-right: auto !important; }
+
+html[dir="rtl"] .dash-topbar { flex-direction: row !important; padding-right: 24px !important; padding-left: 24px !important; }
+html[dir="rtl"] .dash-topbar-left { flex-direction: row !important; }
+html[dir="rtl"] .dash-topbar-right { flex-direction: row !important; }
+
+html[dir="rtl"] .dash-sidebar.collapsed {
+  /* Let width change handle it as in dashboard.css */
+  transform: none !important;
+}
+@media (min-width: 1025px) {
+  html[dir="rtl"] .dash-sidebar.collapsed ~ .dash-content,
+  html[dir="rtl"] .dash-sidebar:not(.collapsed) ~ .dash-content {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    width: auto !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  html[dir="rtl"] .dash-sidebar {
+    left: auto !important;
+    right: calc(-1 * var(--dash-sidebar-width)) !important;
+  }
+  html[dir="rtl"] .dash-sidebar.mobile-open {
+    left: auto !important;
+    right: 0 !important;
+    box-shadow: -4px 0 20px rgba(0,0,0,.15) !important;
+  }
+}
+
+/* ─── Forms ───────────────────────────────────────── */
+html[dir="rtl"] .form-label { text-align: right !important; }
+html[dir="rtl"] .form-control { text-align: right !important; direction: rtl; }
+
+/* ─── RTL Flipping Icons ─────────────────────────── */
+html[dir="rtl"] i[data-lucide^="chevron-"],
+html[dir="rtl"] svg[data-lucide^="chevron-"],
+html[dir="rtl"] i[data-lucide="arrow-right"],
+html[dir="rtl"] svg[data-lucide="arrow-right"],
+html[dir="rtl"] i[data-lucide="send"],
+html[dir="rtl"] svg[data-lucide="send"] {
+  transform: scaleX(-1) !important;
+}

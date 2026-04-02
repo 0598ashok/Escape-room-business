@@ -761,6 +761,49 @@ p { color: var(--clr-text-light); line-height: 1.75; }
   100% { transform: translateY(100%); }
 }
 
+/* ─── Cinematic Image Icons ─── */
+.img-icon-lg {
+  display: block;
+  width: 100%;
+  max-width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--rd-lg);
+  margin-bottom: var(--sp-3);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  transition: transform .3s ease;
+}
+.img-icon-md {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: var(--rd-md);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.img-icon-sm {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.service-icon img.img-icon-lg,
+.card-icon-box img.img-icon-lg {
+  margin: 0 auto var(--sp-4) auto;
+}
+
+/* Update sections to handle image icons better */
+.section-alt .img-icon-lg { border: 2px solid var(--clr-border); }
+.service-card:hover .img-icon-lg { transform: translateY(-5px); }
+
+/* Wall of Fame card modification */
+.card .img-icon-lg {
+  max-width: 120px;
+  height: 120px;
+  margin-bottom: var(--sp-4);
+}
+
 /* === Contact Preview Classes === */
 .contact-icon-box {
   width: 44px;
@@ -906,6 +949,15 @@ p { color: var(--clr-text-light); line-height: 1.75; }
   transition: background var(--t-med), transform var(--t-med);
 }
 .service-card:hover .service-icon { background: var(--clr-accent); transform: scale(1.08); }
+
+.real-image-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 2px);
+  display: block;
+  pointer-events: none;
+}
 
 /* Blog Card */
 .blog-card .blog-img {
@@ -1924,4 +1976,21 @@ p { color: var(--clr-text-light); line-height: 1.75; }
 
   /* Grid 3 & 4 absolute stacking */
   .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
+}
+
+/* --- Wall of Fame / Legendary Escapes Card Enhancements --- */
+.card-img-full {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+.card-img-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--t-slow);
+}
+.card:hover .card-img-full img {
+  transform: scale(1.1);
 }
