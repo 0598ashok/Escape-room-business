@@ -3642,6 +3642,12 @@ p {
     flex-direction: column !important;
 
   }
+
+  .services_filter_buttons {}
+}
+
+.services_filter_buttons button {
+  margin-top: 10px;
 }
 
 .accordion-trigger:hover {
