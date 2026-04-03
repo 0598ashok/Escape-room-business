@@ -88,7 +88,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
-      align-items: center;
+      align-items: stretch;
     }
     .founder-visual {
       position: relative;
@@ -102,10 +102,14 @@
       text-align: center;
       color: white;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       width: 100%;
       max-width: 360px;
       box-shadow: 0 20px 60px rgba(10,38,71,.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .founder-card::before {
       content: '';
@@ -114,6 +118,10 @@
       width: 180px; height: 180px;
       background: rgba(201,168,76,.1);
       border-radius: 50%;
+      z-index: 0;
+    }
+    .founder-card > * {
+      z-index: 1;
     }
     .founder-emoji {
       font-size: 5rem;
@@ -580,6 +588,18 @@
             <span class="founder-emoji">🧩</span>
             <div class="founder-name">Alex Thorne</div>
             <div class="founder-role">Master Designer · Founder</div>
+            
+            <p style="margin-top:20px; font-size:0.9rem; color:rgba(255,255,255,0.85); line-height:1.65; position:relative; z-index:1;">
+              Driven by a relentless passion for crafting intricate logic and atmospheric narratives. At VaultEscape, every lock turned is a piece of Alex's overarching masterwork.
+            </p>
+            
+            <div style="margin-top:20px; text-align: left; background: rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.08); padding: 16px 20px; border-radius: 12px; font-size: 0.85rem; color: rgba(255,255,255,0.85); position:relative; z-index:1;">
+              <div style="font-weight: 700; color: var(--clr-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; font-size:0.75rem;">Core Specialties</div>
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;"><i data-lucide="check-circle-2" style="width:16px;color:rgba(201,168,76,0.9);"></i> Theatrical Set Design</div>
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;"><i data-lucide="check-circle-2" style="width:16px;color:rgba(201,168,76,0.9);"></i> Advanced Robotics</div>
+              <div style="display:flex; align-items:center; gap:10px;"><i data-lucide="check-circle-2" style="width:16px;color:rgba(201,168,76,0.9);"></i> Escape Psychology</div>
+            </div>
+
             <div class="founder-badge">
               <div class="founder-badge-num" data-counter="8" data-suffix="+">8+</div>
               <div class="founder-badge-text">Years of Design</div>

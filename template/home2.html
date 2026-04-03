@@ -364,6 +364,12 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to bottom, transparent 40%, rgba(6,10,18,.85));
+      pointer-events: none;
+    }
+    .room-visual img, .blog-feat-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .room-body { padding: 22px 20px; flex: 1; display: flex; flex-direction: column; }
     .room-tag {
@@ -626,11 +632,64 @@
     .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
     /* ══════════════════════════════════
+       NEW SECTIONS (EVENTS & FAQ)
+    ══════════════════════════════════ */
+    .content-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .content-split-img {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--c-border);
+      position: relative;
+    }
+    .content-split-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s;
+    }
+    .content-split-img:hover img {
+      transform: scale(1.05);
+    }
+    .c-list { margin: 24px 0; padding: 0; list-style: none; }
+    .c-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; color: var(--c-text); font-size: .95rem; line-height: 1.5; }
+    .c-list li i { color: var(--c-gold); width: 20px; flex-shrink: 0; margin-top: 2px; }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .faq-card {
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      transition: transform .3s, border-color .3s;
+    }
+    .faq-card:hover { transform: translateY(-3px); border-color: rgba(201,168,76,.3); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+    .faq-card h4 { color: var(--c-text); margin-bottom: 12px; font-size: 1.05rem; font-weight: 600; line-height: 1.4; }
+    .faq-card p { color: var(--c-muted); font-size: 0.9rem; line-height: 1.65; margin: 0; }
+    
+    html[data-theme="light"] .faq-card { background: #fff; border-color: rgba(10,22,40,.1); box-shadow: 0 4px 16px rgba(10,22,40,.07); }
+    html[data-theme="light"] .faq-card h4 { color: #0A1628 !important; }
+    html[data-theme="light"] .faq-card p { color: rgba(10,22,40,.65) !important; }
+    html[data-theme="light"] .c-list li { color: rgba(10,22,40,.8) !important; }
+
+    /* ══════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════ */
     @media (max-width: 1100px) {
       .c-hero-grid { gap: 40px; }
       .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      .content-split { gap: 40px; }
     }
 
     @media (max-width: 992px) {
@@ -642,6 +701,8 @@
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .process-connector { display: none; }
       .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .content-split { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
       .blog-grid { grid-template-columns: 1fr 1fr; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .s-item:nth-child(2)::after { display: none; }
@@ -1066,7 +1127,7 @@
 
       <div class="rooms-grid">
         <div class="room-card reveal">
-          <div class="room-visual bg-haunted"><i data-lucide="ghost"></i></div>
+          <div class="room-visual bg-haunted"><img src="assets/img/haunted_mansion_1774937219200.png" alt="Haunted Mansion"></div>
           <div class="room-body">
             <div class="room-tag">Horror · 90 min · 2–8 players</div>
             <h3>Haunted Mansion</h3>
@@ -1079,7 +1140,7 @@
         </div>
 
         <div class="room-card reveal delay-1">
-          <div class="room-visual bg-prison"><i data-lucide="link"></i></div>
+          <div class="room-visual bg-prison"><img src="assets/img/prison_break_1774937239771.png" alt="Prison Break"></div>
           <div class="room-body">
             <div class="room-tag">Thriller · 60 min · 2–6 players</div>
             <h3>Prison Break</h3>
@@ -1092,7 +1153,7 @@
         </div>
 
         <div class="room-card reveal delay-2">
-          <div class="room-visual bg-spy"><i data-lucide="user-search"></i></div>
+          <div class="room-visual bg-spy"><img src="assets/img/spy_mission_1774937342913.png" alt="Spy Mission"></div>
           <div class="room-body">
             <div class="room-tag">Action · 60 min · 2–8 players</div>
             <h3>Spy Mission</h3>
@@ -1105,7 +1166,7 @@
         </div>
 
         <div class="room-card reveal">
-          <div class="room-visual bg-treasure"><i data-lucide="gem"></i></div>
+          <div class="room-visual bg-treasure"><img src="assets/img/treasure_hunt_1774937365746.png" alt="Treasure Hunt"></div>
           <div class="room-body">
             <div class="room-tag">Adventure · 60 min · 2–6 players</div>
             <h3>Treasure Hunt</h3>
@@ -1118,7 +1179,7 @@
         </div>
 
         <div class="room-card reveal delay-1">
-          <div class="room-visual bg-tomb">🏺</div>
+          <div class="room-visual bg-tomb"><img src="assets/img/lost_tomb_1774937402250.png" alt="The Lost Tomb"></div>
           <div class="room-body">
             <div class="room-tag">Exploration · 75 min · 2–8 players</div>
             <h3>The Lost Tomb</h3>
@@ -1131,7 +1192,7 @@
         </div>
 
         <div class="room-card reveal delay-2">
-          <div class="room-visual bg-asylum"><i data-lucide="hospital"></i></div>
+          <div class="room-visual bg-asylum"><img src="assets/img/asylum_1774937434212.png" alt="The Asylum"></div>
           <div class="room-body">
             <div class="room-tag">Psychological · 60 min · 2–6 players</div>
             <h3>The Asylum</h3>
@@ -1256,6 +1317,65 @@
 
 
   <!-- ══════════════════════════════════
+       6.5. CORPORATE & EVENTS
+  ══════════════════════════════════ -->
+  <section class="c-section" id="events" aria-labelledby="events-h">
+    <div class="container">
+      <div class="content-split">
+        <div class="reveal-left">
+          <div class="content-split-img">
+            <img src="assets/img/team_building.png" alt="Corporate Team Building">
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="c-label">Corporate &amp; Private</div>
+          <h2 class="c-title" id="events-h">Next-Level Team Building</h2>
+          <p class="c-sub" style="margin-top: 20px; max-width: 100%; margin-left: 0; text-align: left; line-height: 1.8;">
+            Step out of the boardroom and into the adventure. Our cinematic escape experiences are engineered to forge stronger teams through communication, problem solving, and collaborative thinking under pressure.
+          </p>
+          <ul class="c-list">
+            <li><i data-lucide="check-circle"></i> Dedicated Event Coordinator</li>
+            <li><i data-lucide="check-circle"></i> Private Lounge &amp; Catering Options</li>
+            <li><i data-lucide="check-circle"></i> Customized Game Briefings for Corporate Goals</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline-white" style="margin-top: 10px;">Inquire Now <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       6.6. FAQ
+  ══════════════════════════════════ -->
+  <section class="c-section c-section-alt" id="faq" aria-labelledby="faq-h">
+    <div class="container">
+      <div class="c-section-head reveal">
+        <div class="c-label">Got Questions?</div>
+        <h2 class="c-title" id="faq-h">Answers You Need</h2>
+      </div>
+      
+      <div class="faq-grid">
+        <div class="faq-card reveal">
+          <h4>Are the rooms actually locked?</h4>
+          <p>For your absolute safety, the main entry doors are never locked. You can leave the experience at any time, but remember that your 60-minute countdown will continue to run.</p>
+        </div>
+        <div class="faq-card reveal delay-1">
+          <h4>Is there an age limit?</h4>
+          <p>Players must be 12 or older. Anyone under 16 must be accompanied by a participating adult. Please note that "The Asylum" and "Haunted Mansion" are recommended for ages 16+.</p>
+        </div>
+        <div class="faq-card reveal delay-2">
+          <h4>Do we play with strangers?</h4>
+          <p>Never. All of our bookings are 100% private. Once you book a room, it's exclusively reserved for your team, allowing you to immerse yourselves fully.</p>
+        </div>
+        <div class="faq-card reveal delay-3">
+          <h4>What happens if we don't escape?</h4>
+          <p>Our Game Masters monitor your progress and will walk you through the remaining puzzles so you aren't left wondering. There's always next time to claim your victory!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
        7. BLOG
   ══════════════════════════════════ -->
   <section class="c-section" id="blog" aria-labelledby="blog-h">
@@ -1270,7 +1390,7 @@
 
       <div class="blog-grid">
         <a href="blog-details.html?id=4" class="blog-featured reveal">
-          <div class="blog-feat-img"><i data-lucide="ghost"></i></div>
+          <div class="blog-feat-img"><img src="assets/img/team_building.png" alt="Team Building Tips"></div>
           <div class="blog-body">
             <div class="blog-cat">Escape Tips · 8 min read</div>
             <h3>The Golden Rule of Escape Rooms: Why Communication is Everything</h3>

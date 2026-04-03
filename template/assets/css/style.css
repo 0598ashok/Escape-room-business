@@ -3605,3 +3605,45 @@ p {
     gap: var(--sp-3) !important;
   }
 }
+
+@media screen and (max-width:640px) {
+  .tl-dot {
+    display: none;
+  }
+
+  /* Fix contact form right-side overflow on mobile */
+  #contact-form,
+  #contact-form .form-group,
+  #contact-form .form-control {
+    /* max-width: 93%; */
+    box-sizing: border-box !important;
+  }
+
+  #contact-form .flex {
+    max-width: 93%;
+    align-items: flex-start;
+  }
+
+  #contact-form label {
+    padding-left: 10px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+
+
+  .reveal-left {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+
+  .contact_follow {
+    flex-direction: column !important;
+
+  }
+}
+
+.accordion-trigger:hover {
+  color: #c9a84c !important;
+}
