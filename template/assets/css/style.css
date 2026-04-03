@@ -402,12 +402,23 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all var(--t-med);
 }
 
 .nav-logo .logo-icon svg {
   width: 22px;
   height: 22px;
   fill: var(--clr-accent);
+  transition: all var(--t-med);
+}
+
+/* Fix for logo blending into background on scroll */
+#navbar.scrolled .nav-logo .logo-icon {
+  background: var(--clr-accent);
+}
+
+#navbar.scrolled .nav-logo .logo-icon svg {
+  fill: var(--clr-primary);
 }
 
 .nav-logo span em {
@@ -979,7 +990,7 @@ p {
 
   #navbar.scrolled,
   .mobile-drawer.open {
-    background: var(--clr-primary-dark) !important;
+    /* background: var(--clr-primary-dark) !important; */
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 

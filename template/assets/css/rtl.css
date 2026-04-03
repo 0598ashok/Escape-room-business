@@ -138,21 +138,19 @@ html[dir="rtl"] .contact-icon { margin-right: 0 !important; margin-left: 12px !i
 
 /* ─── Hero (Editorial — index.html) ─────────────── */
 html[dir="rtl"] .hero-split-bg {
-  background: linear-gradient(75deg, var(--clr-surface) 0%, var(--clr-surface) 48%, var(--clr-primary-dark) 48%) !important;
+  background: linear-gradient(-105deg, var(--clr-surface) 0%, var(--clr-surface) 48%, var(--clr-primary-dark) 48%) !important;
 }
 html[dir="rtl"] .hero-pattern-overlay {
   left: 0 !important;
-  right: 52% !important;
+  right: 48% !important;
 }
 html[dir="rtl"] .hero-text-side {
   padding: var(--sp-8) 0 var(--sp-8) var(--sp-8) !important;
 }
-html[dir="rtl"] .hero-cta-group { flex-direction: row-reverse; justify-content: flex-end; }
-html[dir="rtl"] .hero-stats-row { flex-direction: row-reverse; }
 
 html[dir="rtl"] .hero-floating-badge {
-  left: auto !important;
-  right: -24px !important;
+  left: -24px !important;
+  right: auto !important;
 }
 
 /* ─── Hero (Cinematic — home2.html) ─────────────── */
