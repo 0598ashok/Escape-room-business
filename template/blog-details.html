@@ -305,6 +305,14 @@
         <li class="nav-item"><a href="blogs.html" class="nav-link active">Blog</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         <li class="nav-item">
+          <span class="nav-link" tabindex="0" aria-haspopup="true">Pages <span class="chevron"
+              aria-hidden="true">▾</span></span>
+          <div class="nav-dropdown" role="menu">
+            <a href="404.html" role="menuitem"><span class="dd-icon">⚠️</span> 404 Error</a>
+            <a href="coming-soon.html" role="menuitem"><span class="dd-icon">⏳</span> Coming Soon</a>
+          </div>
+        </li>
+        <li class="nav-item">
           <span class="nav-link" tabindex="0" aria-haspopup="true">Dashboard <span class="chevron"
               aria-hidden="true">▾</span></span>
           <div class="nav-dropdown" role="menu">
@@ -343,6 +351,13 @@
       <a href="services.html" class="mobile-nav-link">Services</a>
       <a href="blogs.html" class="mobile-nav-link active">Blog</a>
       <a href="contact.html" class="mobile-nav-link">Contact</a>
+      <div class="mobile-nav-link" data-mobile-toggle="mob-pages-sub">
+        Pages <span>▾</span>
+      </div>
+      <div id="mob-pages-sub" class="mobile-sub" style="display:none">
+        <a href="404.html" class="mobile-sub-item">⚠️ 404 Error</a>
+        <a href="coming-soon.html" class="mobile-sub-item">⏳ Coming Soon</a>
+      </div>
       <div class="mobile-nav-link" data-mobile-toggle="mob-dash-sub">
         Dashboard <span>▾</span>
       </div>

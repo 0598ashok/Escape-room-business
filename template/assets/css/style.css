@@ -990,7 +990,7 @@ p {
 
   #navbar.scrolled,
   .mobile-drawer.open {
-    /* background: var(--clr-primary-dark) !important; */
+    background: var(--clr-primary-dark) !important;
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 
@@ -3663,4 +3663,18 @@ p {
 
 .accordion-trigger:hover {
   color: #c9a84c !important;
+}
+
+@media screen and (max-width:769px) {
+  .error_page {
+    width: stretch !important;
+  }
+
+  .error-page .flex {
+    display: block !important;
+  }
+
+  .error-page .flex a {
+    margin-bottom: 10px;
+  }
 }
