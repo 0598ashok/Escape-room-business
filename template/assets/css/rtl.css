@@ -45,12 +45,10 @@ html[dir="rtl"] .flex-row-reverse { flex-direction: row !important; }
 /* ─── Navigation (Public Pages) ─────────────────── */
 html[dir="rtl"] #navbar { direction: rtl; }
 
-html[dir="rtl"] .nav-inner {
-  flex-direction: row-reverse !important;
-}
-
-html[dir="rtl"] .nav-menu {
-  flex-direction: row-reverse !important;
+html[dir="rtl"] .nav-inner,
+html[dir="rtl"] .nav-menu,
+html[dir="rtl"] .nav-actions {
+  flex-direction: row !important;
 }
 
 html[dir="rtl"] .nav-dropdown {
@@ -66,16 +64,12 @@ html[dir="rtl"] .nav-item.dropdown-open .nav-dropdown {
 }
 
 html[dir="rtl"] .nav-dropdown a {
-  flex-direction: row-reverse !important;
+  flex-direction: row !important;
   text-align: right !important;
 }
 html[dir="rtl"] .nav-dropdown a:hover {
   padding-left: 14px !important;
   padding-right: 18px !important;
-}
-
-html[dir="rtl"] .nav-actions {
-  flex-direction: row-reverse !important;
 }
 
 /* Mobile Drawer */
@@ -84,10 +78,12 @@ html[dir="rtl"] .mobile-drawer {
   right: 0 !important;
   text-align: right !important;
 }
-html[dir="rtl"] .mobile-nav-link { flex-direction: row-reverse !important; }
+html[dir="rtl"] .mobile-nav-link,
+html[dir="rtl"] .mobile-actions,
+html[dir="rtl"] .mobile-toggles { 
+  flex-direction: row !important; 
+}
 html[dir="rtl"] .mobile-sub { padding-left: 0 !important; padding-right: var(--sp-2) !important; }
-html[dir="rtl"] .mobile-actions { flex-direction: row-reverse !important; }
-html[dir="rtl"] .mobile-toggles { flex-direction: row-reverse !important; }
 
 /* ─── Buttons ────────────────────────────────────── */
 html[dir="rtl"] .btn .arrow {
