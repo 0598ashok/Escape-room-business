@@ -932,6 +932,7 @@ function initTestimonialSlider() {
   if (!slider) return;
   const track = slider.querySelector('.testimonial-track');
   if (!track) return;
+  
   let current = 0;
   const cards = $$('.testimonial-card', track);
   const total = cards.length;
@@ -939,31 +940,70 @@ function initTestimonialSlider() {
 
   function goTo(index) {
     current = (index + total) % total;
-    const width = cards[0].offsetWidth + 24; // gap
+    
+    // Calculate width dynamically
+    const style = window.getComputedStyle(track);
+    const gap = parseInt(style.gap) || 24;
+    const width = cards[0].offsetWidth + gap;
+    
     const dir = document.documentElement.getAttribute('dir') || 'ltr';
     const multiplier = dir === 'rtl' ? 1 : -1;
+    
     track.style.transform = `translateX(${multiplier * current * width}px)`;
-    $$('.testimonial-dot', slider).forEach((dot, i) => dot.classList.toggle('active', i === current));
+    
+    // Update dots
+    const dots = $$('.testimonial-dot', slider);
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
   }
 
-  // Add dots
+  // Create Dots
   const dotsEl = slider.querySelector('.testimonial-dots');
   if (dotsEl) {
+    dotsEl.innerHTML = ''; // Clear previous
     for (let i = 0; i < total; i++) {
       const dot = document.createElement('button');
       dot.className = `testimonial-dot${i === 0 ? ' active' : ''}`;
-      dot.setAttribute('aria-label', `Slide ${i+1}`);
-      on(dot, 'click', () => goTo(i));
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      on(dot, 'click', () => {
+        goTo(i);
+        resetAuto();
+      });
       dotsEl.appendChild(dot);
     }
   }
 
-  $$('[data-testimonial-prev]', slider).forEach(b => on(b, 'click', () => goTo(current - 1)));
-  $$('[data-testimonial-next]', slider).forEach(b => on(b, 'click', () => goTo(current + 1)));
+  // Nav Buttons
+  $$('[data-testimonial-prev]', slider).forEach(b => on(b, 'click', () => {
+    goTo(current - 1);
+    resetAuto();
+  }));
+  $$('[data-testimonial-next]', slider).forEach(b => on(b, 'click', () => {
+    goTo(current + 1);
+    resetAuto();
+  }));
 
-  const auto = setInterval(() => goTo(current + 1), 5000);
-  on(slider, 'mouseenter', () => clearInterval(auto));
+  // Auto Scroll
+  let interval;
+  const startAuto = () => {
+    interval = setInterval(() => goTo(current + 1), 5000);
+  };
+  const resetAuto = () => {
+    clearInterval(interval);
+    startAuto();
+  };
+
+  startAuto();
+  on(slider, 'mouseenter', () => clearInterval(interval));
+  on(slider, 'mouseleave', startAuto);
+
+  // Responsive: Recalculate on resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => goTo(current), 100);
+  });
 }
+
 
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
