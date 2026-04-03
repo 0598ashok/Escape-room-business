@@ -994,7 +994,17 @@ p {
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 
+  /* Scrolled Logo Text Color */
+  #navbar.scrolled .nav-logo {
+    color: white !important;
+  }
+
+  #navbar.scrolled .nav-logo em {
+    color: var(--clr-accent) !important;
+  }
+
   .nav-link,
+
   .mobile-nav-link {
     color: white !important;
   }
