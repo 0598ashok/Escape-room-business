@@ -814,196 +814,6 @@ function initServiceDetails() {
   ScrollReveal.init();
 }
 
-/* ── Blog Details Page ── */
-function initBlogDetails() {
-  const page = $('#blog-detail-page');
-  if (!page) return;
-  const params = new URLSearchParams(window.location.search);
-  const id = parseInt(params.get('id')) || 1;
-  const blog = BLOGS.find(b => b.id === id);
-  if (!blog) return;
-
-  const titleEl = $('#bd-title');
-  const heroBg = $('#bd-hero-bg');
-  if (titleEl) titleEl.textContent = blog.title;
-  if (heroBg) heroBg.style.backgroundImage = `url('${blog.bgImg}')`;
-  document.title = `${blog.title} | VaultEscape`;
-
-  const metaEl = $('#bd-meta');
-  if (metaEl) metaEl.innerHTML = `
-    <span class="blog-cat-badge">${blog.cat}</span>
-    <span class="b-meta"><i data-lucide="user"></i> ${blog.author}</span>
-    <span class="b-meta"><i data-lucide="calendar"></i> ${blog.date}</span>
-    <span class="b-meta"><i data-lucide="clock"></i> ${blog.readTime}</span>
-  `;
-
-  // Content
-  const contentEl = $('#bd-content');
-  if (contentEl) contentEl.innerHTML = blog.content;
-
-  // Sidebar author
-  const authorName = $('#bd-author-name');
-  if (authorName) authorName.textContent = blog.author;
-
-  // Related posts
-  const relatedEl = $('#bd-related');
-  if (relatedEl) {
-    const others = BLOGS.filter(b => b.id !== id).slice(0, 3);
-    relatedEl.innerHTML = others.map(b => `
-      <a href="blog-details.html?id=${b.id}" class="blog-grid-card reveal">
-        <div class="grid-blog-img" style="background-image: url('${b.bgImg}')"></div>
-        <div class="grid-blog-body" style="padding:24px">
-          <span class="blog-cat-badge" style="font-size:0.6rem">${b.cat}</span>
-          <h4 style="font-size:1.1rem;margin:8px 0">${b.title}</h4>
-          <div class="blog-card-footer" style="padding-top:12px">
-            <span class="b-meta"><i data-lucide="calendar"></i> ${b.date}</span>
-          </div>
-        </div>
-      </a>
-    `).join('');
-  }
-
-  if (typeof lucide !== 'undefined') lucide.createIcons();
-  ScrollReveal.init();
-}
-
-/* ── Coming Soon Countdown ── */
-function initCountdown() {
-  const countdownEl = $('#countdown-timer');
-  if (!countdownEl) return;
-  const target = new Date('2026-06-01T00:00:00').getTime();
-
-  function tick() {
-    const now = Date.now();
-    const diff = target - now;
-    if (diff <= 0) { countdownEl.textContent = 'We are live!'; return; }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    const pad = n => String(n).padStart(2, '0');
-    $$('.cd-days', countdownEl)[0] && ($$('.cd-days', countdownEl)[0].querySelector('.cd-num').textContent = d);
-    $$('.cd-hours', countdownEl)[0] && ($$('.cd-hours', countdownEl)[0].querySelector('.cd-num').textContent = pad(h));
-    $$('.cd-mins', countdownEl)[0] && ($$('.cd-mins', countdownEl)[0].querySelector('.cd-num').textContent = pad(m));
-    $$('.cd-secs', countdownEl)[0] && ($$('.cd-secs', countdownEl)[0].querySelector('.cd-num').textContent = pad(s));
-  }
-  tick();
-  setInterval(tick, 1000);
-}
-
-/* ── Blog Filter ── */
-function initBlogFilter() {
-  const filterBtns = $$('[data-blog-filter]');
-  const cards = $$('[data-blog-cat]');
-  if (!filterBtns.length) return;
-
-  filterBtns.forEach(btn => {
-    on(btn, 'click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cat = btn.getAttribute('data-blog-filter');
-      cards.forEach(card => {
-        const match = cat === 'all' || card.getAttribute('data-blog-cat') === cat;
-        card.style.display = match ? '' : 'none';
-      });
-    });
-  });
-}
-
-/* ── Smooth Anchor Scroll ── */
-function initSmoothAnchors() {
-  $$('a[href^="#"]').forEach(a => {
-    on(a, 'click', e => {
-      const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if (target) {
-        e.preventDefault();
-        const offset = 90;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-}
-
-/* ── Testimonial Auto-Scroll ── */
-function initTestimonialSlider() {
-  const slider = $('#testimonial-slider');
-  if (!slider) return;
-  const track = slider.querySelector('.testimonial-track');
-  if (!track) return;
-  
-  let current = 0;
-  const cards = $$('.testimonial-card', track);
-  const total = cards.length;
-  if (total <= 1) return;
-
-  function goTo(index) {
-    current = (index + total) % total;
-    
-    // Calculate width dynamically
-    const style = window.getComputedStyle(track);
-    const gap = parseInt(style.gap) || 24;
-    const width = cards[0].offsetWidth + gap;
-    
-    const dir = document.documentElement.getAttribute('dir') || 'ltr';
-    const multiplier = dir === 'rtl' ? 1 : -1;
-    
-    track.style.transform = `translateX(${multiplier * current * width}px)`;
-    
-    // Update dots
-    const dots = $$('.testimonial-dot', slider);
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-  }
-
-  // Create Dots
-  const dotsEl = slider.querySelector('.testimonial-dots');
-  if (dotsEl) {
-    dotsEl.innerHTML = ''; // Clear previous
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('button');
-      dot.className = `testimonial-dot${i === 0 ? ' active' : ''}`;
-      dot.setAttribute('aria-label', `Slide ${i + 1}`);
-      on(dot, 'click', () => {
-        goTo(i);
-        resetAuto();
-      });
-      dotsEl.appendChild(dot);
-    }
-  }
-
-  // Nav Buttons
-  $$('[data-testimonial-prev]', slider).forEach(b => on(b, 'click', () => {
-    goTo(current - 1);
-    resetAuto();
-  }));
-  $$('[data-testimonial-next]', slider).forEach(b => on(b, 'click', () => {
-    goTo(current + 1);
-    resetAuto();
-  }));
-
-  // Auto Scroll
-  let interval;
-  const startAuto = () => {
-    interval = setInterval(() => goTo(current + 1), 5000);
-  };
-  const resetAuto = () => {
-    clearInterval(interval);
-    startAuto();
-  };
-
-  startAuto();
-  on(slider, 'mouseenter', () => clearInterval(interval));
-  on(slider, 'mouseleave', startAuto);
-
-  // Responsive: Recalculate on resize
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => goTo(current), 100);
-  });
-}
-
 
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1039,36 +849,45 @@ function initBlogList() {
   const featured = BLOGS[0];
   const others = BLOGS.slice(1);
 
+  // Helper to fix image paths
+  const fixImg = (path) => path.replace('.png', '.webp').replace('.jpg', '.webp');
+
   let html = `
     <!-- Featured Article -->
-    <div class="featured-blog-group reveal">
-      <a href="blog-details.html?id=${featured.id}" class="featured-blog-card">
-        <div class="f-blog-img" style="background-image: url('${featured.bgImg}')"></div>
-        <div class="f-blog-content">
-          <span class="blog-cat-badge">${featured.cat}</span>
-          <h2 class="f-blog-title">${featured.title}</h2>
-          <p class="f-blog-excerpt">${featured.excerpt}</p>
-          <div class="blog-card-footer">
-            <span class="b-meta"><i data-lucide="user"></i> ${featured.author}</span>
-            <span class="b-meta"><i data-lucide="calendar"></i> ${featured.date}</span>
-            <span class="b-meta"><i data-lucide="clock"></i> ${featured.readTime}</span>
+    <div class="mb-20">
+      <a href="blog-details.html?id=${featured.id}" class="group relative flex flex-col lg:flex-row bg-white/5 border border-white/5 rounded-[40px] overflow-hidden hover:border-vault-gold/30 transition-all duration-500">
+        <div class="lg:w-1/2 h-[400px] lg:h-auto overflow-hidden">
+          <img src="${fixImg(featured.bgImg)}" alt="${featured.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="lg:w-1/2 p-10 lg:p-20 flex flex-col justify-center">
+          <span class="text-[10px] font-black uppercase tracking-widest text-vault-gold mb-6 block">${featured.cat}</span>
+          <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-6 leading-tight">${featured.title}</h2>
+          <p class="text-white/40 mb-10 text-lg lowercase leading-relaxed">${featured.excerpt}</p>
+          <div class="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-white/20">
+            <span class="flex items-center gap-2"><i data-lucide="user" class="w-3 h-3 text-vault-gold"></i> ${featured.author}</span>
+            <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3 text-vault-gold"></i> ${featured.date}</span>
           </div>
         </div>
       </a>
     </div>
 
     <!-- Article Grid -->
-    <div class="blog-grid mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
       ${others.map(b => `
-        <a href="blog-details.html?id=${b.id}" class="blog-grid-card reveal" data-blog-cat="${b.cat}">
-          <div class="grid-blog-img" style="background-image: url('${b.bgImg}')"></div>
-          <div class="grid-blog-body">
-            <span class="blog-cat-badge">${b.cat}</span>
-            <h4 class="grid-blog-title">${b.title}</h4>
-            <p class="grid-blog-excerpt">${b.excerpt.substring(0, 90)}...</p>
-            <div class="blog-card-footer">
-              <span class="b-meta"><i data-lucide="calendar"></i> ${b.date}</span>
-              <span class="b-meta"><i data-lucide="clock"></i> ${b.readTime}</span>
+        <a href="blog-details.html?id=${b.id}" class="group bg-white/5 border border-white/5 rounded-[32px] overflow-hidden hover:border-vault-gold/30 transition-all duration-500 flex flex-col" data-blog-cat="${b.cat}">
+          <div class="h-64 overflow-hidden relative">
+            <img src="${fixImg(b.bgImg)}" alt="${b.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-vault-dark/80 to-transparent"></div>
+            <span class="absolute top-6 left-6 bg-vault-gold text-vault-dark text-[8px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full">
+              ${b.cat}
+            </span>
+          </div>
+          <div class="p-8 flex flex-col flex-1">
+            <h4 class="text-xl font-black uppercase tracking-tighter mb-4 flex-1">${b.title}</h4>
+            <p class="text-white/30 text-xs lowercase leading-relaxed mb-8">${b.excerpt.substring(0, 100)}...</p>
+            <div class="pt-6 border-t border-white/5 flex items-center justify-between text-[8px] font-black uppercase tracking-widest text-white/20">
+              <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3 text-vault-gold"></i> ${b.date}</span>
+              <span class="flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3 text-vault-gold"></i> ${b.readTime}</span>
             </div>
           </div>
         </a>
@@ -1079,5 +898,253 @@ function initBlogList() {
   container.innerHTML = html;
   
   if (typeof lucide !== 'undefined') lucide.createIcons();
-  ScrollReveal.init();
+}
+
+function initBlogDetails() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const blogId = urlParams.get('id');
+  if (!blogId) return;
+
+  const blog = BLOGS.find(b => b.id == blogId);
+  if (!blog) {
+    window.location.href = '404.html';
+    return;
+  }
+
+  // Helper to fix image paths
+  const fixImg = (path) => path.replace('.png', '.webp').replace('.jpg', '.webp');
+
+  // Populate Hero
+  const heroBg = $('#bd-hero-bg');
+  const heroMeta = $('#bd-meta');
+  const heroTitle = $('#bd-title');
+
+  if (heroBg) heroBg.style.backgroundImage = `url('${fixImg(blog.bgImg)}')`;
+  if (heroMeta) {
+    heroMeta.innerHTML = `
+      <span class="flex items-center gap-2"><i data-lucide="user" class="w-3 h-3 text-vault-gold"></i> ${blog.author}</span>
+      <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3 text-vault-gold"></i> ${blog.date}</span>
+      <span class="flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3 text-vault-gold"></i> ${blog.readTime}</span>
+    `;
+  }
+  if (heroTitle) heroTitle.innerText = blog.title;
+
+  // Populate Content
+  const content = $('#bd-content');
+  if (content) content.innerHTML = blog.content;
+
+  // Author Name
+  const authorName = $('#bd-author-name');
+  if (authorName) authorName.innerText = blog.author;
+
+  // Populate Related
+  const relatedContainer = $('#bd-related');
+  if (relatedContainer) {
+    const related = BLOGS.filter(b => b.id != blogId).slice(0, 3);
+    relatedContainer.innerHTML = related.map(b => `
+      <a href="blog-details.html?id=${b.id}" class="group bg-white/5 border border-white/5 rounded-[32px] overflow-hidden hover:border-vault-gold/30 transition-all duration-500 flex flex-col">
+        <div class="h-48 overflow-hidden relative">
+          <img src="${fixImg(b.bgImg)}" alt="${b.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-vault-dark/80 to-transparent"></div>
+        </div>
+        <div class="p-8 flex flex-col flex-1">
+          <span class="text-[8px] font-black uppercase tracking-widest text-vault-gold mb-4 block">${b.cat}</span>
+          <h4 class="text-lg font-black uppercase tracking-tighter mb-4 flex-1">${b.title}</h4>
+          <div class="pt-6 border-t border-white/5 flex items-center justify-between text-[8px] font-black uppercase tracking-widest text-white/20">
+            <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3 text-vault-gold"></i> ${b.date}</span>
+            <span class="flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3 text-vault-gold"></i> ${b.readTime}</span>
+          </div>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function initBlogFilter() {
+  const btns = $$('.blog-filter-btn');
+  const cards = $$('.blog-grid-card');
+  if (!btns.length) return;
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.filter;
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.blogCat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+}
+
+function initSmoothAnchors() {
+  $$('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = $(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+function initTestimonialSlider() {
+  const track = $('.testimonial-track');
+  const slides = $$('.testimonial-card');
+  if (!track || !slides.length) return;
+
+  let current = 0;
+  const dotsContainer = $('.testimonial-dots');
+  
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = `dot ${i === 0 ? 'active' : ''}`;
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer && dotsContainer.appendChild(dot);
+  });
+
+  const dots = $$('.dot', dotsContainer);
+
+  function goTo(index) {
+    current = index;
+    const offset = slides[0].offsetWidth + 32; // width + gap
+    track.style.transform = `translateX(-${current * offset}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => goTo(current), 100);
+  });
+}
+
+function initCountdown() {
+  const el = $('#countdown');
+  if (!el) return;
+
+  const target = new Date();
+  target.setDate(target.getDate() + 3);
+
+  function update() {
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) return;
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / 1000 / 60) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    el.innerHTML = `
+      <div class="cd-item"><span>${d}</span><label>Days</label></div>
+      <div class="cd-item"><span>${h}</span><label>Hrs</label></div>
+      <div class="cd-item"><span>${m}</span><label>Min</label></div>
+      <div class="cd-item"><span>${s}</span><label>Sec</label></div>
+    `;
+  }
+
+  setInterval(update, 1000);
+  update();
+}
+
+function initPasswordToggles() {
+  $$('.password-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = btn.previousElementSibling;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerText = '👁️';
+      } else {
+        input.type = 'password';
+        btn.innerText = '👁️‍🗨️';
+      }
+    });
+  });
+}
+
+function initCounters() {
+  const counters = $$('.counter-value');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        let count = 0;
+        const inc = target / 50;
+        const timer = setInterval(() => {
+          count += inc;
+          if (count >= target) {
+            el.innerText = target;
+            clearInterval(timer);
+          } else {
+            el.innerText = Math.floor(count);
+          }
+        }, 30);
+        obs.unobserve(el);
+      }
+    });
+  });
+  counters.forEach(c => obs.observe(c));
+}
+
+function initServiceDetails() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const sid = urlParams.get('service');
+  if (!sid || !SERVICES[sid]) return;
+
+  const s = SERVICES[sid];
+  const fixImg = (path) => path.replace('.png', '.webp').replace('.jpg', '.webp');
+
+  const hero = $('.sd-hero');
+  if (hero) hero.style.backgroundColor = s.heroColor;
+  
+  const heroBg = $('.sd-hero-bg');
+  if (heroBg) heroBg.style.backgroundImage = `url('${fixImg(s.bgImg)}')`;
+
+  const title = $('.sd-title');
+  if (title) title.innerText = s.title;
+
+  const tagline = $('.sd-tagline');
+  if (tagline) tagline.innerText = s.tagline;
+
+  const desc = $('.sd-description');
+  if (desc) desc.innerText = s.description;
+
+  const badges = $('.sd-badges');
+  if (badges) {
+    badges.innerHTML = `
+      <div class="sd-badge"><i data-lucide="zap"></i><span>${s.difficulty}/5 Difficulty</span></div>
+      <div class="sd-badge"><i data-lucide="users"></i><span>${s.players}</span></div>
+      <div class="sd-badge"><i data-lucide="clock"></i><span>${s.duration}</span></div>
+      <div class="sd-badge"><i data-lucide="shield"></i><span>${s.theme}</span></div>
+    `;
+  }
+
+  const benefits = $('.sd-benefits-grid');
+  if (benefits) {
+    benefits.innerHTML = s.benefits.map(b => `<div class="sd-benefit-item"><i data-lucide="check-circle"></i><span>${b}</span></div>`).join('');
+  }
+
+  const faqs = $('.sd-faq-list');
+  if (faqs) {
+    faqs.innerHTML = s.faqs.map(f => `
+      <div class="accordion-item">
+        <div class="accordion-header">${f.q} <i data-lucide="chevron-down"></i></div>
+        <div class="accordion-content"><p>${f.a}</p></div>
+      </div>
+    `).join('');
+  }
+
+  if (typeof lucide !== 'undefined') lucide.createIcons();
 }
