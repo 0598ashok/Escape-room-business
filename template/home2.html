@@ -1,543 +1,281 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗝️</text></svg>">
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="VaultEscape — New York's premier immersive escape room experience. Six cinematic rooms. 60 minutes. Can you escape?"/>
-  <title>VaultEscape | Cinematic Escape Experience</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-  <link rel="stylesheet" href="assets/css/rtl.css">
-  <style>
-    /* ════════════════════════════════════
-       HOME 2 — CINEMATIC THEME-AWARE
-    ════════════════════════════════════ */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="VaultEscape Cinematic — Immerse yourself in the next level of escape room entertainment. High-tech puzzles, cinematic storytelling, and 6 unique adventure themes." />
+  <meta name="keywords"
+    content="cinematic escape room, immersive mystery, high-tech puzzles, adventure games NYC, premium escape rooms" />
+  <link rel="canonical" href="https://vaultescape.com/home2.html" />
 
-    /* ── DARK MODE (default) ── */
-    html[data-theme="dark"],
-    html:not([data-theme]) {
-      --c-ink:    #060A12;
-      --c-deep:   #0A1628;
-      --c-dark:   #0D1F3C;
-      --c-text:   #E6EDF3;
-      --c-muted:  rgba(230,237,243,.6);
-      --c-subtle: rgba(230,237,243,.4);
-      --c-gold:   #C9A84C;
-      --c-gold-d: #A8842A;
-      --c-card:   rgba(255,255,255,.04);
-      --c-border: rgba(255,255,255,.09);
-      --c-trust-bg: rgba(255,255,255,.05);
-      --c-trust-border: rgba(255,255,255,.1);
-      --c-trust-text:   rgba(230,237,243,.75);
-      --c-section-alt: rgba(13,21,37,.7);
-    }
+  <!-- Open Graph -->
+  <meta property="og:title" content="VaultEscape | Cinematic Escape Experience" />
+  <meta property="og:description"
+    content="Experience the thrill of cinematic escape rooms. High-stakes puzzles and immersive stories await you at VaultEscape." />
+  <meta property="og:url" content="https://vaultescape.com/home2.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/hero/cinematic-vault.webp" />
 
-    /* ── LIGHT MODE ── */
-    html[data-theme="light"] {
-      --c-ink:    #F5F8FC;
-      --c-deep:   #EBF0F9;
-      --c-dark:   #DDE5F5;
-      --c-text:   #0A1628;
-      --c-muted:  rgba(10,22,40,.65);
-      --c-subtle: rgba(10,22,40,.42);
-      --c-gold:   #9A7820;
-      --c-gold-d: #7A5E10;
-      --c-card:   rgba(255,255,255,.9);
-      --c-border: rgba(10,22,40,.1);
-      --c-trust-bg: rgba(10,38,71,.06);
-      --c-trust-border: rgba(10,38,71,.12);
-      --c-trust-text: rgba(10,22,40,.75);
-      --c-section-alt: rgba(235,240,249,.8);
-    }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VaultEscape | Cinematic Escape Experience" />
+  <meta name="twitter:description"
+    content="Experience the thrill of cinematic escape rooms. High-stakes puzzles and immersive stories await you." />
+  <meta name="twitter:image" content="assets/images/hero/cinematic-vault.webp" />
 
-    /* Reset body */
-    body { background: var(--c-ink); overflow-x: hidden; transition: background .35s; }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            vault: {
+              gold: '#C9A84C',
+              dark: '#060a12',
+              card: 'rgba(255,255,255,0.04)',
+              accent: '#d4af37'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .btn {
+        @apply inline-flex items-center justify-center font-bold px-8 py-4 rounded-xl transition-all duration-300;
+      }
+      .btn-primary {
+        @apply bg-vault-gold text-vault-dark hover:bg-vault-accent hover:scale-105 shadow-lg shadow-vault-gold/20;
+      }
+      .btn-outline {
+        @apply border-2 border-vault-gold text-vault-gold hover:bg-vault-gold hover:text-vault-dark;
+      }
+      .nav-link {
+        @apply text-white/70 hover:text-vault-gold transition-colors font-medium;
+      }
+      .c-section { @apply py-24; }
+      .c-card { @apply bg-vault-card border border-white/10 rounded-2xl p-8 backdrop-blur-xl transition hover:border-vault-gold/50; }
+    }
+  </style>
+</head>
 
-    /* ── Shared Cinematic Section ── */
-    .c-section { padding: 96px 0; }
-    .c-section-alt { background: var(--c-section-alt); }
-    .c-section-head { text-align: center; margin-bottom: 60px; }
-    .c-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--c-gold);
-      font-size: .74rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .c-label::before {
-      content: '';
-      width: 24px; height: 2px;
-      background: var(--c-gold);
-    }
-    .c-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--c-text);
-      line-height: 1.15;
-    }
-    .c-sub {
-      color: var(--c-muted);
-      font-size: .97rem;
-      line-height: 1.75;
-      max-width: 540px;
-      margin: 14px auto 0;
-    }
+<body class="bg-vault-dark text-white font-sans antialiased overflow-x-hidden">
+  <!-- Glow Orbs -->
+  <div class="fixed top-[-120px] right-[-80px] w-[640px] h-[640px] bg-vault-gold/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="fixed bottom-[-60px] left-[-120px] w-[500px] h-[500px] bg-blue-900/20 rounded-full blur-[100px] pointer-events-none"></div>
 
-    /* ══════════════════════════════════
-       HERO
-    ══════════════════════════════════ */
-    .c-hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: var(--nav-height);
-      background: linear-gradient(135deg, var(--c-ink) 0%, var(--c-deep) 55%, var(--c-dark) 100%);
-      overflow: hidden;
-    }
-    /* Grid overlay */
-    .c-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(201,168,76,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,.045) 1px, transparent 1px);
-      background-size: 64px 64px;
-    }
-    /* Glow orbs */
-    .hero-orb {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .hero-orb-1 {
-      top: -120px; right: -80px;
-      width: 640px; height: 640px;
-      background: radial-gradient(circle, rgba(201,168,76,.13) 0%, transparent 68%);
-    }
-    .hero-orb-2 {
-      bottom: -60px; left: -120px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(20,66,114,.35) 0%, transparent 68%);
-    }
-    .hero-orb-3 {
-      top: 35%; left: 40%;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(201,168,76,.06) 0%, transparent 70%);
-    }
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#C9A84C 1px, transparent 0); background-size: 64px 64px;"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center gap-3 bg-vault-gold/10 border border-vault-gold/30 rounded-full px-5 py-2 text-vault-gold text-xs font-black uppercase tracking-widest mb-8">
+            <span class="w-2 h-2 bg-vault-gold rounded-full animate-pulse"></span>
+            Now Live: New Season
+          </div>
+          <h1 class="text-6xl lg:text-8xl font-bold leading-[0.9] mb-10 tracking-tighter">
+            Escape the <span class="text-vault-gold italic">Ordinary.</span><br/>
+            Enter the <span class="relative">Unknown<span class="absolute bottom-0 left-0 w-full h-1 bg-vault-gold"></span></span>
+          </h1>
+          <p class="text-xl text-white/60 mb-12 max-w-lg leading-relaxed font-light">Experience the next generation of cinematic escape rooms. High-tech puzzles meets Hollywood-level set design.</p>
+          <div class="flex flex-wrap gap-4 mb-12">
+            <a href="services.html" class="btn btn-primary">Book Adventure</a>
+            <a href="about.html" class="btn btn-outline">Watch Trailer</a>
+          </div>
+          <div class="flex flex-wrap gap-6 pt-8 border-t border-white/5 opacity-60">
+             <div class="flex items-center gap-2"><span class="text-vault-gold">★</span> <span class="text-sm font-bold">4.9/5 Rating</span></div>
+             <div class="flex items-center gap-2"><span class="text-vault-gold">🏆</span> <span class="text-sm font-bold">Award Winner</span></div>
+             <div class="flex items-center gap-2"><span class="text-vault-gold">🔥</span> <span class="text-sm font-bold">Safe Play Certified</span></div>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+           <div class="c-card text-center transform hover:-translate-y-2">
+             <div class="text-vault-gold text-4xl font-bold mb-2">6</div>
+             <div class="text-[10px] uppercase font-black text-white/40 tracking-widest">Storylines</div>
+           </div>
+           <div class="c-card text-center transform hover:-translate-y-2">
+             <div class="text-4xl font-bold mb-2">9+</div>
+             <div class="text-[10px] uppercase font-black text-white/40 tracking-widest">Global Cities</div>
+           </div>
+           <div class="c-card col-span-2 flex items-center justify-center gap-8 py-10 transform hover:-translate-y-2">
+             <div class="text-center">
+               <div class="text-5xl font-bold mb-1">15k</div>
+               <div class="text-[10px] uppercase font-black text-white/40 tracking-widest">Players</div>
+             </div>
+             <div class="w-px h-12 bg-white/10"></div>
+             <div class="text-center">
+               <div class="text-vault-gold text-5xl font-bold mb-1">98%</div>
+               <div class="text-[10px] uppercase font-black text-white/40 tracking-widest">Success</div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    .c-hero-inner {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      padding: 80px 0;
-    }
-    .c-hero-grid {
-      display: grid;
-      grid-template-columns: 55fr 45fr;
-      gap: 64px;
-      align-items: center;
-    }
+  <!-- Rooms Section -->
+  <section class="c-section bg-vault-dark items-center">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-vault-gold font-black uppercase text-xs tracking-widest block mb-4">The Chambers</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Choose Your Destiny</h2>
+        <p class="text-white/50 max-w-lg mx-auto">From ancient temples to high-tech prisons, every room is a masterpiece of storytelling and puzzle design.</p>
+      </div>
 
-    /* Hero Left Column */
-    .hero-live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(201,168,76,.1);
-      border: 1px solid rgba(201,168,76,.28);
-      border-radius: 99px;
-      padding: 8px 20px;
-      font-size: .77rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 28px;
-    }
-    .hero-live-dot {
-      width: 8px; height: 8px;
-      background: var(--c-gold);
-      border-radius: 50%;
-      animation: livepulse 2s ease-in-out infinite;
-    }
-    @keyframes livepulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50% { opacity:.4; transform:scale(.65); }
-    }
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.04;
-      color: var(--c-text);
-      margin-bottom: 28px;
-    }
-    .hero-title .t-gold { color: var(--c-gold); }
-    .hero-title .t-underline {
-      position: relative;
-      display: inline-block;
-    }
-    .hero-title .t-underline::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -4px;
-      width: 100%;
-      height: 3px;
-      background: var(--c-gold);
-      border-radius: 99px;
-    }
-    .hero-desc {
-      font-size: 1.1rem;
-      color: var(--c-muted);
-      line-height: 1.75;
-      max-width: 500px;
-      margin-bottom: 36px;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 36px;
-    }
-    .hero-trust {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .trust-chip {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--c-trust-bg);
-      border: 1px solid var(--c-trust-border);
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-size: .8rem;
-      color: var(--c-trust-text);
-      font-weight: 500;
-    }
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Haunted Mansion -->
+        <a href="service-details.html?service=haunted-mansion" class="group c-card flex flex-col h-full hover:-translate-y-2 transition-all">
+          <div class="relative h-48 rounded-xl overflow-hidden mb-6">
+            <img src="assets/images/hero/haunted-mansion.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Haunted Mansion">
+            <div class="absolute inset-0 bg-gradient-to-t from-vault-dark/90 to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+              <span class="text-[10px] font-black uppercase tracking-widest text-vault-gold">Supernatural</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Haunted Mansion</h3>
+          <p class="text-sm text-white/50 mb-6 flex-1">Break the curse of the Blackwood Estate before the clock strikes twelve.</p>
+          <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+            <span class="px-3 py-1 bg-vault-gold/10 text-vault-gold text-[10px] font-bold rounded-full uppercase">Hard</span>
+            <span class="text-vault-gold font-bold text-sm flex items-center gap-1 group-hover:gap-3 transition-all">Enter <span class="arrow">→</span></span>
+          </div>
+        </a>
 
-    /* Hero Right Column — Stats HUD */
-    .hero-hud {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .hud-card {
-      background: var(--c-card);
-      border: 1px solid rgba(201,168,76,.2);
-      border-radius: 16px;
-      padding: 28px 24px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,.08);
-      transition: border-color .3s, transform .3s, box-shadow .3s;
-    }
-    .hud-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(201,168,76,.04) 0%, transparent 60%);
-    }
-    /* Light mode hud card */
-    html[data-theme="light"] .hud-card { box-shadow: 0 4px 20px rgba(10,38,71,.1); }
-    .hud-card:hover {
-      border-color: rgba(201,168,76,.4);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(201,168,76,.12);
-    }
-    .hud-card.span-2 {
-      grid-column: span 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-      text-align: left;
-      padding: 24px 28px;
-    }
-    .hud-divider { width: 1px; height: 60px; background: rgba(201,168,76,.18); flex-shrink: 0; }
-    .hud-num {
-      font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
-    }
-    .hud-num.gold { color: var(--c-gold); }
-    .hud-num.white { color: var(--c-text); }
-    .hud-lbl {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--c-subtle);
-      position: relative;
-      z-index: 1;
-    }
-    .hud-icon { font-size: 2.8rem; }
+        <!-- Prison Break -->
+        <a href="service-details.html?service=prison-break" class="group c-card flex flex-col h-full hover:-translate-y-2 transition-all">
+          <div class="relative h-48 rounded-xl overflow-hidden mb-6">
+            <img src="assets/images/hero/prison-break.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prison Break">
+            <div class="absolute inset-0 bg-gradient-to-t from-vault-dark/90 to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+              <span class="text-[10px] font-black uppercase tracking-widest text-vault-gold">Thriller</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Prison Break</h3>
+          <p class="text-sm text-white/50 mb-6 flex-1">Wrongly accused. Your ONLY chance to escape is through the tunnels.</p>
+          <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+            <span class="px-3 py-1 bg-vault-gold/10 text-vault-gold text-[10px] font-bold rounded-full uppercase">Medium</span>
+            <span class="text-vault-gold font-bold text-sm flex items-center gap-1 group-hover:gap-3 transition-all">Enter <span class="arrow">→</span></span>
+          </div>
+        </a>
 
-    /* ══════════════════════════════════
-       STATS STRIP
-    ══════════════════════════════════ */
-    .c-stats {
-      background: linear-gradient(135deg, rgba(201,168,76,.12) 0%, rgba(201,168,76,.04) 100%);
-      border-top: 1px solid rgba(201,168,76,.15);
-      border-bottom: 1px solid rgba(201,168,76,.15);
-      padding: 48px 0;
-    }
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .s-item {
-      text-align: center;
-      padding: 16px 24px;
-      position: relative;
-    }
-    .s-item:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0; top: 15%; bottom: 15%;
-      width: 1px;
-      background: rgba(201,168,76,.2);
-    }
-    .s-num {
-      font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--c-gold);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .s-lbl {
-      font-size: .78rem;
-      color: var(--c-muted);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-weight: 600;
-    }
+        <!-- Spy Mission -->
+        <a href="service-details.html?service=spy-mission" class="group c-card flex flex-col h-full hover:-translate-y-2 transition-all">
+          <div class="relative h-48 rounded-xl overflow-hidden mb-6">
+            <img src="assets/images/hero/spy-mission.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Spy Mission">
+            <div class="absolute inset-0 bg-gradient-to-t from-vault-dark/90 to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+              <span class="text-[10px] font-black uppercase tracking-widest text-vault-gold">Espionage</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Spy Mission</h3>
+          <p class="text-sm text-white/50 mb-6 flex-1">Infiltrate, Extract, Evade. The world depends on your team tonight.</p>
+          <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+            <span class="px-3 py-1 bg-vault-gold/10 text-vault-gold text-[10px] font-bold rounded-full uppercase">Elite</span>
+            <span class="text-vault-gold font-bold text-sm flex items-center gap-1 group-hover:gap-3 transition-all">Enter <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    /* ══════════════════════════════════
-       ROOMS GRID
-    ══════════════════════════════════ */
-    .rooms-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .room-card {
-      background: var(--c-card);
-      border: 1px solid var(--c-border);
-      border-radius: 18px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform .3s, border-color .3s, box-shadow .3s;
-    }
-    .room-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(201,168,76,.4);
-      box-shadow: 0 16px 48px rgba(0,0,0,.45);
-    }
-    .room-visual {
-      height: 168px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.8rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .room-visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, rgba(6,10,18,.85));
-      pointer-events: none;
-    }
-    .room-visual img, .blog-feat-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .room-body { padding: 22px 20px; flex: 1; display: flex; flex-direction: column; }
-    .room-tag {
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 8px;
-    }
-    .room-body h3 { font-size: 1.08rem; color: var(--c-text); margin-bottom: 10px; line-height: 1.35; }
-    .room-body p { font-size: .84rem; color: var(--c-muted); line-height: 1.65; flex: 1; margin-bottom: 18px; }
-    .room-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--c-border);
-      padding-top: 14px;
-      margin-top: auto;
-    }
-    .room-diff {
-      font-size: .71rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 99px;
-      background: rgba(201,168,76,.14);
-      color: var(--c-gold);
-      letter-spacing: .06em;
-    }
-    .room-link {
-      font-size: .82rem;
-      color: var(--c-gold);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      text-decoration: none;
-      transition: gap .2s;
-    }
-    .room-link:hover { gap: 9px; }
+  <!-- Process Section -->
+  <section class="c-section bg-[#080c14] relative overflow-hidden">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-vault-gold font-black uppercase text-xs tracking-widest block mb-4">The Journey</span>
+        <h2 class="text-4xl font-bold text-white mb-6">How to Escape</h2>
+      </div>
 
-    /* Room gradient backgrounds */
-    .bg-haunted  { background: linear-gradient(135deg,#1a0630,#3d1254); }
-    .bg-prison   { background: linear-gradient(135deg,#0d1c0d,#1a3a1a); }
-    .bg-spy      { background: linear-gradient(135deg,#0d1a2e,#0a2647); }
-    .bg-treasure { background: linear-gradient(135deg,#2e1a00,#5c3400); }
-    .bg-tomb     { background: linear-gradient(135deg,#201500,#402a00); }
-    .bg-asylum   { background: linear-gradient(135deg,#1a0d0d,#380d0d); }
+      <div class="grid md:grid-cols-4 gap-8 relative">
+        <div class="hidden lg:block absolute top-12 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-vault-gold to-transparent opacity-20"></div>
+        <div class="c-card text-center relative z-10">
+          <div class="w-16 h-16 bg-vault-gold text-vault-dark rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-6">1</div>
+          <h4 class="font-bold mb-3">Choose Your Mission</h4>
+          <p class="text-sm text-white/50">Pick one of our 6 unique cinematic experiences.</p>
+        </div>
+        <div class="c-card text-center relative z-10">
+          <div class="w-16 h-16 border-2 border-vault-gold text-vault-gold rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-6">2</div>
+          <h4 class="font-bold mb-3">Gather Your Team</h4>
+          <p class="text-sm text-white/50">Recruit your most trusted allies for the heist.</p>
+        </div>
+        <div class="c-card text-center relative z-10">
+          <div class="w-16 h-16 border-2 border-vault-gold text-vault-gold rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-6">3</div>
+          <h4 class="font-bold mb-3">Enter The Vault</h4>
+          <p class="text-sm text-white/50">Immerse yourselves in a high-stakes world.</p>
+        </div>
+        <div class="c-card text-center relative z-10">
+          <div class="w-16 h-16 border-2 border-vault-gold text-vault-gold rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-6">4</div>
+          <h4 class="font-bold mb-3">Break Free</h4>
+          <p class="text-sm text-white/50">Solve the mystery and escape before time runs out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    /* ══════════════════════════════════
-       HOW IT WORKS
-    ══════════════════════════════════ */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      position: relative;
-    }
-    .process-connector {
-      position: absolute;
-      top: 38px;
-      left: calc(12.5% + 5px);
-      right: calc(12.5% + 5px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--c-gold), rgba(201,168,76,.15));
-      z-index: 0;
-    }
-    .step-card {
-      background: var(--c-card);
-      border: 1px solid var(--c-border);
-      border-radius: 18px;
-      padding: 32px 22px 28px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      transition: transform .3s, border-color .3s;
-    }
-    .step-card:hover { transform: translateY(-5px); border-color: rgba(201,168,76,.35); }
-    .step-num {
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin: 0 auto 20px;
-    }
-    .step-num.filled { background: var(--c-gold); color: var(--c-dark); }
-    .step-num.outline { border: 2px solid var(--c-gold); color: var(--c-gold); }
-    .step-card h4 { font-size: 1.02rem; color: var(--c-text); margin-bottom: 10px; }
-    .step-card p { font-size: .84rem; color: var(--c-muted); line-height: 1.65; }
+  <!-- Manifesto -->
+  <section class="py-32 bg-vault-gold relative overflow-hidden">
+     <div class="absolute top-0 left-10 text-[20rem] font-black text-vault-dark/5 leading-none pointer-events-none italic">“</div>
+     <div class="container mx-auto px-6 relative z-10 text-center">
+        <blockquote class="max-w-4xl mx-auto">
+          <p class="text-4xl lg:text-6xl font-black text-vault-dark italic leading-tight mb-12">"We don't build games. We build memories that haunt your imagination long after the door opens."</p>
+          <footer class="text-vault-dark/60 font-bold uppercase tracking-widest">— Alex Thorne, Founder</footer>
+        </blockquote>
+     </div>
+  </section>
 
-    /* ══════════════════════════════════
-       MANIFESTO
-    ══════════════════════════════════ */
-    .c-manifesto {
-      background: linear-gradient(135deg, var(--c-gold-d) 0%, var(--c-gold) 100%);
-      padding: 96px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .c-manifesto::before {
-      content: '"';
-      position: absolute;
-      top: -40px; left: 5%;
-      font-family: var(--font-heading);
-      font-size: 24rem;
-      font-weight: 900;
-      color: rgba(10,38,71,.08);
-      line-height: 1;
-      pointer-events: none;
-    }
-    .manifesto-inner {
-      max-width: 820px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
-    .manifesto-text {
-      font-family: var(--font-heading);
-      font-size: clamp(1.7rem, 3.5vw, 2.7rem);
-      font-style: italic;
-      color: var(--c-dark);
-      line-height: 1.35;
-      margin-bottom: 24px;
-    }
-    .manifesto-author {
-      font-weight: 700;
-      font-size: .95rem;
-      color: rgba(10,38,71,.72);
-      margin-bottom: 32px;
-    }
+  <!-- Testimonials -->
+  <section class="c-section bg-vault-dark">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+        <div>
+          <span class="text-vault-gold font-black uppercase text-xs tracking-widest block mb-4">Field Reports</span>
+          <h2 class="text-4xl font-bold text-white">Survivors' Stories</h2>
+        </div>
+        <div class="flex items-center gap-2 bg-vault-card px-4 py-2 rounded-lg border border-white/5">
+          <span class="text-vault-gold text-xl">★★★★★</span>
+          <span class="text-sm font-bold text-white/70">4.9/5 on Google</span>
+        </div>
+      </div>
 
-    /* ══════════════════════════════════
-       TESTIMONIALS
-    ══════════════════════════════════ */
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .testi-card {
-      background: var(--c-card);
-      border: 1px solid var(--c-border);
-      border-radius: 18px;
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      transition: transform .3s, border-color .3s;
-    }
-    .testi-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,.3); }
-    .testi-stars { color: var(--c-gold); font-size: 1rem; letter-spacing: 3px; margin-bottom: 16px; }
-    .testi-text { font-style: italic; color: var(--c-muted); font-size: .9rem; line-height: 1.75; flex: 1; margin-bottom: 20px; }
-    .testi-author { display: flex; align-items: center; gap: 12px; }
-    .testi-avatar {
-      width: 46px; height: 46px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1a4a7c, var(--c-gold));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; color: white; font-size: .88rem;
-      flex-shrink: 0;
-    }
-    .testi-name { font-weight: 600; font-size: .9rem; color: var(--c-text); }
-    .testi-role { font-size: .76rem; color: var(--c-subtle); }
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="c-card italic text-white/70 text-lg leading-relaxed flex flex-col justify-between">
+          <p>"The level of detail in the Prison Break room was insane. It actually felt like being in a movie. Best group activity in NYC!"</p>
+          <div class="mt-8 flex items-center gap-4">
+             <div class="w-10 h-10 bg-gradient-to-br from-vault-gold to-vault-dark rounded-full"></div>
+             <div>
+               <div class="text-sm font-bold text-white">Sarah Jenkins</div>
+               <div class="text-[10px] text-vault-gold uppercase font-black">Escape Artist</div>
+             </div>
+          </div>
+        </div>
+        <div class="c-card italic text-white/70 text-lg leading-relaxed flex flex-col justify-between">
+          <p>"Mind-blowing puzzles! We've done over 20 rooms across the country, and VaultEscape is easily in the top 3."</p>
+          <div class="mt-8 flex items-center gap-4">
+             <div class="w-10 h-10 bg-gradient-to-br from-vault-gold to-vault-dark rounded-full"></div>
+             <div>
+               <div class="text-sm font-bold text-white">Mark Thompson</div>
+               <div class="text-[10px] text-vault-gold uppercase font-black">Pro Gamer</div>
+             </div>
+          </div>
+        </div>
+        <div class="c-card italic text-white/70 text-lg leading-relaxed flex flex-col justify-between">
+          <p>"The Spy Mission room was incredibly high-tech. Those lasers were so cool to navigate! Heart-pounding fun."</p>
+          <div class="mt-8 flex items-center gap-4">
+             <div class="w-10 h-10 bg-gradient-to-br from-vault-gold to-vault-dark rounded-full"></div>
+             <div>
+               <div class="text-sm font-bold text-white">Emily Chen</div>
+               <div class="text-[10px] text-vault-gold uppercase font-black">Tech Enthusiast</div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
     /* ══════════════════════════════════
        BLOG
@@ -1102,425 +840,135 @@
   </section>
 
 
-  <!-- ══════════════════════════════════
-       2. STATS STRIP
-  ══════════════════════════════════ -->
-  <section class="c-stats" aria-label="Statistics">
-    <div class="container">
-      <div class="stats-row">
-        <div class="s-item reveal">
-          <div class="s-num" data-counter="8" data-suffix="+">8+</div>
-          <div class="s-lbl">Years in Business</div>
-        </div>
-        <div class="s-item reveal delay-1">
-          <div class="s-num" data-counter="50" data-suffix="k+">50k+</div>
-          <div class="s-lbl">Players Served</div>
-        </div>
-        <div class="s-item reveal delay-2">
-          <div class="s-num" data-counter="18">18</div>
-          <div class="s-lbl">Industry Awards</div>
-        </div>
-        <div class="s-item reveal delay-3">
-          <div class="s-num" data-counter="4.9">4.9</div>
-          <div class="s-lbl">Google Rating</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-
-  <!-- ══════════════════════════════════
-       3. EXPERIENCE ROOMS
-  ══════════════════════════════════ -->
-  <section class="c-section c-section-alt" id="rooms" aria-labelledby="rooms-h">
-    <div class="container">
-      <div class="c-section-head reveal">
-        <div class="c-label">Experience Rooms</div>
-        <h2 class="c-title" id="rooms-h">Master Every Escape Theme</h2>
-        <p class="c-sub">Six immersive cinematic worlds. Hundreds of puzzles. One mission — escape before time runs out.</p>
-      </div>
-
-      <div class="rooms-grid">
-        <div class="room-card reveal">
-          <div class="room-visual bg-haunted"><img src="assets/img/haunted_mansion_1774937219200.png" alt="Haunted Mansion"></div>
-          <div class="room-body">
-            <div class="room-tag">Horror · 90 min · 2–8 players</div>
-            <h3>Haunted Mansion</h3>
-            <p>Uncover the dark secrets of the Blackwood estate before vaultescape strikes. Immersive horror and complex puzzles await.</p>
-            <div class="room-footer">
-              <span class="room-diff">Expert</span>
-              <a href="service-details.html?service=haunted-mansion" class="room-link">Explore →</a>
-            </div>
-          </div>
+  <!-- How It Works -->
+  <section class="py-24 bg-vault-dark relative">
+    <div class="container mx-auto px-6 text-center text-white">
+      <span class="text-vault-gold font-black uppercase text-xs tracking-widest block mb-4">The Journey</span>
+      <h2 class="text-4xl font-bold mb-16">How it Works</h2>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="c-card group">
+          <div class="w-12 h-12 bg-vault-gold text-vault-dark rounded-full flex items-center justify-center font-bold mx-auto mb-6 group-hover:scale-110 transition-transform">1</div>
+          <h4 class="font-bold mb-3">Choose Mission</h4>
+          <p class="text-sm text-white/50 lowercase">Pick one of our 6 cinematic themes.</p>
         </div>
-
-        <div class="room-card reveal delay-1">
-          <div class="room-visual bg-prison"><img src="assets/img/prison_break_1774937239771.png" alt="Prison Break"></div>
-          <div class="room-body">
-            <div class="room-tag">Thriller · 60 min · 2–6 players</div>
-            <h3>Prison Break</h3>
-            <p>High-stakes survival. Decode cell blocks, forge alliances, and orchestrate your ultimate jailbreak.</p>
-            <div class="room-footer">
-              <span class="room-diff">Hard</span>
-              <a href="service-details.html?service=prison-break" class="room-link">Explore →</a>
-            </div>
-          </div>
+        <div class="c-card group">
+          <div class="w-12 h-12 border border-vault-gold text-vault-gold rounded-full flex items-center justify-center font-bold mx-auto mb-6 group-hover:scale-110 transition-transform">2</div>
+          <h4 class="font-bold mb-3">Briefing</h4>
+          <p class="text-sm text-white/50 lowercase">Get the story from your Game Master.</p>
         </div>
-
-        <div class="room-card reveal delay-2">
-          <div class="room-visual bg-spy"><img src="assets/img/spy_mission_1774937342913.png" alt="Spy Mission"></div>
-          <div class="room-body">
-            <div class="room-tag">Action · 60 min · 2–8 players</div>
-            <h3>Spy Mission</h3>
-            <p>Stealth, infiltration, and code-breaking. Your team is the world's last line of defense against disaster.</p>
-            <div class="room-footer">
-              <span class="room-diff">Medium</span>
-              <a href="service-details.html?service=spy-mission" class="room-link">Explore →</a>
-            </div>
-          </div>
+        <div class="c-card group">
+          <div class="w-12 h-12 border border-vault-gold text-vault-gold rounded-full flex items-center justify-center font-bold mx-auto mb-6 group-hover:scale-110 transition-transform">3</div>
+          <h4 class="font-bold mb-3">The Mission</h4>
+          <p class="text-sm text-white/50 lowercase">60 minutes to crack the vault.</p>
         </div>
-
-        <div class="room-card reveal">
-          <div class="room-visual bg-treasure"><img src="assets/img/treasure_hunt_1774937365746.png" alt="Treasure Hunt"></div>
-          <div class="room-body">
-            <div class="room-tag">Adventure · 60 min · 2–6 players</div>
-            <h3>Treasure Hunt</h3>
-            <p>Ancient maps. Hidden chambers. Priceless relics. Only the sharpest minds will claim the treasure.</p>
-            <div class="room-footer">
-              <span class="room-diff">Medium</span>
-              <a href="service-details.html?service=treasure-hunt" class="room-link">Explore →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="room-card reveal delay-1">
-          <div class="room-visual bg-tomb"><img src="assets/img/lost_tomb_1774937402250.png" alt="The Lost Tomb"></div>
-          <div class="room-body">
-            <div class="room-tag">Exploration · 75 min · 2–8 players</div>
-            <h3>The Lost Tomb</h3>
-            <p>Buried beneath the sands of time, an ancient curse awaits. Solve the riddles. Break the seal. Escape alive.</p>
-            <div class="room-footer">
-              <span class="room-diff">Hard</span>
-              <a href="service-details.html?service=the-lost-tomb" class="room-link">Explore →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="room-card reveal delay-2">
-          <div class="room-visual bg-asylum"><img src="assets/img/asylum_1774937434212.png" alt="The Asylum"></div>
-          <div class="room-body">
-            <div class="room-tag">Psychological · 60 min · 2–6 players</div>
-            <h3>The Asylum</h3>
-            <p>Reality bends. Your sanity is your greatest weapon — or your biggest weakness. Enter if you dare.</p>
-            <div class="room-footer">
-              <span class="room-diff">Expert</span>
-              <a href="service-details.html?service=the-asylum" class="room-link">Explore →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="text-align:center;margin-top:40px">
-        <a href="services.html" class="btn btn-outline-white">View All Experiences <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════
-       4. HOW IT WORKS
-  ══════════════════════════════════ -->
-  <section class="c-section" id="process" aria-labelledby="process-h">
-    <div class="container">
-      <div class="c-section-head reveal">
-        <div class="c-label">How It Works</div>
-        <h2 class="c-title" id="process-h">Your Path to Escape</h2>
-        <p class="c-sub">From booking to victory photo — here's exactly what to expect on the night.</p>
-      </div>
-
-      <div class="process-grid">
-        <div class="process-connector"></div>
-
-        <div class="step-card reveal">
-          <div class="step-num filled">1</div>
-          <h4>Choose Your Room</h4>
-          <p>Browse six cinematic themes and book your preferred date and time slot online in minutes.</p>
-        </div>
-        <div class="step-card reveal delay-1">
-          <div class="step-num outline">2</div>
-          <h4>Game Briefing</h4>
-          <p>Arrive 15 minutes early for a story setup and safety briefing from your personal Game Master.</p>
-        </div>
-        <div class="step-card reveal delay-2">
-          <div class="step-num outline">3</div>
-          <h4>The Mission</h4>
-          <p>60 minutes on the clock. Crack the puzzles, find the clues, and unlock your escape before time runs out.</p>
-        </div>
-        <div class="step-card reveal delay-3">
-          <div class="step-num outline">4</div>
-          <h4>Victory Photo</h4>
-          <p>Win or lose — we capture your team's epic moment at our signature victory photo wall.</p>
+        <div class="c-card group">
+          <div class="w-12 h-12 border border-vault-gold text-vault-gold rounded-full flex items-center justify-center font-bold mx-auto mb-6 group-hover:scale-110 transition-transform">4</div>
+          <h4 class="font-bold mb-3">Victory</h4>
+          <p class="text-sm text-white/50 lowercase">Capture your team's epic escape.</p>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════
-       5. MANIFESTO
-  ══════════════════════════════════ -->
-  <section class="c-manifesto" aria-label="Manifesto">
-    <div class="manifesto-inner reveal">
-      <p class="manifesto-text">
-        "The room is not a trap — it is a puzzle for the brilliant. My purpose is to challenge that brilliance."
-      </p>
-      <div class="manifesto-author">— Alex Thorne, Founder &amp; Master Game Designer</div>
-      <a href="about.html" class="btn btn-primary btn-lg">Our Story <span class="arrow">→</span></a>
-    </div>
+  <!-- Manifesto -->
+  <section class="py-32 bg-vault-gold relative overflow-hidden">
+     <div class="absolute top-0 left-10 text-[20rem] font-black text-vault-dark/5 leading-none pointer-events-none italic">“</div>
+     <div class="container mx-auto px-6 relative z-10 text-center">
+        <blockquote class="max-w-4xl mx-auto">
+          <p class="text-4xl lg:text-6xl font-black text-vault-dark italic leading-tight mb-12">"We don't build games. We build memories that haunt your imagination long after the door opens."</p>
+          <footer class="text-vault-dark/60 font-bold uppercase tracking-widest">— Alex Thorne, Founder</footer>
+        </blockquote>
+     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════
-       6. TESTIMONIALS
-  ══════════════════════════════════ -->
-  <section class="c-section c-section-alt" id="testimonials" aria-labelledby="testi-h">
-    <div class="container">
-      <div class="c-section-head reveal">
-        <div class="c-label">Testimonials</div>
-        <h2 class="c-title" id="testi-h">Voices of Trust</h2>
+  <!-- FAQ -->
+  <section class="py-24 bg-[#080c14] text-white">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="text-center mb-16">
+        <span class="text-vault-gold font-black uppercase text-xs tracking-widest block mb-4">Intel</span>
+        <h2 class="text-4xl font-bold mb-6">Common Questions</h2>
       </div>
-
-      <div class="testi-grid">
-        <div class="testi-card reveal">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Alex doesn't just build rooms — he builds worlds. The Haunted Mansion left our entire group breathless and craving more. Best experience in NYC."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">MC</div>
-            <div>
-              <div class="testi-name">Margaret Collins</div>
-              <div class="testi-role">Haunted Mansion · 2025</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"The most immersive experience in New York. We barely escaped The Asylum with three seconds left. Pure adrenaline from start to finish."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">RJ</div>
-            <div>
-              <div class="testi-name">Robert Janssen</div>
-              <div class="testi-role">The Asylum · 2025</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-2">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Perfect for team building. Our corporate group absolutely loved the Spy Mission. It challenged our communication and problem-solving skills beautifully."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">PS</div>
-            <div>
-              <div class="testi-name">Priya Sharma</div>
-              <div class="testi-role">Spy Mission · 2025</div>
-            </div>
-          </div>
-        </div>
+      <div class="space-y-4">
+        <details class="group c-card border-none bg-white/5">
+          <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-lg p-2">
+            Are the rooms actually locked?
+            <span class="text-vault-gold group-open:rotate-180 transition-transform">↓</span>
+          </summary>
+          <p class="mt-4 text-white/60 leading-relaxed">For your safety, main entry doors are never locked. You can leave at any time, but the clock won't stop!</p>
+        </details>
+        <details class="group c-card border-none bg-white/5">
+          <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-lg p-2 text-white">
+            Is there an age limit?
+            <span class="text-vault-gold group-open:rotate-180 transition-transform">↓</span>
+          </summary>
+          <p class="mt-4 text-white/60 leading-relaxed">Players must be 12+. Anyone under 16 must have a participating adult. Some rooms are 16+ recommended.</p>
+        </details>
+        <details class="group c-card border-none bg-white/5">
+          <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-lg p-2 text-white">
+            Do we play with strangers?
+            <span class="text-vault-gold group-open:rotate-180 transition-transform">↓</span>
+          </summary>
+          <p class="mt-4 text-white/60 leading-relaxed text-white/60">Never. All bookings are 100% private. The room is yours alone.</p>
+        </details>
       </div>
     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════
-       6.5. CORPORATE & EVENTS
-  ══════════════════════════════════ -->
-  <section class="c-section" id="events" aria-labelledby="events-h">
-    <div class="container">
-      <div class="content-split">
-        <div class="reveal-left">
-          <div class="content-split-img">
-            <img src="assets/img/team_building.png" alt="Corporate Team Building">
+  <!-- Global Footer -->
+  <footer class="bg-vault-dark pt-24 pb-12 border-t border-white/5 text-white">
+    <div class="container mx-auto px-6 text-center text-white">
+      <div class="mb-16">
+        <h2 class="text-5xl lg:text-7xl font-bold mb-8 tracking-tighter">Ready to <span class="text-vault-gold italic underline">Break Free?</span></h2>
+        <div class="flex flex-wrap justify-center gap-6">
+          <a href="services.html" class="btn btn-primary px-12 py-5 text-lg">Book Adventure</a>
+          <a href="contact.html" class="btn btn-outline px-12 py-5 text-lg">Contact HQ</a>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-4 gap-12 text-left pt-16 border-t border-white/5">
+        <div class="col-span-2">
+          <div class="text-2xl font-bold text-vault-gold mb-6">VaultEscape</div>
+          <p class="text-white/40 max-w-sm leading-relaxed mb-8">Masterfully crafted immersive experiences designed to challenge your mind and thrill your pulse. Escape the ordinary.</p>
+          <div class="flex gap-4">
+             <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-vault-gold transition-colors font-black">X</a>
+             <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-vault-gold transition-colors font-black">IG</a>
+             <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-vault-gold transition-colors font-black">YT</a>
           </div>
         </div>
-        <div class="reveal-right">
-          <div class="c-label">Corporate &amp; Private</div>
-          <h2 class="c-title" id="events-h">Next-Level Team Building</h2>
-          <p class="c-sub" style="margin-top: 20px; max-width: 100%; margin-left: 0; text-align: left; line-height: 1.8;">
-            Step out of the boardroom and into the adventure. Our cinematic escape experiences are engineered to forge stronger teams through communication, problem solving, and collaborative thinking under pressure.
-          </p>
-          <ul class="c-list">
-            <li><i data-lucide="check-circle"></i> Dedicated Event Coordinator</li>
-            <li><i data-lucide="check-circle"></i> Private Lounge &amp; Catering Options</li>
-            <li><i data-lucide="check-circle"></i> Customized Game Briefings for Corporate Goals</li>
+        <div>
+          <h5 class="font-bold text-sm uppercase tracking-widest mb-6">Missions</h5>
+          <ul class="space-y-4 text-white/40 text-sm font-medium">
+            <li><a href="#" class="hover:text-vault-gold transition-colors font-medium">Haunted Mansion</a></li>
+            <li><a href="#" class="hover:text-vault-gold transition-colors font-medium">Prison Break</a></li>
+            <li><a href="#" class="hover:text-vault-gold transition-colors font-medium">Spy Mission</a></li>
+            <li><a href="#" class="hover:text-vault-gold transition-colors font-medium">The Lost Tomb</a></li>
           </ul>
-          <a href="contact.html" class="btn btn-outline-white" style="margin-top: 10px;">Inquire Now <span class="arrow">→</span></a>
+        </div>
+        <div>
+           <h5 class="font-bold text-sm uppercase tracking-widest mb-6">Location</h5>
+           <p class="text-white/40 text-sm leading-relaxed">
+             123 Mystery Lane, Suite 101<br>
+             New York, NY 10001
+           </p>
+           <p class="mt-4 text-vault-gold font-bold text-sm">(555) ESC-APES</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       6.6. FAQ
-  ══════════════════════════════════ -->
-  <section class="c-section c-section-alt" id="faq" aria-labelledby="faq-h">
-    <div class="container">
-      <div class="c-section-head reveal">
-        <div class="c-label">Got Questions?</div>
-        <h2 class="c-title" id="faq-h">Answers You Need</h2>
-      </div>
-      
-      <div class="faq-grid">
-        <div class="faq-card reveal">
-          <h4>Are the rooms actually locked?</h4>
-          <p>For your absolute safety, the main entry doors are never locked. You can leave the experience at any time, but remember that your 60-minute countdown will continue to run.</p>
-        </div>
-        <div class="faq-card reveal delay-1">
-          <h4>Is there an age limit?</h4>
-          <p>Players must be 12 or older. Anyone under 16 must be accompanied by a participating adult. Please note that "The Asylum" and "Haunted Mansion" are recommended for ages 16+.</p>
-        </div>
-        <div class="faq-card reveal delay-2">
-          <h4>Do we play with strangers?</h4>
-          <p>Never. All of our bookings are 100% private. Once you book a room, it's exclusively reserved for your team, allowing you to immerse yourselves fully.</p>
-        </div>
-        <div class="faq-card reveal delay-3">
-          <h4>What happens if we don't escape?</h4>
-          <p>Our Game Masters monitor your progress and will walk you through the remaining puzzles so you aren't left wondering. There's always next time to claim your victory!</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       7. BLOG
-  ══════════════════════════════════ -->
-  <section class="c-section" id="blog" aria-labelledby="blog-h">
-    <div class="container">
-      <div class="blog-header">
-        <div class="reveal">
-          <div class="c-label">The Escape Journal</div>
-          <h2 class="c-title" id="blog-h" style="margin-top:8px">Lore, Tips &amp; Secrets</h2>
-        </div>
-        <a href="blogs.html" class="btn btn-outline-white reveal">All Articles <span class="arrow">→</span></a>
-      </div>
-
-      <div class="blog-grid">
-        <a href="blog-details.html?id=4" class="blog-featured reveal">
-          <div class="blog-feat-img"><img src="assets/img/team_building.png" alt="Team Building Tips"></div>
-          <div class="blog-body">
-            <div class="blog-cat">Escape Tips · 8 min read</div>
-            <h3>The Golden Rule of Escape Rooms: Why Communication is Everything</h3>
-            <p>Unlock the secrets to escaping any room with these top communication strategies used by professional players and teams worldwide.</p>
-          </div>
-        </a>
-
-        <div class="blog-sidebar">
-          <a href="blog-details.html?id=5" class="blog-sm reveal delay-1">
-            <div class="blog-cat">Strategy</div>
-            <h4>Searching 101: How to Find Hidden Objects Fast</h4>
-            <p>Master the art of the room sweep and never miss a key clue again.</p>
-          </a>
-          <a href="blog-details.html?id=6" class="blog-sm reveal delay-2">
-            <div class="blog-cat">Behind the Scenes</div>
-            <h4>Building the Haunted Mansion: An Interview with Alex Thorne</h4>
-            <p>Deep dive into the tech and lore behind our most popular room.</p>
-          </a>
-          <a href="blog-details.html?id=7" class="blog-sm reveal delay-3">
-            <div class="blog-cat">Tips</div>
-            <h4>5 Mistakes First-Timers Make (And How to Avoid Them)</h4>
-            <p>Don't walk in blind — learn from the teams who didn't make it out.</p>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════
-       8. FINAL CTA
-  ══════════════════════════════════ -->
-  <section class="c-cta" aria-label="Call to action">
-    <div class="cta-inner reveal">
-      <div class="c-label" style="justify-content:center;display:inline-flex;margin-bottom:16px">Begin Your Quest</div>
-      <h2>Ready to Beat the Clock?</h2>
-      <p>Slots fill fast — especially on weekends. Book your immersive cinematic experience and discover if you have what it takes to escape VaultEscape.</p>
-      <div class="cta-actions">
-        <a href="contact.html" class="btn btn-accent btn-lg" id="cta-book-btn">Book Your Adventure <span class="arrow">→</span></a>
-        <a href="tel:+15553722737" class="btn btn-outline-white btn-lg">📞 (555) ESC-APES</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════
-       FOOTER
-  ══════════════════════════════════ -->
-    <!-- ======================== FOOTER ======================== -->
-  <footer id="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <div class="logo-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                <path
-                  d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm0 2c1.654 0 3 1.346 3 3v3H9V7c0-1.654 1.346-3 3-3zm-1 11.268A2.001 2.001 0 0 1 12 18a2.001 2.001 0 0 1-1-3.732V13h2v1.268z" />
-              </svg></div>
-            <span>Vault<em>Escape</em></span>
-          </a>
-          <p>VaultEscape — Masterfully crafted immersive experiences designed to challenge your mind and thrill your
-            pulse. Escape the ordinary.</p>
-          <div class="footer-socials">
-            <a href="#" class="footer-social-link" aria-label="LinkedIn">in</a>
-            <a href="#" class="footer-social-link" aria-label="Twitter">𝕏</a>
-            <a href="#" class="footer-social-link" aria-label="Facebook">f</a>
-            <a href="#" class="footer-social-link" aria-label="Avvo">A</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h5>Experience Rooms</h5>
-          <nav class="footer-links" aria-label="Room themes">
-            <a href="service-details.html?service=haunted-mansion">Haunted Mansion</a>
-            <a href="service-details.html?service=prison-break">Prison Break</a>
-            <a href="service-details.html?service=spy-mission">Spy Mission</a>
-            <a href="service-details.html?service=treasure-hunt">Treasure Hunt</a>
-            <a href="services.html">Gift Cards</a>
-            <a href="contact.html">Group Bookings</a>
-          </nav>
-        </div>
-        <div class="footer-col">
-          <h5>Quick Links</h5>
-          <nav class="footer-links" aria-label="Quick links">
-            <a href="about.html">Our Story</a>
-            <a href="blogs.html">Escape Blog</a>
-            <a href="contact.html">Book A Room</a>
-            <a href="login.html">Player Portal</a>
-            <a href="404.html">404 Page</a>
-            <a href="coming-soon.html">Coming Soon</a>
-          </nav>
-        </div>
-        <div class="footer-col">
-          <h5>Connect</h5>
-          <div class="footer-contact-item"><span class="icon">📍</span><span>123 Mystery Lane, Suite 101<br />New York,
-              NY 10001</span></div>
-          <div class="footer-contact-item"><span class="icon">📞</span><span>(555) ESC-APES</span></div>
-          <div class="footer-contact-item"><span class="icon">✉️</span><span>hello@vaultescape.com</span></div>
-          <div class="footer-contact-item"><span class="icon">🕐</span><span>Mon – Sun: 10am – 11pm</span></div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p style="margin:0">&copy; 2026 VaultEscape. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Play</a>
-          <a href="#">Waiver Policy</a>
+      <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-black tracking-widest text-white/20">
+        <p>&copy; 2026 VaultEscape Cinematic. All rights reserved.</p>
+        <div class="flex gap-8">
+          <a href="#" class="hover:text-white transition-colors">Privacy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms</a>
+          <a href="#" class="hover:text-white transition-colors">Waiver</a>
         </div>
       </div>
     </div>
   </footer>
 
-
-  <button id="back-to-top" aria-label="Back to top">↑</button>
+  <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-vault-gold text-vault-dark rounded-full font-bold shadow-lg hover:scale-110 transition-transform">↑</button>
 
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
 
